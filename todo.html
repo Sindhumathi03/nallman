@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #todo-list {
+            margin-top: 20px;
+        }
+        .todo-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple To-Do List</h1>
+    <input type="text" id="task" placeholder="Add a new task">
+    <button onclick="addTask()">Add Task</button>
+
+    <div id="todo-list"></div>
+
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById('task');
+            const taskValue = taskInput.value.trim();
+            
+            if (taskValue === '') {
+                alert('Please enter a task.');
+                return;
+            }
+
+            const todoList = document.getElementById('todo-list');
+
+            // Create a new task element
+            const taskItem = document.createElement('div');
+            taskItem.className = 'todo-item';
+            taskItem.innerHTML = `
+                <input type="checkbox">
+                <span>${taskValue}</span>
+                <button onclick="removeTask(this)">Remove</button>
+            `;
+
+            // Append the new task to the list
+            todoList.appendChild(taskItem);
+
+            // Clear the input field
+            taskInput.value = '';
+        }
+
+        function removeTask(button) {
+            const todoList = document.getElementById('todo-list');
+            todoList.removeChild(button.parentElement);
+        }
+    </script>
+</body>
+</html>
