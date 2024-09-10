@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Example</title>
+    <style>
+        .post {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .like-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .like-button:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        .like-count {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <textarea id="postContent" rows="4" cols="50" placeholder="Write something..."></textarea>
+    <button id="postButton">Post</button>
+    <div id="postsContainer"></div>
+    <script src="script.js"></script>
+</body>
+</html>
