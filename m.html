@@ -5,29 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post Example</title>
     <style>
-        .post {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        .like-button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .like-button:disabled {
-            background-color: #6c757d;
-            cursor: not-allowed;
-        }
-        .like-count {
-            margin-left: 10px;
-        }
+       /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.like-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.like-button {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.like-button:hover {
+    background-color: #0056b3;
+}
+
+.icon {
+    margin-right: 8px;
+}
+
+.count {
+    font-size: 1.1rem;
+}
+
+@media (max-width: 600px) {
+    .like-button {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+
     </style>
 </head>
 <body>
+    <div class="like-container">
+        <button id="likeButton" class="like-button">
+            <span id="likeIcon" class="icon">👍</span>
+            <span id="likeCount" class="count">0</span>
+        </button>
+    </div>
     <textarea id="postContent" rows="4" cols="50" placeholder="Write something..."></textarea>
     <button id="postButton">Post</button>
     <div id="postsContainer"></div>
