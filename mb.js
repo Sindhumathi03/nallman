@@ -54,6 +54,24 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('posts', JSON.stringify(posts));
         loadPosts();
     }
+    // Add event listeners for delete buttons
+    function addDeleteButtonListeners() {
+        const deleteButtons = document.querySelectorAll('.deleteButton');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const index = this.dataset.index;
+                deletePost(index);
+            });
+        });
+    }
+
+    // Delete a post
+    function deletePost(index) {
+        const posts = JSON.parse(localStorage.getItem('posts')) || [];
+        posts.splice(index, 1); // Remove the post at the specified index
+        localStorage.setItem('posts', JSON.stringify(posts));
+        loadPosts();
+    }
 
     // Load posts when the page is loaded
     loadPosts();
