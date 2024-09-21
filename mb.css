@@ -88,3 +88,24 @@ button:hover {
         font-size: 16px; /* Slightly larger font */
     }
 }
+.deleteButton {
+    background-color: #dc3545; /* Red */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.deleteButton:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+@media (max-width: 600px) {
+    .deleteButton {
+        width: 100%; /* Full width for mobile */
+        font-size: 16px; /* Slightly larger font */
+    }
+}
