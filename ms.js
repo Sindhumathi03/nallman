@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     const loginContainer = document.getElementById('loginContainer');
-    const appContainer = document.getElementById('appContainer');
     const usernameInput = document.getElementById('username');
     const loginButton = document.getElementById('loginButton');
     const postContent = document.getElementById('postContent');
