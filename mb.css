@@ -119,6 +119,16 @@ button:hover {
     margin-top: 10px;
     font-size: 14px;
 }
+@media (max-width: 600px) {
+    .post {
+        font-size: 14px;
+    }
+
+    .commendButton {
+        width: 100%; /* Full width for mobile */
+        font-size: 16px; /* Slightly larger font */
+    }
+}
 .unlikeButton{
     background-color: #dc3545; /* Red */
     color: white;
@@ -128,6 +138,16 @@ button:hover {
     border-radius: 4px;
     margin-top: 10px;
     font-size: 14px;
+}
+@media (max-width: 600px) {
+    .post {
+        font-size: 14px;
+    }
+
+    .unlikeButton {
+        width: 100%; /* Full width for mobile */
+        font-size: 16px; /* Slightly larger font */
+    }
 }
     
 
