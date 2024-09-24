@@ -109,14 +109,5 @@ button:hover {
         font-size: 16px; /* Slightly larger font */
     }
 }
-.commendButton{
-     background-color: #28a745; /* Green */
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-top: 10px;
-        font-size: 14px; /* Adjust size as needed */
-}
+
     
