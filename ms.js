@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const loginContainer = document.getElementById('loginContainer');
+    const appContainer = document.getElementById('appContainer');
+    const usernameInput = document.getElementById('username');
+    const loginButton = document.getElementById('loginButton');
     const postContent = document.getElementById('postContent');
     const postButton = document.getElementById('postButton');
     const postsContainer = document.getElementById('postsContainer');
@@ -12,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             postElement.className = 'post';
             postElement.innerHTML = `
                 <p>${post.content}</p>
+                <p><strong>${post.username}</strong>: ${post.content}</p>
                 <button class="likeButton" data-index="${index}">👍 (${post.likes || 0})</button>
                 <button class="unlikeButton" data-index="${index}"> 👎</button>
                 <button class="deleteButton" data-index="${index}">Delete</button>
@@ -44,6 +49,15 @@ document.addEventListener('DOMContentLoaded', function() {
         posts.push({ content, likes: 0, comments: [] });
         localStorage.setItem('posts', JSON.stringify(posts));
     }
+     loginButton.addEventListener('click', function() {
+        const username = usernameInput.value.trim();
+        if (username) {
+            currentUser = username;
+            loginContainer.classList.add('hidden');
+            appContainer.classList.remove('hidden');
+            loadPosts();
+        }
+    });
 
     // Handle the post button click
     postButton.addEventListener('click', function() {
