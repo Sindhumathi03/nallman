@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <button class="likeButton" data-index="${index}">👍 (${post.likes || 0})</button>
                 <button class="unlikeButton" data-index="${index}"> 👎</button>
                 <button class="deleteButton" data-index="${index}">Delete</button>
-                 <p id="ic">Comments: ${post.comments ? post.comments.length : 0}</p>
+                 <p class="ic">Comments: ${post.comments ? post.comments.length : 0}</p>
                 <div class="comments">
                     <input type="text" placeholder="Add a comment" class="commentInput" data-index="${index}">
                     <button class="commentButton" data-index="${index}">Comment 💬</button>
