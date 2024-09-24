@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
             postElement.className = 'post';
             postElement.innerHTML = `
                 <p>${post.content}</p>
-                <button class="likeButton" data-index="${index}">Like👍 (${post.likes || 0})</button>
-                <button class="unlikeButton" data-index="${index}">Unlike 👎</button>
+                <button class="likeButton" data-index="${index}">👍 (${post.likes || 0})</button>
+                <button class="unlikeButton" data-index="${index}"> 👎</button>
                 <button class="deleteButton" data-index="${index}">Delete</button>
                  <p>Comments: ${post.comments ? post.comments.length : 0}</p>
                 <div class="comments">
