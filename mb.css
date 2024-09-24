@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #DDEEFF;
+    background-color: #fff;
     margin: 0;
     padding: 0;
     display: flex;
@@ -12,7 +12,7 @@ body {
 .container {
     width: 100%;
     max-width: 600px;
-    background: #fff;
+    background: #DDEEFF;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     padding: 20px;
@@ -154,7 +154,7 @@ button:hover {
 .commends {
     margin-top: 80px;
 }
-.ic {
+#ic {
     margin-top: 80px;
     color: green;
 }
