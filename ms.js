@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
                  <p>Comments: ${post.comments ? post.comments.length : 0}</p>
                 <div class="comments">
                     <input type="text" placeholder="Add a comment" class="commentInput" data-index="${index}">
-                    <button class="commentButton" data-index="${index}">Comment</button>
+                    <button class="commentButton" data-index="${index}">Comment 💬</button>
                     <div class="commentList"></div>
                 </div>
             `;
