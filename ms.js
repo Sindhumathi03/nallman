@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
             postElement.className = 'post';
             postElement.innerHTML = `
                 <p>${post.content}</p>
-                <p><strong>${post.username}</strong>: ${post.content}</p>
                 <button class="likeButton" data-index="${index}">👍 (${post.likes || 0})</button>
                 <button class="unlikeButton" data-index="${index}"> 👎</button>
                 <button class="deleteButton" data-index="${index}">Delete</button>
