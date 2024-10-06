@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="mb.css">
 </head>
 <body>
+    <div id="loginContainer">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button id="loginButton">Login</button>
+        <p id="loginError" class="hidden">Invalid credentials!</p>
+    </div>
+
+    <div id="mainContainer" class="hidden">
     <div class="container">
         <h1>Microblogging App</h1>
         <div class="post-form">
