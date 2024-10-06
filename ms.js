@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const loginContainer = document.getElementById('loginContainer');
-    const usernameInput = document.getElementById('username');
-    const loginButton = document.getElementById('loginButton');
     const postContent = document.getElementById('postContent');
     const postButton = document.getElementById('postButton');
     const postsContainer = document.getElementById('postsContainer');
@@ -46,17 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function savePost(content) {
         const posts = JSON.parse(localStorage.getItem('posts')) || [];
         posts.push({ content, likes: 0, comments: [] });
-        localStorage.setItem('posts', JSON.stringify(posts));
+        localStorage.setItem('posts', JSON.stringify(posts))
     }
-     loginButton.addEventListener('click', function() {
-        const username = usernameInput.value.trim();
-        if (username) {
-            currentUser = username;
-            loginContainer.classList.add('hidden');
-            appContainer.classList.remove('hidden');
-            loadPosts();
-        }
-    });
 
     // Handle the post button click
     postButton.addEventListener('click', function() {
@@ -87,9 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add event listeners for unlike buttons
-    function addUnlikeButtonListeners() {
-        const unlikeButtons = document.querySelectorAll('.unlikeButton');
+    // Add event listeners for unlikeocument.querySelectorAll('.unlikeButton');
         unlikeButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const index = this.dataset.index;
