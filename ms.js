@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
             postElement.innerHTML = `
                 <p>${post.content}</p>
                 <button class="likeButton" data-index="${index}">👍 (${post.likes || 0})</button>
-                <button class="unlikeButton" data-index="${index}"> 👎</button>
+                <button class="unlikeButton" data-index="${index}">👎</button>
                 <button class="deleteButton" data-index="${index}">Delete</button>
-                 <p id="ic">Comments: ${post.comments ? post.comments.length : 0}</p>
+                <p>Comments: ${post.comments ? post.comments.length : 0}</p>
                 <div class="comments">
                     <input type="text" placeholder="Add a comment" class="commentInput" data-index="${index}">
                     <button class="commentButton" data-index="${index}">Comment 💬</button>
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function savePost(content) {
         const posts = JSON.parse(localStorage.getItem('posts')) || [];
         posts.push({ content, likes: 0, comments: [] });
-        localStorage.setItem('posts', JSON.stringify(posts))
+        localStorage.setItem('posts', JSON.stringify(posts));
     }
 
     // Handle the post button click
@@ -74,7 +74,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add event listeners for unlikeocument.querySelectorAll('.unlikeButton');
+    // Add event listeners for unlike buttons
+    function addUnlikeButtonListeners() {
+        const unlikeButtons = document.querySelectorAll('.unlikeButton');
         unlikeButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const index = this.dataset.index;
@@ -146,4 +148,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Load posts when the page is loaded
     loadPosts();
-});
+});            
