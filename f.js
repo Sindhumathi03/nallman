@@ -2,17 +2,17 @@
             'Pizza Place': {
                 image: 'https://via.placeholder.com/150',
                 items: [
-                    { name: 'Margherita Pizza', price: 8, offer: '20% off', image: 'https://via.placeholder.com/100' },
-                    { name: 'Pepperoni Pizza', price: 10, offer: 'Buy 1 Get 1 Free', image: 'https://via.placeholder.com/100' },
-                    { name: 'Veggie Pizza', price: 9, offer: '10% off', image: 'https://via.placeholder.com/100' }
+                    { name: 'Margherita Pizza', price: 8, offer: '20% off', image: 'https://media.istockphoto.com/id/1168754685/photo/pizza-margarita-with-cheese-top-view-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=psLRwd-hX9R-S_iYU-sihB4Jx2aUlUr26fkVrxGDfNg=' },
+                    { name: 'Pepperoni Pizza', price: 10, offer: 'Buy 1 Get 1 Free', image: 'https://img.freepik.com/premium-photo/colorful-homemade-pizza-with-black-ham-cherry-tomatoes_1126714-13363.jpg?size=626&ext=jpg' },
+                    { name: 'Veggie Pizza', price: 9, offer: '10% off', image: 'https://img.freepik.com/premium-photo/colorful-homemade-pizza-with-black-ham-cherry-tomatoes_1126714-13105.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid' }
                 ]
             },
             'Burger Joint': {
                 image: 'https://via.placeholder.com/150',
                 items: [
-                    { name: 'Cheeseburger', price: 5, offer: 'Free fries with burger', image: 'https://via.placeholder.com/100' },
-                    { name: 'Veggie Burger', price: 6, offer: '20% off', image: 'https://via.placeholder.com/100' },
-                    { name: 'Double Burger', price: 7, offer: '10% off on 2nd item', image: 'https://via.placeholder.com/100' }
+                    { name: 'Cheeseburger', price: 5, offer: 'Free fries with burger', image: 'https://img.freepik.com/free-photo/big-sandwich-hamburger-burger-with-beef-red-onion-tomato-fried-bacon_2829-5398.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid' },
+                    { name: 'Veggie Burger', price: 6, offer: '20% off', image: 'https://img.freepik.com/premium-photo/green-vegan-burger-without-meat-with-vegetables_659326-3791.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid' },
+                    { name: 'Double Burger', price: 7, offer: '10% off on 2nd item', image: 'https://img.freepik.com/free-photo/view-delicious-burgers-with-buns-cheese_23-2150887913.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid' }
                 ]
             },
             'Sushi Bar': {
