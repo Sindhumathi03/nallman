@@ -1,0 +1,171 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('background.jpg'); /* Change 'background.jpg' to your image filename */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #333; /* Darker text color for better contrast */
+}
+
+header {
+    background-color: rgba(248, 180, 0, 0.8);
+    padding: 20px;
+    text-align: center;
+    color: #fff; /* White text for header */
+}
+
+.top-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#searchBar {
+    padding: 10px;
+    width: 250px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333; /* Darker text for input */
+}
+
+.offers, .cart-summary, .my-orders-link {
+    margin-right: 20px;
+    font-weight: bold;
+    cursor: pointer; /* Indicate that it is clickable */
+    color: #fff; /* White text for visibility */
+}
+
+.my-orders-link {
+    margin-left: 20px; /* Spacing between elements */
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+}
+
+.restaurants {
+    margin-bottom: 20px;
+}
+
+.restaurant {
+    background-color: #F5F5DC;
+    padding: 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    color: #333; /* Darker text for restaurant items */
+}
+
+.restaurant:hover {
+    background-color: rgba(212, 212, 212, 0.8);
+}
+
+/* Menu Styles */
+.menu {
+    background-color: #F5F5DC;
+    padding: 15px;
+    border-radius: 5px;
+    color: #333; /* Darker text for menu items */
+}
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu li {
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Center align items */
+    margin: 10px 0;
+}
+
+.menu img {
+    border-radius: 5px; /* Add some rounding to the images */
+}
+
+
+/* My Orders Section */
+.my-orders {
+    display: none; /* Initially hidden */
+}
+
+.my-orders h2, .my-orders h3 {
+    margin-top: 20px;
+    color: pink; /* White text for order section headers */
+}
+
+.my-orders ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #fff; /* White text for footer */
+}
+
+/* Offers Modal */
+.offers-modal {
+    background-color: #F5F5DC;
+    padding: 15px;
+    border-radius: 5px;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    z-index: 10;
+    display: none; /* Initially hidden */
+    color: #333; /* Darker text for offers modal */
+}
+
+.offers-modal h2 {
+    margin-top: 0;
+    color: #000; /* Black text for modal header */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    #searchBar {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .top-bar {
+        flex-direction: column;
+    }
+}
+
+/* Accessibility Enhancements */
+.restaurant, #searchBar {
+    outline: none; /* Remove default outline */
+}
+
+.restaurant:focus, #searchBar:focus {
+    border: 2px solid #ff9900; /* Highlight on focus */
+}
+
+/* Animation Enhancements */
+.offers-modal {
+    transition: opacity 0.3s ease;
+    opacity: 0; /* Initially hidden */
+}
+
+.offers-modal.show {
+    opacity: 1; /* Make visible when shown */
+}
+
+.restaurant {
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.restaurant:hover {
+    transform: scale(1.02); /* Slightly enlarge on hover */
+}
