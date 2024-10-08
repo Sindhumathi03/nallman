@@ -4,22 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Delivery App</title>
-    <link rel="stylesheet" href="fd.css">
+    <link rel="stylesheet" href="fd.css"> <!-- Link to the consolidated CSS file -->
 </head>
 <body>
+
+    <!-- Header Section -->
     <header>
         <h1>Food Delivery App</h1>
         <div class="top-bar">
             <input type="text" id="searchBar" placeholder="Search for food..." onkeyup="searchItems()">
+            <button onclick="searchItems()">Search</button>
             <div class="offers" onclick="showOffers()">
                 <strong>Offers:</strong> Get 20% off on your first order!
             </div>
             <div class="cart-summary">
                 <span>Cart Total: <span id="totalPriceHeader">$0</span></span>
             </div>
+            <div class="my-orders-link" onclick="toggleOrders()">
+                <strong>My Orders</strong>
+            </div>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main>
         <section class="restaurants">
             <h2>Available Restaurants</h2>
@@ -47,7 +54,7 @@
             <button onclick="hideMenu()">Close Menu</button>
         </section>
 
-        <section class="my-orders">
+        <section class="my-orders" style="display:none;">
             <h2>My Orders</h2>
             <ul id="orderList"></ul>
             <h3>Total Price: <span id="totalPrice">$0</span></h3>
@@ -60,10 +67,10 @@
         </section>
     </main>
 
+    <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 Food Delivery App</p>
     </footer>
-
     <script src="fd.js"></script>
 </body>
 </html>
