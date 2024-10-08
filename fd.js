@@ -60,16 +60,35 @@ function addToOrders(item) {
 function searchItems() {
     const query = document.getElementById('searchBar').value.toLowerCase();
     const menuItems = document.querySelectorAll('#menuItems li');
-    const restaurants = document.querySelectorAll('.restaurant');
+    const restaurantNames = Object.keys(menuData);
 
-    // Show all restaurants initially
-    restaurants.forEach(restaurant => {
-        restaurant.style.display = 'block';
+    // Show all restaurant items initially
+    restaurantNames.forEach(restaurant => {
+        const items = menuData[restaurant];
+        items.forEach(item => {
+            if (item.name.toLowerCase().includes(query)) {
+                // Create a new list item and display it at the top
+                const li = document.createElement('li');
+                li.innerText = `${item.name} - $${item.price} (${item.offer})`;
+                li.onclick = () => addToOrders(item);
+
+                const menuItems = document.getElementById('menuItems');
+                menuItems.insertBefore(li, menuItems.firstChild);
+            }
+        });
     });
 
+    // Hide all original items
     menuItems.forEach(item => {
-        const text = item.innerText.toLowerCase();
-        item.style.display = text.includes(query) ? 'block' : 'none';
+        item.style.display = 'none';
+    });
+
+    // Display searched items
+    const newMenuItems = document.querySelectorAll('#menuItems li');
+    newMenuItems.forEach(item => {
+        if (item.innerText.toLowerCase().includes(query)) {
+            item.style.display = 'block';
+        }
     });
 }
 
