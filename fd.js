@@ -1,6 +1,6 @@
  const menuData = {
             'Pizza Place': [
-             { name: 'Margherita Pizza', price: 8, offer: '20% off' },
+             { name: 'Margherita Pizza', price: 8, offer: '20% off',image:'https://media.istockphoto.com/id/1168754685/photo/pizza-margarita-with-cheese-top-view-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=psLRwd-hX9R-S_iYU-sihB4Jx2aUlUr26fkVrxGDfNg=' },
                 { name: 'Pepperoni Pizza', price: 10, offer: 'Buy 1 Get 1 Free' },
                 { name: 'Veggie Pizza', price: 9, offer: '10% off' }
              ]
