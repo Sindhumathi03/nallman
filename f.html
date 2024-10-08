@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Delivery App</title>
-    <link rel="stylesheet" href="fd.css"> <!-- Link to your consolidated CSS file -->
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your consolidated CSS file -->
 </head>
 <body>
 
@@ -28,7 +28,7 @@
 
     <!-- Main Content -->
     <main>
-        <section class="restaurants">
+        <section class="restaurants" id="restaurants">
             <h2>Available Restaurants</h2>
             <div class="restaurant" onclick="showMenu('Pizza Place')">
                 <h3>Pizza Place</h3>
@@ -58,6 +58,7 @@
             <h2>My Orders</h2>
             <ul id="orderList"></ul>
             <h3>Total Price: <span id="totalPrice">$0</span></h3>
+            <button onclick="hideOrders()">Close Orders</button>
         </section>
 
         <section class="offers-modal" id="offersModal" style="display:none;">
