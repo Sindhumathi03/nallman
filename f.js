@@ -1,4 +1,4 @@
-<script>
+ <script>
         const menuData = {
             'Pizza Place': [
                 { name: 'Margherita Pizza', price: 8, offer: '20% off' },
