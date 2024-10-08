@@ -1,14 +1,5 @@
  const menuData = {
             'Pizza Place': [
-                { name: 'Margherita Pizza', price: 8, offer: '20% off', image: 'https://via.placeholder.com/100' },
-                { name: 'Pepperoni Pizza', price: 10, offer: 'Buy 1 Get 1 Free', image: 'https://via.placeholder.com/100' },
-                { name: 'Veggie Pizza', price: 9, offer: '10% off', image: 'https://via.placeholder.com/100' }
-            ],
-            'Burger Joint': [
-                { name: 'Cheeseburger', price: 5, offer: 'Free fries with burger', image: 'https://via.placeholder.com/100' },
-                { name: 'Veggie Burger', price: 6, offer: '20% off', image: 'https://via.placeholder.com/100' },
-                { name: 'Double Burger', price: 7, offer: '10% off on 2nd item', image: 'https://via.placeholder.com/100' }
-            ],
             'Sushi Bar': [
                 { name: 'California Roll', price: 12, offer: 'Free drink with order', image: 'https://via.placeholder.com/100' },
                 { name: 'Spicy Tuna Roll', price: 14, offer: '20% off', image: 'https://via.placeholder.com/100' },
