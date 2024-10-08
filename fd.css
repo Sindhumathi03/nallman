@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('background.jpg'); /* Change 'background.jpg' to your image filename */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    color: #fff; /* Set text color to white for better contrast */
+}
+
+header {
+    background-color: rgba(248, 180, 0, 0.8); /* Slightly transparent background */
+    padding: 20px;
+    text-align: center;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#searchBar {
+    padding: 10px;
+    width: 250px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.offers, .cart-summary {
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+}
+
+.restaurants {
+    margin-bottom: 20px;
+}
+
+.restaurant {
+    background-color: rgba(234, 234, 234, 0.8); /* Light background for restaurant items */
+    padding: 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.restaurant:hover {
+    background-color: rgba(212, 212, 212, 0.8);
+}
+
+.menu {
+    background-color: rgba(234, 234, 234, 0.8); /* Light background for menu */
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.my-orders {
+    margin-top: 20px;
+}
+
+.my-orders h2, .my-orders h3 {
+    margin-top: 20px;
+}
+
+.my-orders ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+}
