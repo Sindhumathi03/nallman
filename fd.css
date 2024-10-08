@@ -6,13 +6,14 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: #fff;
+    color: #333; /* Darker text color for better contrast */
 }
 
 header {
     background-color: rgba(248, 180, 0, 0.8);
     padding: 20px;
     text-align: center;
+    color: #fff; /* White text for header */
 }
 
 .top-bar {
@@ -28,12 +29,14 @@ header {
     margin-right: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    color: #333; /* Darker text for input */
 }
 
 .offers, .cart-summary {
     margin-right: 20px;
     font-weight: bold;
     cursor: pointer; /* Indicate that it is clickable */
+    color: #fff; /* White text for visibility */
 }
 
 main {
@@ -51,6 +54,7 @@ main {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
+    color: #333; /* Darker text for restaurant items */
 }
 
 .restaurant:hover {
@@ -61,6 +65,7 @@ main {
     background-color: rgba(234, 234, 234, 0.8);
     padding: 15px;
     border-radius: 5px;
+    color: #333; /* Darker text for menu items */
 }
 
 .my-orders {
@@ -69,6 +74,7 @@ main {
 
 .my-orders h2, .my-orders h3 {
     margin-top: 20px;
+    color: #fff; /* White text for order section headers */
 }
 
 .my-orders ul {
@@ -79,7 +85,7 @@ main {
 footer {
     text-align: center;
     margin-top: 20px;
-    color: #fff;
+    color: #fff; /* White text for footer */
 }
 
 .offers-modal {
@@ -92,9 +98,10 @@ footer {
     transform: translate(-50%, -20%);
     z-index: 10;
     display: none; /* Initially hidden */
+    color: #333; /* Darker text for offers modal */
 }
 
 .offers-modal h2 {
     margin-top: 0;
+    color: #000; /* Black text for modal header */
 }
-
