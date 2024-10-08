@@ -1,27 +1,58 @@
-const menuData = {
-            'Pizza Place': [
-                { name: 'Margherita Pizza', price: 8, offer: '20% off' },
-                { name: 'Pepperoni Pizza', price: 10, offer: 'Buy 1 Get 1 Free' },
-                { name: 'Veggie Pizza', price: 9, offer: '10% off' }
-            ],
-            'Burger Joint': [
-                { name: 'Cheeseburger', price: 5, offer: 'Free fries with burger' },
-                { name: 'Veggie Burger', price: 6, offer: '20% off' },
-                { name: 'Double Burger', price: 7, offer: '10% off on 2nd item' }
-            ],
-            'Sushi Bar': [
-                { name: 'California Roll', price: 12, offer: 'Free drink with order' },
-                { name: 'Spicy Tuna Roll', price: 14, offer: '20% off' },
-                { name: 'Veggie Roll', price: 10, offer: '10% off' }
-            ],
-            'Indian Diner': [
-                { name: 'Butter Chicken', price: 11, offer: '15% off' },
-                { name: 'Paneer Tikka', price: 9, offer: 'Buy 1 Get 1 Free' },
-                { name: 'Biryani', price: 10, offer: '10% off on orders above $20' }
-            ]
+ const menuData = {
+            'Pizza Place': {
+                image: 'https://via.placeholder.com/150',
+                items: [
+                    { name: 'Margherita Pizza', price: 8, offer: '20% off', image: 'https://via.placeholder.com/100' },
+                    { name: 'Pepperoni Pizza', price: 10, offer: 'Buy 1 Get 1 Free', image: 'https://via.placeholder.com/100' },
+                    { name: 'Veggie Pizza', price: 9, offer: '10% off', image: 'https://via.placeholder.com/100' }
+                ]
+            },
+            'Burger Joint': {
+                image: 'https://via.placeholder.com/150',
+                items: [
+                    { name: 'Cheeseburger', price: 5, offer: 'Free fries with burger', image: 'https://via.placeholder.com/100' },
+                    { name: 'Veggie Burger', price: 6, offer: '20% off', image: 'https://via.placeholder.com/100' },
+                    { name: 'Double Burger', price: 7, offer: '10% off on 2nd item', image: 'https://via.placeholder.com/100' }
+                ]
+            },
+            'Sushi Bar': {
+                image: 'https://via.placeholder.com/150',
+                items: [
+                    { name: 'California Roll', price: 12, offer: 'Free drink with order', image: 'https://via.placeholder.com/100' },
+                    { name: 'Spicy Tuna Roll', price: 14, offer: '20% off', image: 'https://via.placeholder.com/100' },
+                    { name: 'Veggie Roll', price: 10, offer: '10% off', image: 'https://via.placeholder.com/100' }
+                ]
+            },
+            'Indian Diner': {
+                image: 'https://via.placeholder.com/150',
+                items: [
+                    { name: 'Butter Chicken', price: 11, offer: '15% off', image: 'https://via.placeholder.com/100' },
+                    { name: 'Paneer Tikka', price: 9, offer: 'Buy 1 Get 1 Free', image: 'https://via.placeholder.com/100' },
+                    { name: 'Biryani', price: 10, offer: '10% off on orders above $20', image: 'https://via.placeholder.com/100' }
+                ]
+            }
         };
 
         let totalPrice = 0;
+
+        function showRestaurants() {
+            const restaurantSection = document.getElementById('restaurants');
+            restaurantSection.innerHTML = ''; // Clear previous restaurants
+
+            Object.keys(menuData).forEach(restaurant => {
+                const div = document.createElement('div');
+                div.classList.add('restaurant');
+                div.onclick = () => showMenu(restaurant);
+
+                div.innerHTML = `
+                    <img src="${menuData[restaurant].image}" alt="${restaurant}" style="width: 150px; height: auto; margin-right: 10px;">
+                    <h3>${restaurant}</h3>
+                    <p>${restaurant} Cuisine</p>
+                `;
+
+                restaurantSection.appendChild(div);
+            });
+        }
 
         function showMenu(restaurant) {
             const menu = document.getElementById('menu');
@@ -31,9 +62,10 @@ const menuData = {
             menuTitle.innerText = restaurant;
             menuItems.innerHTML = '';
 
-            menuData[restaurant].forEach(item => {
+            menuData[restaurant].items.forEach(item => {
                 const li = document.createElement('li');
-                li.innerText = `${item.name} - $${item.price} (${item.offer})`;
+                li.innerHTML = `<img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto; margin-right: 10px;"> 
+                                ${item.name} - $${item.price} (${item.offer})`;
                 li.onclick = () => addToOrders(item);
                 menuItems.appendChild(li);
             });
@@ -84,29 +116,22 @@ const menuData = {
             const menuItems = document.querySelectorAll('#menuItems li');
             const restaurantNames = Object.keys(menuData);
 
+            menuItems.forEach(item => {
+                item.style.display = 'none'; // Hide all items initially
+            });
+
             restaurantNames.forEach(restaurant => {
-                const items = menuData[restaurant];
+                const items = menuData[restaurant].items;
                 items.forEach(item => {
                     if (item.name.toLowerCase().includes(query)) {
                         const li = document.createElement('li');
-                        li.innerText = `${item.name} - $${item.price} (${item.offer})`;
+                        li.innerHTML = `<img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto; margin-right: 10px;"> 
+                                        ${item.name} - $${item.price} (${item.offer})`;
                         li.onclick = () => addToOrders(item);
-
-                        const menuItems = document.getElementById('menuItems');
-                        menuItems.insertBefore(li, menuItems.firstChild);
+                        document.getElementById('menuItems').appendChild(li);
+                        li.style.display = 'block'; // Show matching items
                     }
                 });
-            });
-
-            menuItems.forEach(item => {
-                item.style.display = 'none';
-            });
-
-            const newMenuItems = document.querySelectorAll('#menuItems li');
-            newMenuItems.forEach(item => {
-                if (item.innerText.toLowerCase().includes(query)) {
-                    item.style.display = 'block';
-                }
             });
         }
 
@@ -117,7 +142,7 @@ const menuData = {
             offerItems.innerHTML = '';
 
             Object.keys(menuData).forEach(restaurant => {
-                menuData[restaurant].forEach(item => {
+                menuData[restaurant].items.forEach(item => {
                     if (item.offer) {
                         const li = document.createElement('li');
                         li.innerText = `${item.name} at ${restaurant}: ${item.offer}`;
@@ -133,4 +158,6 @@ const menuData = {
             const offersModal = document.getElementById('offersModal');
             offersModal.style.display = 'none';
         }
-       
+
+        // Initialize the restaurant list on page load
+        document.addEventListener('DOMContentLoaded', showRestaurants);
