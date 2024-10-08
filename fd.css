@@ -3,14 +3,14 @@ body {
     margin: 0;
     padding: 0;
     background-image: url('background.jpg'); /* Change 'background.jpg' to your image filename */
-    background-size: cover; /* Cover the entire viewport */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    color: #fff; /* Set text color to white for better contrast */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
 }
 
 header {
-    background-color: rgba(248, 180, 0, 0.8); /* Slightly transparent background */
+    background-color: rgba(248, 180, 0, 0.8);
     padding: 20px;
     text-align: center;
 }
@@ -33,6 +33,7 @@ header {
 .offers, .cart-summary {
     margin-right: 20px;
     font-weight: bold;
+    cursor: pointer; /* Indicate that it is clickable */
 }
 
 main {
@@ -44,7 +45,7 @@ main {
 }
 
 .restaurant {
-    background-color: rgba(234, 234, 234, 0.8); /* Light background for restaurant items */
+    background-color: rgba(234, 234, 234, 0.8);
     padding: 15px;
     margin: 10px 0;
     cursor: pointer;
@@ -57,7 +58,7 @@ main {
 }
 
 .menu {
-    background-color: rgba(234, 234, 234, 0.8); /* Light background for menu */
+    background-color: rgba(234, 234, 234, 0.8);
     padding: 15px;
     border-radius: 5px;
 }
@@ -80,3 +81,20 @@ footer {
     margin-top: 20px;
     color: #fff;
 }
+
+.offers-modal {
+    background-color: rgba(234, 234, 234, 0.9);
+    padding: 15px;
+    border-radius: 5px;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    z-index: 10;
+    display: none; /* Initially hidden */
+}
+
+.offers-modal h2 {
+    margin-top: 0;
+}
+
