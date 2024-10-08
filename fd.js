@@ -1,18 +1,23 @@
  const menuData = {
             'Pizza Place': [
-             { name: 'Margherita Pizza', price: 8, offer: '20% off',image:'https://media.istockphoto.com/id/1168754685/photo/pizza-margarita-with-cheese-top-view-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=psLRwd-hX9R-S_iYU-sihB4Jx2aUlUr26fkVrxGDfNg=' },
+                { name: 'Margherita Pizza', price: 8, offer: '20% off' },
                 { name: 'Pepperoni Pizza', price: 10, offer: 'Buy 1 Get 1 Free' },
                 { name: 'Veggie Pizza', price: 9, offer: '10% off' }
-             ]
+            ],
+            'Burger Joint': [
+                { name: 'Cheeseburger', price: 5, offer: 'Free fries with burger' },
+                { name: 'Veggie Burger', price: 6, offer: '20% off' },
+                { name: 'Double Burger', price: 7, offer: '10% off on 2nd item' }
+            ],
             'Sushi Bar': [
-                { name: 'California Roll', price: 12, offer: 'Free drink with order', image: 'https://via.placeholder.com/100' },
-                { name: 'Spicy Tuna Roll', price: 14, offer: '20% off', image: 'https://via.placeholder.com/100' },
-                { name: 'Veggie Roll', price: 10, offer: '10% off', image: 'https://via.placeholder.com/100' }
+                { name: 'California Roll', price: 12, offer: 'Free drink with order' },
+                { name: 'Spicy Tuna Roll', price: 14, offer: '20% off' },
+                { name: 'Veggie Roll', price: 10, offer: '10% off' }
             ],
             'Indian Diner': [
-                { name: 'Butter Chicken', price: 11, offer: '15% off', image: 'https://via.placeholder.com/100' },
-                { name: 'Paneer Tikka', price: 9, offer: 'Buy 1 Get 1 Free', image: 'https://via.placeholder.com/100' },
-                { name: 'Biryani', price: 10, offer: '10% off on orders above $20', image: 'https://via.placeholder.com/100' }
+                { name: 'Butter Chicken', price: 11, offer: '15% off' },
+                { name: 'Paneer Tikka', price: 9, offer: 'Buy 1 Get 1 Free' },
+                { name: 'Biryani', price: 10, offer: '10% off on orders above $20' }
             ]
         };
 
@@ -28,8 +33,7 @@
 
             menuData[restaurant].forEach(item => {
                 const li = document.createElement('li');
-                li.innerHTML = `<img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto; margin-right: 10px;"> 
-                                ${item.name} - $${item.price} (${item.offer})`;
+                li.innerText = `${item.name} - $${item.price} (${item.offer})`;
                 li.onclick = () => addToOrders(item);
                 menuItems.appendChild(li);
             });
