@@ -82,7 +82,7 @@ main {
 
 .my-orders h2, .my-orders h3 {
     margin-top: 20px;
-    color: #fff; /* White text for order section headers */
+    color: pink; /* White text for order section headers */
 }
 
 .my-orders ul {
