@@ -1,5 +1,4 @@
-
-        const menuData = {
+const menuData = {
             'Pizza Place': [
                 { name: 'Margherita Pizza', price: 8, offer: '20% off' },
                 { name: 'Pepperoni Pizza', price: 10, offer: 'Buy 1 Get 1 Free' },
@@ -39,12 +38,14 @@
                 menuItems.appendChild(li);
             });
 
+            document.getElementById('restaurants').style.display = 'none'; // Hide restaurants
             menu.style.display = 'block';
         }
 
         function hideMenu() {
             const menu = document.getElementById('menu');
             menu.style.display = 'none';
+            document.getElementById('restaurants').style.display = 'block'; // Show restaurants again
         }
 
         function addToOrders(item) {
@@ -57,18 +58,25 @@
             document.getElementById('totalPrice').innerText = `$${totalPrice}`;
             document.getElementById('totalPriceHeader').innerText = `$${totalPrice}`;
 
-            // Show My Orders section if it's hidden
             toggleOrders();
             alert(`${item.name} ordered successfully!`);
         }
 
         function toggleOrders() {
-            const orderList = document.getElementById('myOrders');
-            if (orderList.style.display === 'block') {
-                orderList.style.display = 'none';
+            const myOrdersSection = document.getElementById('myOrders');
+            if (myOrdersSection.style.display === 'block') {
+                myOrdersSection.style.display = 'none';
             } else {
-                orderList.style.display = 'block';
+                myOrdersSection.style.display = 'block';
+                document.getElementById('restaurants').style.display = 'none'; // Hide restaurants
+                document.getElementById('menu').style.display = 'none'; // Hide menu
             }
+        }
+
+        function hideOrders() {
+            const myOrdersSection = document.getElementById('myOrders');
+            myOrdersSection.style.display = 'none';
+            document.getElementById('restaurants').style.display = 'block'; // Show restaurants again
         }
 
         function searchItems() {
@@ -76,12 +84,10 @@
             const menuItems = document.querySelectorAll('#menuItems li');
             const restaurantNames = Object.keys(menuData);
 
-            // Show all restaurant items initially
             restaurantNames.forEach(restaurant => {
                 const items = menuData[restaurant];
                 items.forEach(item => {
                     if (item.name.toLowerCase().includes(query)) {
-                        // Create a new list item and display it at the top
                         const li = document.createElement('li');
                         li.innerText = `${item.name} - $${item.price} (${item.offer})`;
                         li.onclick = () => addToOrders(item);
@@ -92,12 +98,10 @@
                 });
             });
 
-            // Hide all original items
             menuItems.forEach(item => {
                 item.style.display = 'none';
             });
 
-            // Display searched items
             const newMenuItems = document.querySelectorAll('#menuItems li');
             newMenuItems.forEach(item => {
                 if (item.innerText.toLowerCase().includes(query)) {
@@ -110,7 +114,7 @@
             const offersModal = document.getElementById('offersModal');
             const offerItems = document.getElementById('offerItems');
 
-            offerItems.innerHTML = ''; // Clear previous offers
+            offerItems.innerHTML = '';
 
             Object.keys(menuData).forEach(restaurant => {
                 menuData[restaurant].forEach(item => {
@@ -129,4 +133,4 @@
             const offersModal = document.getElementById('offersModal');
             offersModal.style.display = 'none';
         }
-    
+       
