@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -32,13 +33,18 @@ header {
     color: #333; /* Darker text for input */
 }
 
-.offers, .cart-summary {
+.offers, .cart-summary, .my-orders-link {
     margin-right: 20px;
     font-weight: bold;
     cursor: pointer; /* Indicate that it is clickable */
     color: #fff; /* White text for visibility */
 }
 
+.my-orders-link {
+    margin-left: 20px; /* Spacing between elements */
+}
+
+/* Main Content */
 main {
     padding: 20px;
 }
@@ -48,7 +54,7 @@ main {
 }
 
 .restaurant {
-    background-color:#F5F5DC;
+    background-color: #F5F5DC;
     padding: 15px;
     margin: 10px 0;
     cursor: pointer;
@@ -61,6 +67,7 @@ main {
     background-color: rgba(212, 212, 212, 0.8);
 }
 
+/* Menu Styles */
 .menu {
     background-color: #F5F5DC;
     padding: 15px;
@@ -68,8 +75,9 @@ main {
     color: #333; /* Darker text for menu items */
 }
 
+/* My Orders Section */
 .my-orders {
-    margin-top: 20px;
+    display: none; /* Initially hidden */
 }
 
 .my-orders h2, .my-orders h3 {
@@ -82,12 +90,14 @@ main {
     padding: 0;
 }
 
+/* Footer */
 footer {
     text-align: center;
     margin-top: 20px;
     color: #fff; /* White text for footer */
 }
 
+/* Offers Modal */
 .offers-modal {
     background-color: #F5F5DC;
     padding: 15px;
@@ -104,4 +114,43 @@ footer {
 .offers-modal h2 {
     margin-top: 0;
     color: #000; /* Black text for modal header */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    #searchBar {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .top-bar {
+        flex-direction: column;
+    }
+}
+
+/* Accessibility Enhancements */
+.restaurant, #searchBar {
+    outline: none; /* Remove default outline */
+}
+
+.restaurant:focus, #searchBar:focus {
+    border: 2px solid #ff9900; /* Highlight on focus */
+}
+
+/* Animation Enhancements */
+.offers-modal {
+    transition: opacity 0.3s ease;
+    opacity: 0; /* Initially hidden */
+}
+
+.offers-modal.show {
+    opacity: 1; /* Make visible when shown */
+}
+
+.restaurant {
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.restaurant:hover {
+    transform: scale(1.02); /* Slightly enlarge on hover */
 }
