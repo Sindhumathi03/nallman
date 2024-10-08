@@ -48,7 +48,7 @@ main {
 }
 
 .restaurant {
-    background-color: rgba(234, 234, 234, 0.8);
+    background-color:#F5F5DC;
     padding: 15px;
     margin: 10px 0;
     cursor: pointer;
@@ -62,7 +62,7 @@ main {
 }
 
 .menu {
-    background-color: rgba(234, 234, 234, 0.8);
+    background-color: #F5F5DC;
     padding: 15px;
     border-radius: 5px;
     color: #333; /* Darker text for menu items */
@@ -89,7 +89,7 @@ footer {
 }
 
 .offers-modal {
-    background-color: rgba(234, 234, 234, 0.9);
+    background-color: #F5F5DC;
     padding: 15px;
     border-radius: 5px;
     position: fixed;
