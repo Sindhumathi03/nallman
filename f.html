@@ -4,16 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Delivery App</title>
-    <link rel="stylesheet" href="fd.css"> <!-- Link to your consolidated CSS file -->
+    <link rel="stylesheet" href="styles.css"> <!-- Your consolidated CSS file -->
 </head>
 <body>
-
-    <!-- Header Section -->
     <header>
         <h1>Food Delivery App</h1>
         <div class="top-bar">
             <input type="text" id="searchBar" placeholder="Search for food..." onkeyup="searchItems()">
-            <button onclick="searchItems()">Search</button>
             <div class="offers" onclick="showOffers()">
                 <strong>Offers:</strong> Get 20% off on your first order!
             </div>
@@ -26,26 +23,9 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
         <section class="restaurants" id="restaurants">
             <h2>Available Restaurants</h2>
-            <div class="restaurant" onclick="showMenu('Pizza Place')">
-                <h3>Pizza Place</h3>
-                <p>Italian Cuisine</p>
-            </div>
-            <div class="restaurant" onclick="showMenu('Burger Joint')">
-                <h3>Burger Joint</h3>
-                <p>American Cuisine</p>
-            </div>
-            <div class="restaurant" onclick="showMenu('Sushi Bar')">
-                <h3>Sushi Bar</h3>
-                <p>Japanese Cuisine</p>
-            </div>
-            <div class="restaurant" onclick="showMenu('Indian Diner')">
-                <h3>Indian Diner</h3>
-                <p>Indian Cuisine</p>
-            </div>
         </section>
 
         <section class="menu" id="menu" style="display:none;">
@@ -68,10 +48,10 @@
         </section>
     </main>
 
-    <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 Food Delivery App</p>
     </footer>
+
  <script src="f.js"></script>
 </body>
 </html>
