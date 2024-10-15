@@ -1,4 +1,4 @@
-/* General body and layout styles */
+/* General Body Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -10,7 +10,7 @@ body {
     color: #333;
 }
 
-/* Header and top bar styles */
+/* Header Styles */
 header {
     background-color: rgba(248, 180, 0, 0.8);
     padding: 20px;
@@ -41,16 +41,15 @@ header {
     color: #fff;
 }
 
-/* Main content area styles */
+/* Main Content Styles */
 main {
     padding: 20px;
 }
 
-/* Restaurants section */
 .restaurants {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Space out items evenly */
+    justify-content: space-between;
     margin-bottom: 20px;
 }
 
@@ -62,7 +61,7 @@ main {
     text-align: center;
     transition: background-color 0.3s;
     cursor: pointer;
-    width: 200px; /* Fixed width for restaurant cards */
+    width: 200px;
 }
 
 .restaurant img {
@@ -75,10 +74,10 @@ main {
     background-color: rgba(212, 212, 212, 0.8);
 }
 
-/* Menu section styles */
+/* Menu Styles */
 .menu {
     display: flex;
-    flex-direction: column; /* Stack menu items vertically */
+    flex-direction: column;
     background-color: #F5F5DC;
     padding: 15px;
     border-radius: 5px;
@@ -86,57 +85,69 @@ main {
 }
 
 .menu h2 {
-    margin: 0 0 10px; /* Margin below the title */
+    margin: 0 0 10px;
 }
 
 .menu ul {
     list-style-type: none;
     padding: 0;
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping for menu items */
-    justify-content: space-between; /* Space out menu items */
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.menu li, #orderList li {
+.menu li {
     display: flex;
+    flex-direction: column;
     align-items: center;
     margin: 10px;
-    width: calc(33% - 20px); /* Adjust width for three items per row */
+    width: calc(33% - 20px);
 }
 
-.menu img, #orderList img {
+.menu img {
     width: 100px;
     height: auto;
-    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
-.rating {
+.menu .rating {
     margin-left: 10px;
     cursor: pointer;
 }
 
-.star {
+.menu .star {
     color: gold;
     cursor: pointer;
 }
 
-/* Add to Order button styling */
-.addToOrderBtn {
-    background-color: #28a745;
+input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button.addToOrderBtn {
+    background-color: #ff9800;
     color: white;
     border: none;
     padding: 5px 10px;
-    margin-left: 10px;
-    cursor: pointer;
     border-radius: 5px;
-    font-size: 0.9em;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
-.addToOrderBtn:hover {
-    background-color: #218838;
+button.addToOrderBtn:hover {
+    background-color: #e68900;
 }
 
-/* Orders section styling */
+/* My Orders Section */
+#myOrders {
+    display: none; /* Hidden by default */
+}
+
 .my-orders {
     margin-top: 20px;
 }
@@ -151,14 +162,65 @@ main {
     padding: 0;
 }
 
-/* Footer styles */
-footer {
-    text-align: center;
-    margin-top: 20px;
-    color: #fff;
+.my-orders ul li {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
 }
 
-/* Offers modal styles */
+.my-orders ul li img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.my-orders ul li span {
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Order Summary Section */
+#orderList {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+#orderList li {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+#orderList li img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+#orderList li span {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+#totalPrice {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 20px;
+}
+
+#totalPriceHeader {
+    font-size: 24px;
+    color: #ff5722;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Offers Modal */
 .offers-modal {
     background-color: #F5F5DC;
     padding: 15px;
@@ -177,7 +239,52 @@ footer {
     color: #000;
 }
 
-/* Orders section visibility */
-#myOrders {
-    display: none; /* Hidden by default */
+#offerItems {
+    list-style-type: none;
+    padding: 0;
 }
+
+#offerItems li {
+    margin: 10px 0;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+    padding: 20px;
+    background-color: #333;
+}
+
+/* Responsive Layout */
+@media screen and (max-width: 768px) {
+    .restaurant {
+        width: calc(50% - 20px);
+    }
+
+    .menu li {
+        width: calc(50% - 20px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .restaurant {
+        width: 100%;
+    }
+
+    .menu li {
+        width: 100%;
+    }
+
+    #searchBar {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
