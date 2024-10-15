@@ -2,33 +2,33 @@ const menuData = {
     'Pizza Place': {
         image: 'https://img.freepik.com/free-psd/italian-restaurant-square-flyer-template_23-2148670801.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid',
         items: [
-            { name: 'Margherita Pizza', price: 8, offer: '20% off', image: 'https://media.istockphoto.com/id/1168754685/photo/pizza-margarita-with-cheese-top-view-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=psLRwd-hX9R-S_iYU-sihB4Jx2aUlUr26fkVrxGDfNg=' },
-            { name: 'Pepperoni Pizza', price: 10, offer: 'Buy 1 Get 1 Free', image: 'https://img.freepik.com/premium-photo/colorful-homemade-pizza-with-black-ham-cherry-tomatoes_1126714-13363.jpg?size=626&ext=jpg' },
-            { name: 'Veggie Pizza', price: 9, offer: '10% off', image: 'https://img.freepik.com/premium-photo/colorful-homemade-pizza-with-black-ham-cherry-tomatoes_1126714-13105.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid' }
+            { name: 'Margherita Pizza', price: 8, offer: '20% off', image: 'https://media.istockphoto.com/id/1168754685/photo/pizza-margarita-with-cheese-top-view-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=psLRwd-hX9R-S_iYU-sihB4Jx2aUlUr26fkVrxGDfNg=', rating: 0 },
+            { name: 'Pepperoni Pizza', price: 10, offer: 'Buy 1 Get 1 Free', image: 'https://img.freepik.com/premium-photo/colorful-homemade-pizza-with-black-ham-cherry-tomatoes_1126714-13363.jpg?size=626&ext=jpg', rating: 0 },
+            { name: 'Veggie Pizza', price: 9, offer: '10% off', image: 'https://img.freepik.com/premium-photo/colorful-homemade-pizza-with-black-ham-cherry-tomatoes_1126714-13105.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid', rating: 0 }
         ]
     },
     'Burger Joint': {
         image: 'https://media.istockphoto.com/id/1485677116/photo/waiter-hands-hold-a-plate-with-a-very-big-cheeseburger-in-pub.webp?a=1&b=1&s=612x612&w=0&k=20&c=tMi4IqxQ2t4LwwWyFca0bHLVqp6UQuUMeLxMf9G7EJc=',
         items: [
-            { name: 'Cheeseburger', price: 5, offer: 'Free fries with burger', image: 'https://img.freepik.com/free-photo/big-sandwich-hamburger-burger-with-beef-red-onion-tomato-fried-bacon_2829-5398.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid' },
-            { name: 'Veggie Burger', price: 6, offer: '20% off', image: 'https://img.freepik.com/premium-photo/green-vegan-burger-without-meat-with-vegetables_659326-3791.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid' },
-            { name: 'Double Burger', price: 7, offer: '10% off on 2nd item', image: 'https://img.freepik.com/free-photo/view-delicious-burgers-with-buns-cheese_23-2150887913.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid' }
+            { name: 'Cheeseburger', price: 5, offer: 'Free fries with burger', image: 'https://img.freepik.com/free-photo/big-sandwich-hamburger-burger-with-beef-red-onion-tomato-fried-bacon_2829-5398.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid', rating: 0 },
+            { name: 'Veggie Burger', price: 6, offer: '20% off', image: 'https://img.freepik.com/premium-photo/green-vegan-burger-without-meat-with-vegetables_659326-3791.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid', rating: 0 },
+            { name: 'Double Burger', price: 7, offer: '10% off on 2nd item', image: 'https://img.freepik.com/free-photo/view-delicious-burgers-with-buns-cheese_23-2150887913.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid', rating: 0 }
         ]
     },
     'Sushi Bar': {
         image: 'https://img.freepik.com/premium-photo/closeup-hands-expertly-rolling-sushi_167857-73950.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid',
         items: [
-            { name: 'California Roll', price: 12, offer: 'Free drink with order', image: 'https://via.placeholder.com/100' },
-            { name: 'Spicy Tuna Roll', price: 14, offer: '20% off', image: 'https://via.placeholder.com/100' },
-            { name: 'Veggie Roll', price: 10, offer: '10% off', image: 'https://via.placeholder.com/100' }
+            { name: 'California Roll', price: 12, offer: 'Free drink with order', image: 'https://via.placeholder.com/100', rating: 0 },
+            { name: 'Spicy Tuna Roll', price: 14, offer: '20% off', image: 'https://via.placeholder.com/100', rating: 0 },
+            { name: 'Veggie Roll', price: 10, offer: '10% off', image: 'https://via.placeholder.com/100', rating: 0 }
         ]
     },
     'Indian Diner': {
         image: 'https://img.freepik.com/premium-photo/photography-tasty-indian-indian-tikka_1288657-47362.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid',
         items: [
-            { name: 'Butter Chicken', price: 11, offer: '15% off', image: 'https://via.placeholder.com/100' },
-            { name: 'Paneer Tikka', price: 9, offer: 'Buy 1 Get 1 Free', image: 'https://via.placeholder.com/100' },
-            { name: 'Biryani', price: 10, offer: '10% off on orders above $20', image: 'https://via.placeholder.com/100' }
+            { name: 'Butter Chicken', price: 11, offer: '15% off', image: 'https://via.placeholder.com/100', rating: 0 },
+            { name: 'Paneer Tikka', price: 9, offer: 'Buy 1 Get 1 Free', image: 'https://via.placeholder.com/100', rating: 0 },
+            { name: 'Biryani', price: 10, offer: '10% off on orders above $20', image: 'https://via.placeholder.com/100', rating: 0 }
         ]
     }
 };
@@ -37,7 +37,7 @@ let totalPrice = 0;
 
 function showRestaurants() {
     const restaurantSection = document.getElementById('restaurants');
-    restaurantSection.innerHTML = ''; // Clear previous restaurants
+    restaurantSection.innerHTML = '';
 
     Object.keys(menuData).forEach(restaurant => {
         const div = document.createElement('div');
@@ -62,11 +62,22 @@ function showMenu(restaurant) {
     menuTitle.innerText = restaurant;
     menuItems.innerHTML = '';
 
-    menuData[restaurant].items.forEach(item => {
+    menuData[restaurant].items.forEach((item, index) => {
         const li = document.createElement('li');
-        li.innerHTML = `<img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto; margin-right: 10px;"> 
-                        ${item.name} - $${item.price} (${item.offer})`;
-        li.onclick = () => addToOrders(item);
+        li.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto; margin-right: 10px;"> 
+            ${item.name} - $${item.price} (${item.offer}) 
+            <span class="rating" data-index="${index}">${getStars(item.rating)}</span>
+        `;
+        li.onclick = (e) => {
+            e.stopPropagation(); // Prevent menu from closing
+            addToOrders(item);
+        };
+        li.querySelector('.rating').onclick = (e) => {
+            e.stopPropagation(); // Prevent menu from closing
+            increaseRating(item);
+            li.querySelector('.rating').innerHTML = getStars(item.rating); // Update stars
+        };
         menuItems.appendChild(li);
     });
 
@@ -74,26 +85,30 @@ function showMenu(restaurant) {
     menu.style.display = 'block';
 }
 
+function getStars(rating) {
+    let stars = '';
+    for (let i = 1; i <= 5; i++) {
+        stars += `<span class="star" onclick="rateFood(event, ${i})">&#9733;</span>`; // Filled star
+    }
+    return stars;
+}
 
-function hideMenu() {
-    const menu = document.getElementById('menu');
-    menu.style.display = 'none';
-    document.getElementById('restaurants').style.display = 'block'; // Show restaurants again
+function increaseRating(item) {
+    if (item.rating < 5) {
+        item.rating += 1; // Increase rating by 1
+    }
 }
 
 function addToOrders(item) {
     const orderList = document.getElementById('orderList');
 
-    // Create a new list item for the order
     const li = document.createElement('li');
     li.innerText = `${item.name} - $${item.price}`;
     orderList.appendChild(li);
 
-    // Update total price
     totalPrice += item.price;
     updateTotalPrice();
 
-    // Alert user of successful order
     alert(`"${item.name}" ordered successfully!`);
 }
 
@@ -105,7 +120,6 @@ function updateTotalPrice() {
 function toggleOrders() {
     const myOrdersSection = document.getElementById('myOrders');
 
-    // If orders section is already visible, hide it
     if (myOrdersSection.style.display === 'block') {
         myOrdersSection.style.display = 'none';
     } else {
@@ -113,6 +127,12 @@ function toggleOrders() {
         document.getElementById('restaurants').style.display = 'none'; // Hide restaurants
         document.getElementById('menu').style.display = 'none'; // Hide menu
     }
+}
+
+function hideMenu() {
+    const menu = document.getElementById('menu');
+    menu.style.display = 'none';
+    document.getElementById('restaurants').style.display = 'block'; // Show restaurants again
 }
 
 function hideOrders() {
@@ -124,24 +144,10 @@ function hideOrders() {
 function searchItems() {
     const query = document.getElementById('searchBar').value.toLowerCase();
     const menuItems = document.querySelectorAll('#menuItems li');
-    const restaurantNames = Object.keys(menuData);
 
     menuItems.forEach(item => {
-        item.style.display = 'none'; // Hide all items initially
-    });
-
-    restaurantNames.forEach(restaurant => {
-        const items = menuData[restaurant].items;
-        items.forEach(item => {
-            if (item.name.toLowerCase().includes(query)) {
-                const li = document.createElement('li');
-                li.innerHTML = `<img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto; margin-right: 10px;"> 
-                                ${item.name} - $${item.price} (${item.offer})`;
-                li.onclick = () => addToOrders(item);
-                document.getElementById('menuItems').appendChild(li);
-                li.style.display = 'block'; // Show matching items
-            }
-        });
+        const itemName = item.innerText.toLowerCase();
+        item.style.display = itemName.includes(query) ? 'block' : 'none'; // Show matching items
     });
 }
 
