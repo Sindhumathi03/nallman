@@ -82,7 +82,7 @@ function hideMenu() {
 
 function addToOrders(item) {
     const orderList = document.getElementById('orderList');
-    
+
     // Create a new list item for the order
     const li = document.createElement('li');
     li.innerText = `${item.name} - $${item.price}`;
@@ -92,8 +92,8 @@ function addToOrders(item) {
     totalPrice += item.price;
     updateTotalPrice();
 
-    toggleOrders(); // Show orders section
-    alert(`${item.name} ordered successfully!`);
+    // Alert user of successful order
+    alert(`"${item.name}" ordered successfully!`);
 }
 
 function updateTotalPrice() {
