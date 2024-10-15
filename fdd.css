@@ -1,16 +1,15 @@
-/* General Body Styles */
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('background.jpg'); /* Replace with your image filename */
+    background-image: url('background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     color: #333;
 }
 
-/* Header Styles */
 header {
     background-color: rgba(248, 180, 0, 0.8);
     padding: 20px;
@@ -34,14 +33,13 @@ header {
     color: #333;
 }
 
-.offers, .cart-summary {
+.offers, .cart-summary, .my-orders-link {
     margin-right: 20px;
     font-weight: bold;
     cursor: pointer;
     color: #fff;
 }
 
-/* Main Content Styles */
 main {
     padding: 20px;
 }
@@ -74,7 +72,6 @@ main {
     background-color: rgba(212, 212, 212, 0.8);
 }
 
-/* Menu Styles */
 .menu {
     display: flex;
     flex-direction: column;
@@ -96,58 +93,41 @@ main {
     justify-content: space-between;
 }
 
-.menu li {
+.menu li, #orderList li {
     display: flex;
-    flex-direction: column;
     align-items: center;
     margin: 10px;
     width: calc(33% - 20px);
 }
 
-.menu img {
+.menu img, #orderList img {
     width: 100px;
     height: auto;
-    margin-bottom: 10px;
+    margin-right: 10px;
 }
 
-.menu .rating {
+/* Star Rating Styles */
+.rating {
+    display: flex;
+    align-items: center;
     margin-left: 10px;
-    cursor: pointer;
 }
 
-.menu .star {
+.star {
+    color: gray;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.star:hover {
     color: gold;
-    cursor: pointer;
 }
 
-input[type="number"] {
-    width: 50px;
-    padding: 5px;
-    margin-top: 10px;
-    margin-left: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button.addToOrderBtn {
-    background-color: #ff9800;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin-top: 10px;
-    cursor: pointer;
-}
-
-button.addToOrderBtn:hover {
-    background-color: #e68900;
+.star.rated {
+    color: gold;
 }
 
 /* My Orders Section */
-#myOrders {
-    display: none; /* Hidden by default */
-}
-
 .my-orders {
     margin-top: 20px;
 }
@@ -162,62 +142,10 @@ button.addToOrderBtn:hover {
     padding: 0;
 }
 
-.my-orders ul li {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-}
-
-.my-orders ul li img {
-    width: 50px;
-    height: auto;
-    margin-right: 10px;
-}
-
-.my-orders ul li span {
-    margin-left: 10px;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-/* Order Summary Section */
-#orderList {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #f5f5f5;
-    border-radius: 5px;
-}
-
-#orderList li {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-}
-
-#orderList li img {
-    width: 50px;
-    height: auto;
-    margin-right: 10px;
-}
-
-#orderList li span {
-    margin-left: 10px;
-    font-size: 16px;
-}
-
-#totalPrice {
-    font-size: 18px;
-    font-weight: bold;
-    color: #000;
-    margin-top: 20px;
-}
-
-#totalPriceHeader {
-    font-size: 24px;
-    color: #ff5722;
-    font-weight: bold;
-    margin-top: 20px;
+/* Cart Summary */
+.cart-summary {
+    color: #fff;
+    margin-left: auto;
 }
 
 /* Offers Modal */
@@ -239,13 +167,24 @@ button.addToOrderBtn:hover {
     color: #000;
 }
 
-#offerItems {
-    list-style-type: none;
-    padding: 0;
+#myOrders {
+    display: none;
 }
 
-#offerItems li {
-    margin: 10px 0;
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .restaurants {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .restaurant {
+        width: 80%;
+    }
+
+    .menu li {
+        width: 100%;
+    }
 }
 
 /* Footer Styles */
@@ -253,38 +192,22 @@ footer {
     text-align: center;
     margin-top: 20px;
     color: #fff;
-    padding: 20px;
     background-color: #333;
+    padding: 10px;
 }
 
-/* Responsive Layout */
-@media screen and (max-width: 768px) {
-    .restaurant {
-        width: calc(50% - 20px);
-    }
-
-    .menu li {
-        width: calc(50% - 20px);
-    }
+/* Button Styling */
+button {
+    padding: 10px 15px;
+    background-color: #f8b400;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
-@media screen and (max-width: 480px) {
-    .restaurant {
-        width: 100%;
-    }
-
-    .menu li {
-        width: 100%;
-    }
-
-    #searchBar {
-        width: 100%;
-        margin-right: 0;
-    }
-
-    .top-bar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+button:hover {
+    background-color: #d89b00;
 }
 
