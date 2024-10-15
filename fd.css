@@ -92,14 +92,14 @@ main {
     justify-content: space-between; /* Space out menu items */
 }
 
-.menu li {
+.menu li ,#orderList li {
     display: flex;
     align-items: center;
     margin: 10px;
     width: calc(33% - 20px); /* Adjust width for three items per row */
 }
 
-.menu img {
+.menu img ,#orderList img {
     width: 100px;
     height: auto;
     margin-right: 10px;
