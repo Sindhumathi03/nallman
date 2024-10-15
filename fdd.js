@@ -68,13 +68,15 @@ function showMenu(restaurant) {
             <img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto; margin-right: 10px;">
             ${item.name} - $${item.price} (${item.offer}) 
             <span class="rating" data-index="${index}">${getStars(item.rating)}</span>
+            <input type="number" id="quantity_${index}" value="1" min="1" style="width: 40px; margin-left: 10px;" />
             <button class="addToOrderBtn" data-index="${index}">Add to Order</button>
         `;
-        
+
         // Set the click event on the "Add to Order" button
         li.querySelector('.addToOrderBtn').onclick = (e) => {
             e.stopPropagation(); // Prevent menu from closing
-            addToOrders(item);
+            const quantity = parseInt(document.getElementById(`quantity_${index}`).value);
+            addToOrders(item, quantity);
         };
 
         // Set the click event for the rating stars
@@ -109,17 +111,17 @@ function rateFood(event, star) {
     starsContainer.innerHTML = getStars(item.rating); // Update stars display
 }
 
-function addToOrders(item) {
+function addToOrders(item, quantity) {
     const orderList = document.getElementById('orderList');
 
     const li = document.createElement('li');
     li.innerHTML = `
         <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto; margin-right: 10px;">
-        ${item.name} - $${item.price}
+        ${item.name} - $${item.price} x ${quantity} = $${item.price * quantity}
     `;
     orderList.appendChild(li);
 
-    totalPrice += item.price;
+    totalPrice += item.price * quantity;
     updateTotalPrice();
 
     alert(`"${item.name}" ordered successfully!`);
@@ -189,4 +191,4 @@ function hideOffers() {
 }
 
 // Initialize the restaurant list on page load
-document.addEventListener('DOMContentLoaded', showRestaurants);
+document.addEventListener('DOMContentLoaded', showRestaurants); 
