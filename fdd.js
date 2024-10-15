@@ -34,8 +34,9 @@ const menuData = {
 };
 
 let totalPrice = 0;
-let orders = []; // To track orders and their quantities
+let orders = {}; // To store the order items with their quantities
 
+// Function to initialize and show restaurants
 function showRestaurants() {
     const restaurantSection = document.getElementById('restaurants');
     restaurantSection.innerHTML = '';
@@ -55,6 +56,7 @@ function showRestaurants() {
     });
 }
 
+// Function to show menu of a specific restaurant
 function showMenu(restaurant) {
     const menu = document.getElementById('menu');
     const menuTitle = document.getElementById('menuTitle');
@@ -66,79 +68,128 @@ function showMenu(restaurant) {
     menuData[restaurant].items.forEach((item, index) => {
         const li = document.createElement('li');
         li.innerHTML = `
-            <img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto; margin-right: 10px;">
-            ${item.name} - $${item.price} (${item.offer}) 
-            <span class="rating" data-index="${index}">${getStars(item.rating)}</span>
-            <input type="number" id="quantity-${item.name}" value="1" min="1" style="width: 50px; margin-left: 10px;">
-            <button class="addToOrderBtn" onclick="addToOrders(${JSON.stringify(item)})">Add to Order</button>
+            <img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto;">
+            <span>${item.name} - $${item.price}</span>
+            <div class="rating" data-item="${item.name}" onclick="rateItem('${restaurant}', ${index})">
+                ${generateStars(item.rating)}
+            </div>
+            <button onclick="addToOrder('${restaurant}', ${index})">Add to Order</button>
         `;
-        li.querySelector('.rating').onclick = (e) => {
-            e.stopPropagation(); // Prevent menu from closing
-            rateFood(e, item);
-        };
         menuItems.appendChild(li);
     });
 
-    document.getElementById('restaurants').style.display = 'none'; // Hide restaurants
     menu.style.display = 'block';
 }
 
-function getStars(rating) {
-    let stars = '';
-    for (let i = 1; i <= 5; i++) {
-        const starColor = i <= rating ? 'yellow' : 'silver'; // Change color based on rating
-        stars += `<span class="star" style="color: ${starColor}; cursor: pointer;" onclick="rateFood(event, ${i})">&#9733;</span>`;
-    }
-    return stars;
+// Function to hide the menu
+function hideMenu() {
+    document.getElementById('menu').style.display = 'none';
 }
 
-function rateFood(event, star) {
-    const itemIndex = event.target.closest('li').querySelector('.rating').dataset.index; // Get item index
-    const restaurantName = document.getElementById('menuTitle').innerText; // Get current restaurant name
-    const item = menuData[restaurantName].items[itemIndex]; // Get the current item
-
-    item.rating = star; // Set the rating to the clicked star
-    const starsContainer = event.target.closest('li').querySelector('.rating');
-    starsContainer.innerHTML = getStars(item.rating); // Update stars display
-}
-
-function addToOrders(item) {
-    const orderList = document.getElementById('orderList');
-    const quantity = parseInt(document.getElementById(`quantity-${item.name}`).value) || 1; // Get quantity from input
-
-    const existingOrderIndex = orders.findIndex(order => order.item.name === item.name);
-
-    if (existingOrderIndex > -1) {
-        // If the item is already in the order, increase its quantity
-        orders[existingOrderIndex].quantity += quantity;
-    } else {
-        // Add the item to the order list with quantity
-        orders.push({ item, quantity });
+// Function to add an item to the order
+function addToOrder(restaurant, index) {
+    const item = menuData[restaurant].items[index];
+    if (!orders[item.name]) {
+        orders[item.name] = { item, quantity: 0 };
     }
-
+    orders[item.name].quantity += 1;
     updateOrderList();
-    updateTotalPrice();
 }
 
+// Function to update the order list
 function updateOrderList() {
     const orderList = document.getElementById('orderList');
     orderList.innerHTML = '';
 
-    orders.forEach(order => {
+    totalPrice = 0;
+    Object.values(orders).forEach(order => {
         const li = document.createElement('li');
         li.innerHTML = `
-            <img src="${order.item.image}" alt="${order.item.name}" style="width: 50px; height: auto; margin-right: 10px;">
-            ${order.item.name} - $${order.item.price} x ${order.quantity} = $${order.item.price * order.quantity}
+            ${order.item.name} - $${order.item.price} x ${order.quantity}
+            <button onclick="removeItem('${order.item.name}')">Remove</button>
         `;
         orderList.appendChild(li);
+        totalPrice += order.item.price * order.quantity;
+    });
+
+    document.getElementById('totalPrice').innerText = `$${totalPrice.toFixed(2)}`;
+    document.getElementById('totalPriceHeader').innerText = `$${totalPrice.toFixed(2)}`;
+}
+
+// Function to remove an item from the order
+function removeItem(itemName) {
+    if (orders[itemName]) {
+        orders[itemName].quantity -= 1;
+        if (orders[itemName].quantity <= 0) {
+            delete orders[itemName];
+        }
+    }
+    updateOrderList();
+}
+
+// Function to toggle "My Orders" section
+function toggleOrders() {
+    const myOrders = document.getElementById('myOrders');
+    myOrders.style.display = myOrders.style.display === 'none' ? 'block' : 'none';
+}
+
+// Function to show current offers
+function showOffers() {
+    const offersModal = document.getElementById('offersModal');
+    const offerItems = document.getElementById('offerItems');
+
+    offerItems.innerHTML = `
+        <li>20% off on your first order!</li>
+        <li>Free fries with any burger!</li>
+        <li>Buy 1 get 1 free on pizza!</li>
+    `;
+
+    offersModal.style.display = 'block';
+}
+
+// Function to hide offers modal
+function hideOffers() {
+    document.getElementById('offersModal').style.display = 'none';
+}
+
+// Function to rate an item (star rating)
+function rateItem(restaurant, index) {
+    const item = menuData[restaurant].items[index];
+    const ratingDiv = document.querySelector(`.rating[data-item="${item.name}"]`);
+    const currentRating = item.rating;
+    const newRating = currentRating === 5 ? 0 : currentRating + 1;
+
+    item.rating = newRating;
+    ratingDiv.innerHTML = generateStars(newRating);
+}
+
+// Helper function to generate star HTML
+function generateStars(rating) {
+    let stars = '';
+    for (let i = 1; i <= 5; i++) {
+        stars += `
+            <span class="star" style="color: ${i <= rating ? 'gold' : 'gray'};">&#9733;</span>
+        `;
+    }
+    return stars;
+}
+
+// Function to search items
+function searchItems() {
+    const searchBar = document.getElementById('searchBar').value.toLowerCase();
+    const restaurantSection = document.getElementById('restaurants');
+    const restaurants = restaurantSection.querySelectorAll('.restaurant');
+
+    restaurants.forEach(restaurant => {
+        const restaurantName = restaurant.querySelector('h3').innerText.toLowerCase();
+        if (restaurantName.includes(searchBar)) {
+            restaurant.style.display = 'block';
+        } else {
+            restaurant.style.display = 'none';
+        }
     });
 }
 
-function updateTotalPrice() {
-    totalPrice = orders.reduce((sum, order) => sum + (order.item.price * order.quantity), 0);
-    document.getElementById('totalPrice').innerText = `$${totalPrice}`;
-    document.getElementById('totalPriceHeader').innerText = `$${totalPrice}`;
-}
-
-// Initialize the restaurants section
-document.addEventListener('DOMContentLoaded', showRestaurants);
+document.addEventListener('DOMContentLoaded', function() {
+    showRestaurants();
+});
