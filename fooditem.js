@@ -5,7 +5,7 @@ const foodItem= [
     category : 'biryani',
     rating : 4.3,
     price: 13,
-    img: 'images/biryani/Ambur-Chicken-Biryani.jpg',
+    img: 'https://b.zmtcdn.com/data/pictures/chains/6/18203026/39733a51923278db60c04cbca093dea7.jpg?output-format=webp&fit=around|771.75:416.25&crop=771.75:416.25;*,*',
     quantity: 1
 },
 {
