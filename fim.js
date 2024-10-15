@@ -73,19 +73,7 @@ function showMenu(restaurant) {
     document.getElementById('restaurants').style.display = 'none'; // Hide restaurants
     menu.style.display = 'block';
 }
-function getStars(rating) {
-    let stars = '';
-    for (let i = 0; i < 5; i++) {
-        stars += `<span class="star" onclick="rateFood(event, ${i + 1})">&#9733;</span>`; // Filled star
-    }
-    return stars;
-}
 
-function increaseRating(item) {
-    if (item.rating < 5) {
-        item.rating += 1; // Increase rating by 1
-    }
-}
 
 function hideMenu() {
     const menu = document.getElementById('menu');
