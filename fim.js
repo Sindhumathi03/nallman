@@ -75,8 +75,7 @@ function showMenu(restaurant) {
         };
         li.querySelector('.rating').onclick = (e) => {
             e.stopPropagation(); // Prevent menu from closing
-            increaseRating(item);
-            li.querySelector('.rating').innerHTML = getStars(item.rating); // Update stars
+            rateFood(e, item);
         };
         menuItems.appendChild(li);
     });
@@ -88,15 +87,20 @@ function showMenu(restaurant) {
 function getStars(rating) {
     let stars = '';
     for (let i = 1; i <= 5; i++) {
-        stars += `<span class="star" onclick="rateFood(event, ${i})">&#9733;</span>`; // Filled star
+        const starColor = i <= rating ? 'yellow' : 'silver'; // Change color based on rating
+        stars += `<span class="star" style="color: ${starColor}; cursor: pointer;" onclick="rateFood(event, ${i})">&#9733;</span>`;
     }
     return stars;
 }
 
-function increaseRating(item) {
-    if (item.rating < 5) {
-        item.rating += 1; // Increase rating by 1
-    }
+function rateFood(event, star) {
+    const itemIndex = event.target.closest('li').querySelector('.rating').dataset.index; // Get item index
+    const restaurantName = document.getElementById('menuTitle').innerText; // Get current restaurant name
+    const item = menuData[restaurantName].items[itemIndex]; // Get the current item
+
+    item.rating = star; // Set the rating to the clicked star
+    const starsContainer = event.target.closest('li').querySelector('.rating');
+    starsContainer.innerHTML = getStars(item.rating); // Update stars display
 }
 
 function addToOrders(item) {
