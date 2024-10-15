@@ -34,6 +34,7 @@ const menuData = {
 };
 
 let totalPrice = 0;
+let orders = []; // To track orders and their quantities
 
 function showRestaurants() {
     const restaurantSection = document.getElementById('restaurants');
@@ -60,7 +61,7 @@ function showMenu(restaurant) {
     const menuItems = document.getElementById('menuItems');
 
     menuTitle.innerText = restaurant;
-    menuItems.innerHTML = ''; // Clear previous items
+    menuItems.innerHTML = '';
 
     menuData[restaurant].items.forEach((item, index) => {
         const li = document.createElement('li');
@@ -68,26 +69,18 @@ function showMenu(restaurant) {
             <img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto; margin-right: 10px;">
             ${item.name} - $${item.price} (${item.offer}) 
             <span class="rating" data-index="${index}">${getStars(item.rating)}</span>
-            <button class="addToOrderBtn" data-index="${index}">Add to Order</button>
+            <input type="number" id="quantity-${item.name}" value="1" min="1" style="width: 50px; margin-left: 10px;">
+            <button class="addToOrderBtn" onclick="addToOrders(${JSON.stringify(item)})">Add to Order</button>
         `;
-        
-        // Set the click event on the "Add to Order" button
-        li.querySelector('.addToOrderBtn').onclick = (e) => {
-            e.stopPropagation(); // Prevent menu from closing
-            addToOrders(item);
-        };
-
-        // Set the click event for the rating stars
         li.querySelector('.rating').onclick = (e) => {
             e.stopPropagation(); // Prevent menu from closing
             rateFood(e, item);
         };
-
         menuItems.appendChild(li);
     });
 
     document.getElementById('restaurants').style.display = 'none'; // Hide restaurants
-    menu.style.display = 'block'; // Show the menu
+    menu.style.display = 'block';
 }
 
 function getStars(rating) {
@@ -111,82 +104,41 @@ function rateFood(event, star) {
 
 function addToOrders(item) {
     const orderList = document.getElementById('orderList');
+    const quantity = parseInt(document.getElementById(`quantity-${item.name}`).value) || 1; // Get quantity from input
 
-    const li = document.createElement('li');
-    li.innerHTML = `
-        <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto; margin-right: 10px;">
-        ${item.name} - $${item.price}
-    `;
-    orderList.appendChild(li);
+    const existingOrderIndex = orders.findIndex(order => order.item.name === item.name);
 
-    totalPrice += item.price;
+    if (existingOrderIndex > -1) {
+        // If the item is already in the order, increase its quantity
+        orders[existingOrderIndex].quantity += quantity;
+    } else {
+        // Add the item to the order list with quantity
+        orders.push({ item, quantity });
+    }
+
+    updateOrderList();
     updateTotalPrice();
+}
 
-    alert(`"${item.name}" ordered successfully!`);
+function updateOrderList() {
+    const orderList = document.getElementById('orderList');
+    orderList.innerHTML = '';
+
+    orders.forEach(order => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <img src="${order.item.image}" alt="${order.item.name}" style="width: 50px; height: auto; margin-right: 10px;">
+            ${order.item.name} - $${order.item.price} x ${order.quantity} = $${order.item.price * order.quantity}
+        `;
+        orderList.appendChild(li);
+    });
 }
 
 function updateTotalPrice() {
+    totalPrice = orders.reduce((sum, order) => sum + (order.item.price * order.quantity), 0);
     document.getElementById('totalPrice').innerText = `$${totalPrice}`;
     document.getElementById('totalPriceHeader').innerText = `$${totalPrice}`;
 }
 
-function toggleOrders() {
-    const myOrdersSection = document.getElementById('myOrders');
-
-    if (myOrdersSection.style.display === 'block') {
-        myOrdersSection.style.display = 'none';
-    } else {
-        myOrdersSection.style.display = 'block';
-        document.getElementById('restaurants').style.display = 'none'; // Hide restaurants
-        document.getElementById('menu').style.display = 'none'; // Hide menu
-    }
-}
-
-function hideMenu() {
-    const menu = document.getElementById('menu');
-    menu.style.display = 'none';
-    document.getElementById('restaurants').style.display = 'block'; // Show restaurants again
-}
-
-function hideOrders() {
-    const myOrdersSection = document.getElementById('myOrders');
-    myOrdersSection.style.display = 'none';
-    document.getElementById('restaurants').style.display = 'block'; // Show restaurants again
-}
-
-function searchItems() {
-    const query = document.getElementById('searchBar').value.toLowerCase();
-    const menuItems = document.querySelectorAll('#menuItems li');
-
-    menuItems.forEach(item => {
-        const itemName = item.innerText.toLowerCase();
-        item.style.display = itemName.includes(query) ? 'block' : 'none'; // Show matching items
-    });
-}
-
-function showOffers() {
-    const offersModal = document.getElementById('offersModal');
-    const offerItems = document.getElementById('offerItems');
-
-    offerItems.innerHTML = '';
-
-    Object.keys(menuData).forEach(restaurant => {
-        menuData[restaurant].items.forEach(item => {
-            if (item.offer) {
-                const li = document.createElement('li');
-                li.innerText = `${item.name} at ${restaurant}: ${item.offer}`;
-                offerItems.appendChild(li);
-            }
-        });
-    });
-
-    offersModal.style.display = 'block';
-}
-
-function hideOffers() {
-    const offersModal = document.getElementById('offersModal');
-    offersModal.style.display = 'none';
-}
-
-// Initialize the restaurant list on page load
+// Initialize the restaurants section
 document.addEventListener('DOMContentLoaded', showRestaurants);
