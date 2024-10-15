@@ -108,7 +108,10 @@ function addToOrders(item) {
     const orderList = document.getElementById('orderList');
 
     const li = document.createElement('li');
-    li.innerText = `${item.name} - $${item.price}`;
+    li.innerHTML = `
+        <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto; margin-right: 10px;"> 
+        ${item.name} - $${item.price}
+    `;
     orderList.appendChild(li);
 
     totalPrice += item.price;
