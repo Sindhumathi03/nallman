@@ -146,12 +146,4 @@ footer {
 #myOrders {
     display: none; /* Hidden by default */
 }
-.star {
-    cursor: pointer;
-    color: gold; /* Gold color for stars */
-    margin-right: 2px;
-}
 
-.rating {
-    display: inline-block;
-}
