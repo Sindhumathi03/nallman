@@ -40,6 +40,16 @@
             <h3>Total Price: <span id="totalPrice">$0</span></h3>
             <button onclick="hideOrders()">Close Orders</button>
         </section>
+         <div id="loginModal" class="hidden">
+        <h2>Login</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter password"><br><br>
+        <button onclick="submitLogin()">Submit</button>
+        <button onclick="cancelLogin()">Cancel</button>
+    </div>
+
 
         <section class="offers-modal" id="offersModal" style="display:none;">
             <h2>Current Food Offers</h2>
