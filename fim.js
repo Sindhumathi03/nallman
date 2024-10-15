@@ -82,13 +82,10 @@ function hideMenu() {
 
 function addToOrders(item) {
     const orderList = document.getElementById('orderList');
-
-    // Create a new list item for the order
     const li = document.createElement('li');
     li.innerText = `${item.name} - $${item.price}`;
     orderList.appendChild(li);
 
-    // Update total price
     totalPrice += item.price;
     updateTotalPrice();
 
@@ -103,34 +100,68 @@ function updateTotalPrice() {
 
 function toggleOrders() {
     const myOrdersSection = document.getElementById('myOrders');
-    
-    // If orders section is already visible, hide it
     if (myOrdersSection.style.display === 'block') {
         myOrdersSection.style.display = 'none';
     } else {
-        myOrdersSection.style.display = 'block';
+        myOrdersSection.style.display = 'block'; // Show orders
         document.getElementById('restaurants').style.display = 'none'; // Hide restaurants
         document.getElementById('menu').style.display = 'none'; // Hide menu
     }
 }
 
-function startNewOrder() {
-    const orderList = document.getElementById('orderList');
-
-    // Clear previous orders
-    orderList.innerHTML = '';
-
-    // Reset total price
-    totalPrice = 0;
-    updateTotalPrice();
-
-    // Show restaurants again
-    document.getElementById('myOrders').style.display = 'none'; // Hide orders
-    document.getElementById('restaurants').style.display = 'block'; // Show restaurants
+function hideOrders() {
+    const myOrdersSection = document.getElementById('myOrders');
+    myOrdersSection.style.display = 'none';
+    document.getElementById('restaurants').style.display = 'block'; // Show restaurants again
 }
 
-// Attach the function to the "New Order" button
-document.getElementById('newOrderButton').onclick = startNewOrder;
+function searchItems() {
+    const query = document.getElementById('searchBar').value.toLowerCase();
+    const menuItems = document.querySelectorAll('#menuItems li');
+    const restaurantNames = Object.keys(menuData);
+
+    menuItems.forEach(item => {
+        item.style.display = 'none'; // Hide all items initially
+    });
+
+    restaurantNames.forEach(restaurant => {
+        const items = menuData[restaurant].items;
+        items.forEach(item => {
+            if (item.name.toLowerCase().includes(query)) {
+                const li = document.createElement('li');
+                li.innerHTML = `<img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto; margin-right: 10px;"> 
+                                ${item.name} - $${item.price} (${item.offer})`;
+                li.onclick = () => addToOrders(item);
+                document.getElementById('menuItems').appendChild(li);
+                li.style.display = 'block'; // Show matching items
+            }
+        });
+    });
+}
+
+function showOffers() {
+    const offersModal = document.getElementById('offersModal');
+    const offerItems = document.getElementById('offerItems');
+
+    offerItems.innerHTML = '';
+
+    Object.keys(menuData).forEach(restaurant => {
+        menuData[restaurant].items.forEach(item => {
+            if (item.offer) {
+                const li = document.createElement('li');
+                li.innerText = `${item.name} at ${restaurant}: ${item.offer}`;
+                offerItems.appendChild(li);
+            }
+        });
+    });
+
+    offersModal.style.display = 'block';
+}
+
+function hideOffers() {
+    const offersModal = document.getElementById('offersModal');
+    offersModal.style.display = 'none';
+}
 
 // Initialize the restaurant list on page load
 document.addEventListener('DOMContentLoaded', showRestaurants);
