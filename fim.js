@@ -1,497 +1,136 @@
-import {foodItem} from './fooditem.js'
-
-function displayItems(){
-    var biryani= document.getElementById('biryani');
-    var paneer=  document.getElementById('paneer');;
-    var chicken=  document.getElementById('chicken');
-    var vegetable=  document.getElementById('vegetable');
-    var chinese=  document.getElementById('chinese');
-    var southIndian=  document.getElementById('south-indian');
-
-    
-
-    const biryaniData= foodItem.filter((item)=>item.category=='biryani');
-    const chickenData= foodItem.filter((item)=>item.category=='chicken');
-    const PaneerData= foodItem.filter((item)=>item.category=='paneer');
-    const vegetableData= foodItem.filter((item)=>item.category=='vegetable');
-    const chineseData= foodItem.filter((item)=>item.category=='chinese');
-    const southData= foodItem.filter((item)=>item.category=='south indian');
-    biryaniData.map(item=>{
-        
-        var itemCard= document.createElement('div');
-        itemCard.setAttribute('id','item-card')
-
-        var cardTop= document.createElement('div');
-        cardTop.setAttribute('id','card-top');
-
-        var star= document.createElement('i');
-        star.setAttribute('class','fa fa-star');
-        star.setAttribute('id','rating');
-        star.innerText= ' ' + item.rating;
-
-        var heart= document.createElement('i');
-        heart.setAttribute('class','fa fa-heart-o add-to-cart');
-        heart.setAttribute('id',item.id)
-
-        cardTop.appendChild(star);
-        cardTop.appendChild(heart);
-
-
-        var img= document.createElement('img');
-        img.src=item.img;
-
-        var itemName= document.createElement('p');
-        itemName.setAttribute('id','item-name');
-        itemName.innerText= item.name;
-
-        var itemPrice= document.createElement('p');
-        itemPrice.setAttribute('id','item-price');
-        itemPrice.innerText= 'Price : $ ' + item.price;
-
-        itemCard.appendChild(cardTop);
-        itemCard.appendChild(img);
-        itemCard.appendChild(itemName);
-        itemCard.appendChild(itemPrice);
-
-        biryani.appendChild(itemCard);
-        
-    })
-
-
-    chickenData.map(item=>{
-        var itemCard= document.createElement('div');
-        itemCard.setAttribute('id','item-card')
-
-        var cardTop= document.createElement('div');
-        cardTop.setAttribute('id','card-top');
-
-        var star= document.createElement('i');
-        star.setAttribute('class','fa fa-star');
-        star.setAttribute('id','rating');
-        star.innerText= ' ' + item.rating;
-
-        var heart= document.createElement('i');
-        heart.setAttribute('class','fa fa-heart-o add-to-cart');
-        heart.setAttribute('id',item.id)
-
-        cardTop.appendChild(star);
-        cardTop.appendChild(heart);
-
-
-        var img= document.createElement('img');
-        img.src=item.img;
-
-        var itemName= document.createElement('p');
-        itemName.setAttribute('id','item-name');
-        itemName.innerText= item.name;
-
-        var itemPrice= document.createElement('p');
-        itemPrice.setAttribute('id','item-price');
-        itemPrice.innerText= 'Price : $ ' + item.price;
-
-        itemCard.appendChild(cardTop);
-        itemCard.appendChild(img);
-        itemCard.appendChild(itemName);
-        itemCard.appendChild(itemPrice);
-        
-        chicken.appendChild(itemCard)
-
-    })
-
-    PaneerData.map(item=>{
-        var itemCard= document.createElement('div');
-        itemCard.setAttribute('id','item-card')
-
-        var cardTop= document.createElement('div');
-        cardTop.setAttribute('id','card-top');
-
-        var star= document.createElement('i');
-        star.setAttribute('class','fa fa-star');
-        star.setAttribute('id','rating');
-        star.innerText= ' ' + item.rating;
-
-        var heart= document.createElement('i');
-        heart.setAttribute('class','fa fa-heart-o add-to-cart');
-        heart.setAttribute('id',item.id)
-
-        cardTop.appendChild(star);
-        cardTop.appendChild(heart);
-
-
-        var img= document.createElement('img');
-        img.src=item.img;
-
-        var itemName= document.createElement('p');
-        itemName.setAttribute('id','item-name');
-        itemName.innerText= item.name;
-
-        var itemPrice= document.createElement('p');
-        itemPrice.setAttribute('id','item-price');
-        itemPrice.innerText= 'Price : $ ' + item.price;
-
-        itemCard.appendChild(cardTop);
-        itemCard.appendChild(img);
-        itemCard.appendChild(itemName);
-        itemCard.appendChild(itemPrice);
-        
-        paneer.appendChild(itemCard)
-
-    })
-
-    vegetableData.map(item=>{
-        var itemCard= document.createElement('div');
-        itemCard.setAttribute('id','item-card')
-
-        var cardTop= document.createElement('div');
-        cardTop.setAttribute('id','card-top');
-
-        var star= document.createElement('i');
-        star.setAttribute('class','fa fa-star');
-        star.setAttribute('id','rating');
-        star.innerText= ' ' + item.rating;
-
-        var heart= document.createElement('i');
-        heart.setAttribute('class','fa fa-heart-o add-to-cart');
-        heart.setAttribute('id',item.id)
-
-        cardTop.appendChild(star);
-        cardTop.appendChild(heart);
-
-
-        var img= document.createElement('img');
-        img.src=item.img;
-
-        var itemName= document.createElement('p');
-        itemName.setAttribute('id','item-name');
-        itemName.innerText= item.name;
-
-        var itemPrice= document.createElement('p');
-        itemPrice.setAttribute('id','item-price');
-        itemPrice.innerText= 'Price : $ ' + item.price;
-
-        itemCard.appendChild(cardTop);
-        itemCard.appendChild(img);
-        itemCard.appendChild(itemName);
-        itemCard.appendChild(itemPrice);
-
-        
-        vegetable.appendChild(itemCard)
-    
-    })
-
-    chineseData.map(item=>{
-        var itemCard= document.createElement('div');
-        itemCard.setAttribute('id','item-card')
-
-        var cardTop= document.createElement('div');
-        cardTop.setAttribute('id','card-top');
-
-        var star= document.createElement('i');
-        star.setAttribute('class','fa fa-star');
-        star.setAttribute('id','rating');
-        star.innerText= ' ' + item.rating;
-
-        var heart= document.createElement('i');
-        heart.setAttribute('class','fa fa-heart-o add-to-cart');
-        heart.setAttribute('id',item.id)
-
-        cardTop.appendChild(star);
-        cardTop.appendChild(heart);
-
-
-        var img= document.createElement('img');
-        img.src=item.img;
-
-        var itemName= document.createElement('p');
-        itemName.setAttribute('id','item-name');
-        itemName.innerText= item.name;
-
-        var itemPrice= document.createElement('p');
-        itemPrice.setAttribute('id','item-price');
-        itemPrice.innerText= 'Price : $ ' + item.price;
-
-        itemCard.appendChild(cardTop);
-        itemCard.appendChild(img);
-        itemCard.appendChild(itemName);
-        itemCard.appendChild(itemPrice);
-
-        
-        chinese.appendChild(itemCard)
-        
-    })
-
-    southData.map(item=>{
-        var itemCard= document.createElement('div');
-        itemCard.setAttribute('id','item-card')
-
-        var cardTop= document.createElement('div');
-        cardTop.setAttribute('id','card-top');
-
-        var star= document.createElement('i');
-        star.setAttribute('class','fa fa-star');
-        star.setAttribute('id','rating');
-        star.innerText= ' ' + item.rating;
-
-        var heart= document.createElement('i');
-        heart.setAttribute('class','fa fa-heart-o add-to-cart');
-        heart.setAttribute('id',item.id)
-
-        cardTop.appendChild(star);
-        cardTop.appendChild(heart);
-
-
-        var img= document.createElement('img');
-        img.src=item.img;
-
-        var itemName= document.createElement('p');
-        itemName.setAttribute('id','item-name');
-        itemName.innerText= item.name;
-
-        var itemPrice= document.createElement('p');
-        itemPrice.setAttribute('id','item-price');
-        itemPrice.innerText= 'Price : $ ' + item.price;
-
-        itemCard.appendChild(cardTop);
-        itemCard.appendChild(img);
-        itemCard.appendChild(itemName);
-        itemCard.appendChild(itemPrice);
-
-        southIndian.appendChild(itemCard)
-
-    })
-}
-displayItems();
-
-
-const vegData= [...new Map(foodItem.map(item=> [item['category'],item])).values()];
-console.log(vegData);
-
-function selectTaste(){
-    var categoryList= document.getElementById('category-list');
-
-    vegData.map(item=>{
-        console.log(item)
-        var listCard= document.createElement('div');
-        listCard.setAttribute('class','list-card');
-    
-        var listImg= document.createElement('img');
-        listImg.src= item.img;
-    
-        var listName= document.createElement('a');
-        listName.setAttribute('class','list-name');
-        listName.innerText= item.category;
-        listName.setAttribute('href','#'+item.category)
-    
-        listCard.appendChild(listImg);
-        listCard.appendChild(listName);
-
-        var cloneListCard= listCard.cloneNode(true);
-        categoryList.appendChild(listCard);
-        document.querySelector('.category-header').appendChild(cloneListCard)
-    })
-}
-selectTaste();
-
-
-document.querySelectorAll('.add-to-cart').forEach(item=>{
-    item.addEventListener('click',addToCart)
-})
-
-var cartData= [];
-function addToCart(){
-    
-    var itemToAdd= this.parentNode.nextSibling.nextSibling.innerText;
-    var itemObj= foodItem.find(element=>element.name==itemToAdd);
-
-    var index= cartData.indexOf(itemObj);
-    if(index=== -1){
-        document.getElementById(itemObj.id).classList.add('toggle-heart');
-        cartData= [...cartData,itemObj];
+const menuData = {
+    'Pizza Place': {
+        image: 'https://img.freepik.com/free-psd/italian-restaurant-square-flyer-template_23-2148670801.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid',
+        items: [
+            { name: 'Margherita Pizza', price: 8, offer: '20% off', image: 'https://media.istockphoto.com/id/1168754685/photo/pizza-margarita-with-cheese-top-view-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=psLRwd-hX9R-S_iYU-sihB4Jx2aUlUr26fkVrxGDfNg=' },
+            { name: 'Pepperoni Pizza', price: 10, offer: 'Buy 1 Get 1 Free', image: 'https://img.freepik.com/premium-photo/colorful-homemade-pizza-with-black-ham-cherry-tomatoes_1126714-13363.jpg?size=626&ext=jpg' },
+            { name: 'Veggie Pizza', price: 9, offer: '10% off', image: 'https://img.freepik.com/premium-photo/colorful-homemade-pizza-with-black-ham-cherry-tomatoes_1126714-13105.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid' }
+        ]
+    },
+    'Burger Joint': {
+        image: 'https://media.istockphoto.com/id/1485677116/photo/waiter-hands-hold-a-plate-with-a-very-big-cheeseburger-in-pub.webp?a=1&b=1&s=612x612&w=0&k=20&c=tMi4IqxQ2t4LwwWyFca0bHLVqp6UQuUMeLxMf9G7EJc=',
+        items: [
+            { name: 'Cheeseburger', price: 5, offer: 'Free fries with burger', image: 'https://img.freepik.com/free-photo/big-sandwich-hamburger-burger-with-beef-red-onion-tomato-fried-bacon_2829-5398.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid' },
+            { name: 'Veggie Burger', price: 6, offer: '20% off', image: 'https://img.freepik.com/premium-photo/green-vegan-burger-without-meat-with-vegetables_659326-3791.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid' },
+            { name: 'Double Burger', price: 7, offer: '10% off on 2nd item', image: 'https://img.freepik.com/free-photo/view-delicious-burgers-with-buns-cheese_23-2150887913.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid' }
+        ]
+    },
+    'Sushi Bar': {
+        image: 'https://img.freepik.com/premium-photo/closeup-hands-expertly-rolling-sushi_167857-73950.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid',
+        items: [
+            { name: 'California Roll', price: 12, offer: 'Free drink with order', image: 'https://via.placeholder.com/100' },
+            { name: 'Spicy Tuna Roll', price: 14, offer: '20% off', image: 'https://via.placeholder.com/100' },
+            { name: 'Veggie Roll', price: 10, offer: '10% off', image: 'https://via.placeholder.com/100' }
+        ]
+    },
+    'Indian Diner': {
+        image: 'https://img.freepik.com/premium-photo/photography-tasty-indian-indian-tikka_1288657-47362.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid',
+        items: [
+            { name: 'Butter Chicken', price: 11, offer: '15% off', image: 'https://via.placeholder.com/100' },
+            { name: 'Paneer Tikka', price: 9, offer: 'Buy 1 Get 1 Free', image: 'https://via.placeholder.com/100' },
+            { name: 'Biryani', price: 10, offer: '10% off on orders above $20', image: 'https://via.placeholder.com/100' }
+        ]
     }
-    else if(index > -1){
-        alert("Added to cart!");
-    }
-    
-    document.getElementById('cart-plus').innerText=
-    ' ' + cartData.length + ' Items';
-    document.getElementById('m-cart-plus').innerText=
-    ' ' + cartData.length;
-    totalAmount();
-    cartItems();
-}
+};
 
+let totalPrice = 0;
 
-function cartItems(){
-    var tableBody=  document.getElementById('table-body');
-    tableBody.innerHTML= '';
+function showRestaurants() {
+    const restaurantSection = document.getElementById('restaurants');
+    restaurantSection.innerHTML = ''; // Clear previous restaurants
 
-    cartData.map(item=> {
-        var tableRow= document.createElement('tr');
-        
-        var rowData1= document.createElement('td');
-        var img= document.createElement('img');
-        img.src= item.img;
-        rowData1.appendChild(img);
-    
-        var rowData2= document.createElement('td');
-        rowData2.innerText= item.name;
-        
-        var rowData3= document.createElement('td');
-        var btn1= document.createElement('button');
-        btn1.setAttribute('class','decrease-item');
-        btn1.innerText= '-';
-        var span= document.createElement('span');
-        span.innerText= item.quantity;
-        var btn2= document.createElement('button');
-        btn2.setAttribute('class','increase-item');
-        btn2.innerText= '+';
-        
-        rowData3.appendChild(btn1);
-        rowData3.appendChild(span);
-        rowData3.appendChild(btn2);
-    
-        var rowData4= document.createElement('td');
-        rowData4.innerText= item.price;
-    
-        tableRow.appendChild(rowData1);
-        tableRow.appendChild(rowData2);
-        tableRow.appendChild(rowData3);
-        tableRow.appendChild(rowData4);
-    
-        tableBody.appendChild(tableRow);
-    })
-    document.querySelectorAll('.increase-item').forEach(item=>{
-        item.addEventListener('click',incrementItem)
-    })
+    Object.keys(menuData).forEach(restaurant => {
+        const div = document.createElement('div');
+        div.classList.add('restaurant');
+        div.onclick = () => showMenu(restaurant);
 
-    document.querySelectorAll('.decrease-item').forEach(item=>{
-        item.addEventListener('click',decrementItem)
-    })
-}
+        div.innerHTML = `
+            <img src="${menuData[restaurant].image}" alt="${restaurant}" style="width: 150px; height: auto; margin-right: 10px;">
+            <h3>${restaurant}</h3>
+            <p>${restaurant} Cuisine</p>
+        `;
 
-
-function incrementItem(){
-    let itemToInc= this.parentNode.previousSibling.innerText;
-    console.log(itemToInc)
-    var incObj= cartData.find(element=>element.name==itemToInc);
-    incObj.quantity+=1;
-    
-    currPrice= (incObj.price*incObj.quantity - incObj.price*(incObj.quantity-1))/(incObj.quantity-1);
-    incObj.price= currPrice*incObj.quantity;
-    totalAmount()
-    cartItems();
-}
-
-var currPrice= 0;
-function decrementItem(){
-    let itemToInc= this.parentNode.previousSibling.innerText;
-    let decObj= cartData.find(element=>element.name==itemToInc);
-    let ind= cartData.indexOf(decObj);
-    if(decObj.quantity >1){
-        currPrice= (decObj.price*decObj.quantity - decObj.price*(decObj.quantity-1))/(decObj.quantity);
-        decObj.quantity-= 1;
-        decObj.price= currPrice*decObj.quantity;
-    }
-    else{
-        document.getElementById(decObj.id).classList.remove('toggle-heart')
-        cartData.splice(ind,1);
-        document.getElementById('cart-plus').innerText= ' ' + cartData.length + ' Items';
-        document.getElementById('m-cart-plus').innerText= ' ' + cartData.length;
-        if(cartData.length < 1 && flag){
-            document.getElementById('food-items').classList.toggle('food-items');
-            document.getElementById('category-list').classList.toggle('food-items');
-            document.getElementById('m-cart-plus').classList.toggle('m-cart-toggle')
-            document.getElementById('cart-page').classList.toggle('cart-toggle');
-            document.getElementById('category-header').classList.toggle('toggle-category');
-            document.getElementById('checkout').classList.toggle('cart-toggle');
-            flag= false;
-            alert("Currently no item in cart!");
-            console.log(flag)
-        }
-    }
-    totalAmount()
-    cartItems()
-}
-
-function totalAmount(){
-    var sum=0;
-    cartData.map(item=>{
-        sum+= item.price;
-    })
-    document.getElementById('total-item').innerText= 'Total Item : ' + cartData.length;
-    document.getElementById('total-price').innerText= 'Total Price : $ ' + sum;
-    document.getElementById('m-total-amount').innerText= 'Total Price : $ ' + sum;
-}
-
-document.getElementById('cart-plus').addEventListener('click',cartToggle);
-document.getElementById('m-cart-plus').addEventListener('click',cartToggle);
-
-var flag= false;
-function cartToggle(){
-    if(cartData.length > 0){
-        document.getElementById('food-items').classList.toggle('food-items');
-        document.getElementById('category-list').classList.toggle('food-items');
-        document.getElementById('category-header').classList.toggle('toggle-category');
-        document.getElementById('m-cart-plus').classList.toggle('m-cart-toggle')
-        document.getElementById('cart-page').classList.toggle('cart-toggle');
-        document.getElementById('checkout').classList.toggle('cart-toggle');
-        flag= true;
-        console.log(flag)
-    }
-    else{
-        alert("Currently no item in cart!");
-    }
-}
-
-
-
-window.onresize= window.onload= function(){
-    var size= window.screen.width;
-    console.log(size)
-    if(size<800){
-        var cloneFoodItems= document.getElementById('food-items').cloneNode(true);
-        var cloneCartPage= document.getElementById('cart-page').cloneNode(true);
-        document.getElementById('food-items').remove();
-        document.getElementById('cart-page').remove();
-        document.getElementById('category-header').after(cloneFoodItems);
-        document.getElementById('food-items').after(cloneCartPage);
-        addEvents()
-    }
-    if(size>800){
-        var cloneFoodItems= document.getElementById('food-items').cloneNode(true);
-        document.getElementById('food-items').remove();
-        document.getElementById('header').after(cloneFoodItems);
-
-        var cloneCartPage= document.getElementById('cart-page').cloneNode(true);
-        document.getElementById('cart-page').remove();
-        document.getElementById('food-items').after(cloneCartPage);
-        addEvents()
-    }
-}
-
-function addEvents(){
-    document.querySelectorAll('.add-to-cart').forEach(item=>{
-        item.addEventListener('click',addToCart)
+        restaurantSection.appendChild(div);
     });
-    document.querySelectorAll('.increase-item').forEach(item=>{
-        item.addEventListener('click',incrementItem)
-    })
-
-    document.querySelectorAll('.decrease-item').forEach(item=>{
-        item.addEventListener('click',decrementItem)
-    })
 }
 
-document.getElementById('add-address').addEventListener('click',addAddress);
+function showMenu(restaurant) {
+    const menu = document.getElementById('menu');
+    const menuTitle = document.getElementById('menuTitle');
+    const menuItems = document.getElementById('menuItems');
 
-document.getElementById('m-add-address').addEventListener('click',addAddress);
+    menuTitle.innerText = restaurant;
+    menuItems.innerHTML = '';
 
-function addAddress(){
-    var address= prompt('Enter your address','');
-    if(address){
-        document.getElementById('add-address').innerText= ' ' + address;
-    }
-    else{
-        alert("Address not added")
+    menuData[restaurant].items.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `<img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto; margin-right: 10px;"> 
+                        ${item.name} - $${item.price} (${item.offer})`;
+        li.onclick = () => addToOrders(item);
+        menuItems.appendChild(li);
+    });
+
+    document.getElementById('restaurants').style.display = 'none'; // Hide restaurants
+    menu.style.display = 'block';
+}
+
+function hideMenu() {
+    const menu = document.getElementById('menu');
+    menu.style.display = 'none';
+    document.getElementById('restaurants').style.display = 'block'; // Show restaurants again
+}
+
+function addToOrders(item) {
+    const orderList = document.getElementById('orderList');
+
+    // Create a new list item for the order
+    const li = document.createElement('li');
+    li.innerText = `${item.name} - $${item.price}`;
+    orderList.appendChild(li);
+
+    // Update total price
+    totalPrice += item.price;
+    updateTotalPrice();
+
+    toggleOrders(); // Show orders section
+    alert(`${item.name} ordered successfully!`);
+}
+
+function updateTotalPrice() {
+    document.getElementById('totalPrice').innerText = `$${totalPrice}`;
+    document.getElementById('totalPriceHeader').innerText = `$${totalPrice}`;
+}
+
+function toggleOrders() {
+    const myOrdersSection = document.getElementById('myOrders');
+    
+    // If orders section is already visible, hide it
+    if (myOrdersSection.style.display === 'block') {
+        myOrdersSection.style.display = 'none';
+    } else {
+        myOrdersSection.style.display = 'block';
+        document.getElementById('restaurants').style.display = 'none'; // Hide restaurants
+        document.getElementById('menu').style.display = 'none'; // Hide menu
     }
 }
+
+function startNewOrder() {
+    const orderList = document.getElementById('orderList');
+
+    // Clear previous orders
+    orderList.innerHTML = '';
+
+    // Reset total price
+    totalPrice = 0;
+    updateTotalPrice();
+
+    // Show restaurants again
+    document.getElementById('myOrders').style.display = 'none'; // Hide orders
+    document.getElementById('restaurants').style.display = 'block'; // Show restaurants
+}
+
+// Attach the function to the "New Order" button
+document.getElementById('newOrderButton').onclick = startNewOrder;
+
+// Initialize the restaurant list on page load
+document.addEventListener('DOMContentLoaded', showRestaurants);
