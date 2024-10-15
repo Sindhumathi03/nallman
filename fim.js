@@ -45,7 +45,7 @@ function showRestaurants() {
         div.onclick = () => showMenu(restaurant);
 
         div.innerHTML = `
-            <img src="${menuData[restaurant].image}" alt="${restaurant}" style="width: 150px; height: auto; margin-right: 10px;">
+            <img src="${menuData[restaurant].image}" alt="${restaurant}">
             <h3>${restaurant}</h3>
             <p>${restaurant} Cuisine</p>
         `;
@@ -82,10 +82,13 @@ function hideMenu() {
 
 function addToOrders(item) {
     const orderList = document.getElementById('orderList');
+    
+    // Create a new list item for the order
     const li = document.createElement('li');
     li.innerText = `${item.name} - $${item.price}`;
     orderList.appendChild(li);
 
+    // Update total price
     totalPrice += item.price;
     updateTotalPrice();
 
@@ -100,10 +103,12 @@ function updateTotalPrice() {
 
 function toggleOrders() {
     const myOrdersSection = document.getElementById('myOrders');
+
+    // If orders section is already visible, hide it
     if (myOrdersSection.style.display === 'block') {
         myOrdersSection.style.display = 'none';
     } else {
-        myOrdersSection.style.display = 'block'; // Show orders
+        myOrdersSection.style.display = 'block';
         document.getElementById('restaurants').style.display = 'none'; // Hide restaurants
         document.getElementById('menu').style.display = 'none'; // Hide menu
     }
