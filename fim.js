@@ -189,5 +189,81 @@ function hideOffers() {
     offersModal.style.display = 'none';
 }
 
+// Checkout Modal
+function checkout() {
+    const checkoutModal = document.createElement('div');
+    checkoutModal.style.position = 'fixed';
+    checkoutModal.style.top = '50%';
+    checkoutModal.style.left = '50%';
+    checkoutModal.style.transform = 'translate(-50%, -50%)';
+    checkoutModal.style.padding = '20px';
+    checkoutModal.style.backgroundColor = '#fff';
+    checkoutModal.style.boxShadow = '0px 0px 15px rgba(0, 0, 0, 0.2)';
+    checkoutModal.innerHTML = `
+        <h3>Checkout</h3>
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter Username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter Password"><br><br>
+        <label for="address">Address:</label>
+        <input type="text" id="address" placeholder="Enter Address"><br><br>
+        <div>
+            <strong>Checkout Amount:</strong> $<span id="checkoutAmount">${totalPrice}</span><br><br>
+        </div>
+        <button id="payButton">Pay</button>
+        <button id="backToOrder">Back to Orders</button>
+    `;
+    document.body.appendChild(checkoutModal);
+
+    document.getElementById('payButton').onclick = () => {
+        showPaymentOptions();
+    };
+
+    document.getElementById('backToOrder').onclick = () => {
+        hideCheckout();
+    };
+}
+
+function showPaymentOptions() {
+    const paymentOptions = document.createElement('div');
+    paymentOptions.style.position = 'fixed';
+    paymentOptions.style.top = '50%';
+    paymentOptions.style.left = '50%';
+    paymentOptions.style.transform = 'translate(-50%, -50%)';
+    paymentOptions.style.padding = '20px';
+    paymentOptions.style.backgroundColor = '#fff';
+    paymentOptions.style.boxShadow = '0px 0px 15px rgba(0, 0, 0, 0.2)';
+    paymentOptions.innerHTML = `
+        <h3>Select Payment Method</h3>
+        <button id="creditCard">Credit Card</button>
+        <button id="paypal">PayPal</button>
+        <button id="cash">Cash on Delivery</button>
+    `;
+    document.body.appendChild(paymentOptions);
+
+    document.getElementById('creditCard').onclick = () => {
+        alert('Payment via Credit Card successful!');
+        hidePaymentOptions();
+    };
+    document.getElementById('paypal').onclick = () => {
+        alert('Payment via PayPal successful!');
+        hidePaymentOptions();
+    };
+    document.getElementById('cash').onclick = () => {
+        alert('Cash on Delivery selected!');
+        hidePaymentOptions();
+    };
+}
+
+function hidePaymentOptions() {
+    const paymentOptions = document.querySelector('div[style*="position: fixed"]');
+    document.body.removeChild(paymentOptions);
+}
+
+function hideCheckout() {
+    const checkoutModal = document.querySelector('div[style*="position: fixed"]');
+    document.body.removeChild(checkoutModal);
+}
+
 // Initialize the restaurant list on page load
 document.addEventListener('DOMContentLoaded', showRestaurants);
