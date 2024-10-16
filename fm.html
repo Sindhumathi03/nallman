@@ -43,23 +43,20 @@
             
         </section>
 
-
-        <section class="offers-modal" id="offersModal" style="display:none;">
+        <section class="checkout-modal" id="checkoutModal" style="display:none;">
+            <h2>Checkout</h2>
+            <p>Total Amount: $<span id="checkoutTotalAmount">0</span></p>
+            <button id="payNowBtn">Pay Now</button>
+            <button id="cancelPaymentBtn">Cancel</button>
+        </section>
+      <section class="offers-modal" id="offersModal" style="display:none;">
             <h2>Current Food Offers</h2>
             <ul id="offerItems"></ul>
             <button onclick="hideOffers()">Close Offers</button>
         </section>
     </main>
 
-   
-     <div id="checkoutModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <h2>Checkout</h2>
-            <p>Your total amount is: <span id="checkoutTotal">$0</span></p>
-            <button id="payNowButton">Pay Now</button>
-            <button id="closeCheckoutModal">Cancel</button>
-        </div>
-    </div>
+
      <footer>
         <p>&copy; 2024 Food Delivery App</p>
     </footer>
