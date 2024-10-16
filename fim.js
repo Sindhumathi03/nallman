@@ -131,41 +131,7 @@ function updateTotalPrice() {
     document.getElementById('totalPrice').innerText = `$${totalPrice}`;
     document.getElementById('totalPriceHeader').innerText = `$${totalPrice}`;
 }
-  function checkout() {
-            const checkoutModal = document.getElementById('checkoutModal');
-            const checkoutTotal = document.getElementById('checkoutTotal');
-
-            checkoutTotal.innerText = `$${totalPrice}`;
-            checkoutModal.style.display = 'block';
-
-            document.getElementById('payNowButton').onclick = function() {
-                payNow();
-            };
-
-            document.getElementById('closeCheckoutModal').onclick = function() {
-                closeCheckout();
-            };
-        }
-
-        // Simulate payment
-        function payNow() {
-            alert("Payment Successful!");
-            clearOrders();
-            closeCheckout();
-        }
-
-        // Close the checkout modal
-        function closeCheckout() {
-            document.getElementById('checkoutModal').style.display = 'none';
-        }
-
-        // Clear orders
-        function clearOrders() {
-            totalPrice = 0;
-            document.getElementById('orderList').innerHTML = '';
-            updateTotalPrice();
-        }
-
+  
 function toggleOrders() {
     const myOrdersSection = document.getElementById('myOrders');
 
@@ -223,6 +189,30 @@ function hideOffers() {
     const offersModal = document.getElementById('offersModal');
     offersModal.style.display = 'none';
 }
+ function showCheckoutModal() {
+            const checkoutModal = document.getElementById('checkoutModal');
+            const checkoutTotalAmount = document.getElementById('checkoutTotalAmount');
 
+            checkoutTotalAmount.innerText = totalPrice;
+            checkoutModal.style.display = 'block';
+        }
+
+        function hideCheckoutModal() {
+            const checkoutModal = document.getElementById('checkoutModal');
+            checkoutModal.style.display = 'none';
+        }
+
+        document.getElementById('checkoutBtn').addEventListener('click', showCheckoutModal);
+
+        document.getElementById('payNowBtn').addEventListener('click', () => {
+            alert("Payment Successful!");
+            cart = []; // Clear the cart
+            totalPrice = 0;
+            updateTotalPrice();
+            hideCheckoutModal();
+            document.getElementById('orderList').innerHTML = ''; // Clear orders list
+        });
+
+        document.getElementById('cancelPaymentBtn').addEventListener('click', hideCheckoutModal);
 // Initialize the restaurant list on page load
 document.addEventListener('DOMContentLoaded', showRestaurants); 
