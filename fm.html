@@ -37,17 +37,17 @@
         <section class="my-orders" id="myOrders" style="display:none;">
             <h2>My Orders</h2>
             <ul id="orderList"></ul>
-            <h3>Total Price: <span id="totalPrice">$0</span></h3>
+            
             <button onclick="hideOrders()">Close Orders</button><hr>
              <button onclick="chekout()">checkout</button>
             
         </section>
 
-        <section class="checkout-modal" id="checkoutModal" style="display:none;">
-            <h2>Checkout</h2>
-            <p>Total Amount: $<span id="checkoutTotalAmount">0</span></p>
-            <button id="payNowBtn">Pay Now</button>
-            <button id="cancelPaymentBtn">Cancel</button>
+        <section id="checkoutSection" style="display: none;">
+      <h2>Checkout</h2>
+      <p id="totalAmount"></p>
+      <button id="payNowBtn">Pay Now</button>
+      <button id="cancelBtn" onclick="hideCheckout()">Cancel</button>
         </section>
       <section class="offers-modal" id="offersModal" style="display:none;">
             <h2>Current Food Offers</h2>
