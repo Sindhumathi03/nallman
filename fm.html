@@ -37,7 +37,9 @@
         <section class="my-orders" id="myOrders" style="display:none;">
             <h2>My Orders</h2>
             <ul id="orderList"></ul>
-            <button id="checkOutBtn" style="display: none;" onclick="checkOut()">Check Out</button>
+            <p>Total: <span id="totalPriceHeader">$0.00</span></p>
+            <button id="checkOutBtn" onclick="checkOut()" style="display:none;">Check Out</button>
+            <button onclick="toggleOrders()">Close Orders</button>
         </section>
 
 
