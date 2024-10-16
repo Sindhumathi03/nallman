@@ -189,30 +189,23 @@ function hideOffers() {
     const offersModal = document.getElementById('offersModal');
     offersModal.style.display = 'none';
 }
- function showCheckoutModal() {
-            const checkoutModal = document.getElementById('checkoutModal');
-            const checkoutTotalAmount = document.getElementById('checkoutTotalAmount');
-
-            checkoutTotalAmount.innerText = totalPrice;
-            checkoutModal.style.display = 'block';
+  function checkout() {
+            document.getElementById('checkoutTotalAmount').innerText = totalPrice;
+            document.getElementById('checkoutModal').style.display = 'block';
         }
 
-        function hideCheckoutModal() {
-            const checkoutModal = document.getElementById('checkoutModal');
-            checkoutModal.style.display = 'none';
-        }
+        document.getElementById('checkoutBtn').onclick = checkout;
 
-        document.getElementById('checkoutBtn').addEventListener('click', showCheckoutModal);
-
-        document.getElementById('payNowBtn').addEventListener('click', () => {
-            alert("Payment Successful!");
-            cart = []; // Clear the cart
+        document.getElementById('payNowBtn').onclick = () => {
+            alert('Payment successful!');
+            cart = [];
             totalPrice = 0;
             updateTotalPrice();
-            hideCheckoutModal();
-            document.getElementById('orderList').innerHTML = ''; // Clear orders list
-        });
+            document.getElementById('checkoutModal').style.display = 'none';
+        };
 
-        document.getElementById('cancelPaymentBtn').addEventListener('click', hideCheckoutModal);
-// Initialize the restaurant list on page load
-document.addEventListener('DOMContentLoaded', showRestaurants); 
+        document.getElementById('cancelPaymentBtn').onclick = () => {
+            document.getElementById('checkoutModal').style.display = 'none';
+        };
+
+        document.addEventListener('DOMContentLoaded', showRestaurants);
