@@ -3,33 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Microblogging App</title>
-    <link rel="stylesheet" href="mb.css">
+    <title>Food Delivery App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
- 
-    <div class="container">
-        <div id="loginContainer">
-        <h2>Login</h2>
-        <input type="text" id="username" placeholder="Username" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <button id="loginButton">Login</button>
-        <p id="loginError" class="hidden">Invalid credentials!</p>
-    </div>
-
-    <div id="mainContainer" class="hidden">
-        <h1>Microblogging App</h1>
-        <div class="post-form">
-            <textarea id="postContent" placeholder="commend?"></textarea>
-            <button id="postButton">Post</button>
+    <header>
+        <h1>Food Delivery App</h1>
+        <div id="cart-info">
+            <span>Cart: <span id="cart-count">0</span> items</span>
+            <button id="checkout-button">Checkout</button>
         </div>
-        <div id="postsContainer">
-            <!-- Posts will be dynamically inserted here -->
+    </header>
+    <main>
+        <div id="restaurant-container"></div>
+        <div id="menu-container" style="display: none;">
+            <button id="back-button" style="display: none;">Back to Restaurants</button>
+            <div id="menu-items"></div>
+        </div>
+    </main>
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Checkout</h2>
+            <div id="order-summary"></div>
+            <p id="total-amount"></p>
+            <div>
+                <label for="payment-method">Payment Method:</label>
+                <select id="payment-method">
+                    <option value="cash">Cash</option>
+                    <option value="card">Card</option>
+                </select>
+            </div>
+            <div id="card-details" style="display: none;">
+                <input type="text" id="card-number" placeholder="Card Number" />
+                <input type="text" id="expiry-date" placeholder="MM/YY" />
+                <input type="text" id="cvv" placeholder="CVV" />
+            </div>
+            <button id="pay-button">Pay</button>
         </div>
     </div>
-    
-<div id="postsContainer"></div>
-
-    <script src="mn.js"></script>
+    <script src="app.js"></script>
 </body>
-</html>
+    </html>
