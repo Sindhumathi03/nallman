@@ -60,55 +60,53 @@ function showMenu(restaurant) {
     const menuItems = document.getElementById('menuItems');
 
     menuTitle.innerText = restaurant;
-    menuItems.innerHTML = ''; // Clear previous items
+    menuItems.innerHTML = '';
 
     menuData[restaurant].items.forEach((item, index) => {
         const li = document.createElement('li');
         li.innerHTML = `
             <img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto; margin-right: 10px;">
             ${item.name} - $${item.price} (${item.offer}) 
-            <span class="rating" data-index="${index}">${getStars(item.rating)}</span><br>
-            <input type="number" id="quantity_${index}" value="1" min="1" style="width: 40px; margin-left: 10px;" /><br>
+            <span class="rating" data-index="${index}">${getStars(item.rating)}</span><hr>
+            <input type="number" id="quantity_${index}" value="1" min="1" style="width: 40px; margin-left: 10px;" /><hr>
             <button class="addToOrderBtn" data-index="${index}">Add to Order</button>
         `;
 
-        // Set the click event on the "Add to Order" button
         li.querySelector('.addToOrderBtn').onclick = (e) => {
-            e.stopPropagation(); // Prevent menu from closing
+            e.stopPropagation();
             const quantity = parseInt(document.getElementById(`quantity_${index}`).value);
             addToOrders(item, quantity);
         };
 
-        // Set the click event for the rating stars
         li.querySelector('.rating').onclick = (e) => {
-            e.stopPropagation(); // Prevent menu from closing
+            e.stopPropagation();
             rateFood(e, item);
         };
 
         menuItems.appendChild(li);
     });
 
-    document.getElementById('restaurants').style.display = 'none'; // Hide restaurants
-    menu.style.display = 'block'; // Show the menu
+    document.getElementById('restaurants').style.display = 'none';
+    menu.style.display = 'block';
 }
 
 function getStars(rating) {
     let stars = '';
     for (let i = 1; i <= 5; i++) {
-        const starColor = i <= rating ? 'yellow' : 'silver'; // Change color based on rating
+        const starColor = i <= rating ? 'yellow' : 'silver';
         stars += `<span class="star" style="color: ${starColor}; cursor: pointer;" onclick="rateFood(event, ${i})">&#9733;</span>`;
     }
     return stars;
 }
 
 function rateFood(event, star) {
-    const itemIndex = event.target.closest('li').querySelector('.rating').dataset.index; // Get item index
-    const restaurantName = document.getElementById('menuTitle').innerText; // Get current restaurant name
-    const item = menuData[restaurantName].items[itemIndex]; // Get the current item
+    const itemIndex = event.target.closest('li').querySelector('.rating').dataset.index;
+    const restaurantName = document.getElementById('menuTitle').innerText;
+    const item = menuData[restaurantName].items[itemIndex];
 
-    item.rating = star; // Set the rating to the clicked star
+    item.rating = star;
     const starsContainer = event.target.closest('li').querySelector('.rating');
-    starsContainer.innerHTML = getStars(item.rating); // Update stars display
+    starsContainer.innerHTML = getStars(item.rating);
 }
 
 function addToOrders(item, quantity) {
@@ -123,12 +121,43 @@ function addToOrders(item, quantity) {
 
     totalPrice += item.price * quantity;
     updateTotalPrice();
-
     alert(`"${item.name}" ordered successfully!`);
 }
 
 function updateTotalPrice() {
-    document.getElementById('totalPrice').innerText = `$${totalPrice}`;
+    const totalPriceElement = document.getElementById('totalPrice');
+    const totalPriceHeader = document.getElementById('totalPriceHeader');
+    const checkOutBtn = document.getElementById('checkOutBtn');
+
+    totalPriceElement.innerText = `$${totalPrice.toFixed(2)}`;
+    totalPriceHeader.innerText = `$${totalPrice.toFixed(2)}`;
+
+    if (totalPrice > 0) {
+        checkOutBtn.style.display = 'block';
+    } else {
+        checkOutBtn.style.display = 'none';
+    }
+}
+
+function checkOut() {
+    const orderList = document.getElementById('orderList');
+    const orderItems = orderList.getElementsByTagName('li');
+
+    if (orderItems.length > 0) {
+        let orderSummary = 'Your Order Summary:\n';
+
+        for (let i = 0; i < orderItems.length; i++) {
+            orderSummary += orderItems[i].innerText + '\n';
+        }
+
+        alert(orderSummary);
+
+        orderList.innerHTML = '';
+        totalPrice = 0;
+        updateTotalPrice();
+    } else {
+        alert('Your order is empty. Please add items to your order.');
+    }
 }
 
 function toggleOrders() {
@@ -138,21 +167,21 @@ function toggleOrders() {
         myOrdersSection.style.display = 'none';
     } else {
         myOrdersSection.style.display = 'block';
-        document.getElementById('restaurants').style.display = 'none'; // Hide restaurants
-        document.getElementById('menu').style.display = 'none'; // Hide menu
+        document.getElementById('restaurants').style.display = 'none';
+        document.getElementById('menu').style.display = 'none';
     }
 }
 
 function hideMenu() {
     const menu = document.getElementById('menu');
     menu.style.display = 'none';
-    document.getElementById('restaurants').style.display = 'block'; // Show restaurants again
+    document.getElementById('restaurants').style.display = 'block';
 }
 
 function hideOrders() {
     const myOrdersSection = document.getElementById('myOrders');
     myOrdersSection.style.display = 'none';
-    document.getElementById('restaurants').style.display = 'block'; // Show restaurants again
+    document.getElementById('restaurants').style.display = 'block';
 }
 
 function searchItems() {
@@ -161,7 +190,7 @@ function searchItems() {
 
     menuItems.forEach(item => {
         const itemName = item.innerText.toLowerCase();
-        item.style.display = itemName.includes(query) ? 'block' : 'none'; // Show matching items
+        item.style.display = itemName.includes(query) ? 'block' : 'none';
     });
 }
 
@@ -189,96 +218,4 @@ function hideOffers() {
     offersModal.style.display = 'none';
 }
 
-// Checkout Modal
-function checkout() {
-    const checkoutModal = document.createElement('div');
-    checkoutModal.style.position = 'fixed';
-    checkoutModal.style.top = '50%';
-    checkoutModal.style.left = '50%';
-    checkoutModal.style.transform = 'translate(-50%, -50%)';
-    checkoutModal.style.padding = '20px';
-    checkoutModal.style.backgroundColor = '#fff';
-    checkoutModal.style.boxShadow = '0px 0px 15px rgba(0, 0, 0, 0.2)';
-    checkoutModal.innerHTML = `
-        <h3>Checkout</h3>
-        <label for="username">Username:</label>
-        <input type="text" id="username" placeholder="Enter Username"><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Enter Password"><br><br>
-        <label for="address">Address:</label>
-        <input type="text" id="address" placeholder="Enter Address"><br><br>
-        <div>
-            <strong>Checkout Amount:</strong> $<span id="checkoutAmount">${totalPrice}</span><br><br>
-        </div>
-        <button id="payButton">Pay</button>
-        <button id="backToOrder">Back to Orders</button>
-    `;
-    document.body.appendChild(checkoutModal);
-
-    document.getElementById('payButton').onclick = () => {
-        showPaymentOptions();
-    };
-
-    document.getElementById('backToOrder').onclick = () => {
-        hideCheckout();
-    };
-}
-
-function showPaymentOptions() {
-    const paymentOptions = document.createElement('div');
-    paymentOptions.style.position = 'fixed';
-    paymentOptions.style.top = '50%';
-    paymentOptions.style.left = '50%';
-    paymentOptions.style.transform = 'translate(-50%, -50%)';
-    paymentOptions.style.padding = '20px';
-    paymentOptions.style.backgroundColor = '#fff';
-    paymentOptions.style.boxShadow = '0px 0px 15px rgba(0, 0, 0, 0.2)';
-    paymentOptions.innerHTML = `
-        <h3>Select Payment Method</h3>
-        <button id="creditCard">Credit Card</button>
-        <button id="paypal">PayPal</button>
-        <button id="cash">Cash on Delivery</button>
-    `;
-    document.body.appendChild(paymentOptions);
-
-    document.getElementById('creditCard').onclick = () => {
-        alert('Payment via Credit Card successful!');
-        hidePaymentOptions();
-    };
-    document.getElementById('paypal').onclick = () => {
-        alert('Payment via PayPal successful!');
-        hidePaymentOptions();
-    };
-    document.getElementById('cash').onclick = () => {
-        alert('Cash on Delivery selected!');
-        hidePaymentOptions();
-    };
-}
-
-function hidePaymentOptions() {
-    const paymentOptions = document.querySelector('div[style*="position: fixed"]');
-    document.body.removeChild(paymentOptions);
-}
-
-function hideCheckout() {
-    const checkoutModal = document.querySelector('div[style*="position: fixed"]');
-    document.body.removeChild(checkoutModal);
-}
-function toggleCheckoutButton() {
-    const orderList = document.getElementById('orderList');
-    const checkoutButton = document.getElementById('checkoutButton');
-
-    if (orderList.children.length > 0) {
-        checkoutButton.style.display = 'block';
-    } else {
-        checkoutButton.style.display = 'none';
-    }
-}
-
-// Initialize the restaurant list on page load
-document.addEventListener('DOMContentLoaded', () => {
-    showRestaurants(); 
-    toggleCheckoutButton(); 
-}); 
-
-
+document.addEventListener('DOMContentLoaded', showRestaurants);
