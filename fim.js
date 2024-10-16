@@ -121,6 +121,8 @@ function addToOrders(item, quantity) {
 
     totalPrice += item.price * quantity;
     updateTotalPrice();
+    
+    // Show success message after adding to order
     alert(`"${item.name}" ordered successfully!`);
 }
 
@@ -179,40 +181,6 @@ function hideOrders() {
     const myOrdersSection = document.getElementById('myOrders');
     myOrdersSection.style.display = 'none';
     document.getElementById('restaurants').style.display = 'block';
-}
-
-function searchItems() {
-    const query = document.getElementById('searchBar').value.toLowerCase();
-    const menuItems = document.querySelectorAll('#menuItems li');
-
-    menuItems.forEach(item => {
-        const itemName = item.innerText.toLowerCase();
-        item.style.display = itemName.includes(query) ? 'block' : 'none';
-    });
-}
-
-function showOffers() {
-    const offersModal = document.getElementById('offersModal');
-    const offerItems = document.getElementById('offerItems');
-
-    offerItems.innerHTML = '';
-
-    Object.keys(menuData).forEach(restaurant => {
-        menuData[restaurant].items.forEach(item => {
-            if (item.offer) {
-                const li = document.createElement('li');
-                li.innerText = `${item.name} at ${restaurant}: ${item.offer}`;
-                offerItems.appendChild(li);
-            }
-        });
-    });
-
-    offersModal.style.display = 'block';
-}
-
-function hideOffers() {
-    const offersModal = document.getElementById('offersModal');
-    offersModal.style.display = 'none';
 }
 
 document.addEventListener('DOMContentLoaded', showRestaurants);
