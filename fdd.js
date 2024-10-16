@@ -67,8 +67,8 @@ function showMenu(restaurant) {
         li.innerHTML = `
             <img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto; margin-right: 10px;">
             ${item.name} - $${item.price} (${item.offer}) 
-            <span class="rating" data-index="${index}">${getStars(item.rating)}</span><br>
-            <input type="number" id="quantity_${index}" value="1" min="1" style="width: 40px; margin-left: 10px;" /><br>
+            <span class="rating" data-index="${index}">${getStars(item.rating)}</span><hr>
+            <input type="number" id="quantity_${index}" value="1" min="1" style="width: 40px; margin-left: 10px;" /><hr>
             <button class="addToOrderBtn" data-index="${index}">Add to Order</button>
         `;
 
