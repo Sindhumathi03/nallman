@@ -1,3 +1,4 @@
+/* General body and layout styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -9,11 +10,14 @@ body {
     color: #333;
 }
 
+/* Header and top bar styles */
 header {
     background-color: rgba(248, 180, 0, 0.8);
     padding: 20px;
     text-align: center;
     color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 .top-bar {
@@ -29,7 +33,6 @@ header {
     margin-right: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    color: #333;
 }
 
 .offers, .cart-summary {
@@ -37,16 +40,19 @@ header {
     font-weight: bold;
     cursor: pointer;
     color: #fff;
+    text-decoration: underline;
 }
 
+/* Main content area styles */
 main {
     padding: 20px;
 }
 
+/* Restaurants section */
 .restaurants {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Space out items evenly */
+    justify-content: space-around;
     margin-bottom: 20px;
 }
 
@@ -56,53 +62,62 @@ main {
     margin: 10px;
     border-radius: 5px;
     text-align: center;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
     cursor: pointer;
-    width: 200px; /* Fixed width for restaurant cards */
+    width: 200px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .restaurant img {
     width: 150px;
     height: auto;
     margin-bottom: 10px;
+    border-radius: 8px;
 }
 
 .restaurant:hover {
     background-color: rgba(212, 212, 212, 0.8);
+    transform: scale(1.05);
 }
 
+/* Menu section styles */
 .menu {
     display: flex;
-    flex-direction: column; /* Stack menu items vertically */
+    flex-direction: column;
     background-color: #F5F5DC;
-    padding: 15px;
-    border-radius: 5px;
+    padding: 20px;
+    border-radius: 8px;
     color: #333;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    margin: auto;
 }
 
 .menu h2 {
-    margin: 0 0 10px; /* Margin below the title */
+    margin: 0 0 10px;
+    text-align: center;
 }
 
 .menu ul {
     list-style-type: none;
     padding: 0;
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping for menu items */
-    justify-content: space-between; /* Space out menu items */
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.menu li ,#orderList li {
+.menu li, #orderList li {
     display: flex;
     align-items: center;
     margin: 10px;
     width: calc(33% - 20px); /* Adjust width for three items per row */
 }
 
-.menu img ,#orderList img {
+.menu img, #orderList img {
     width: 100px;
     height: auto;
     margin-right: 10px;
+    border-radius: 5px;
 }
 
 .rating {
@@ -115,8 +130,29 @@ main {
     cursor: pointer;
 }
 
+/* Add to Order button styling */
+.addToOrderBtn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.addToOrderBtn:hover {
+    background-color: #218838;
+}
+
+/* Orders section styling */
 .my-orders {
     margin-top: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .my-orders h2, .my-orders h3 {
@@ -129,16 +165,20 @@ main {
     padding: 0;
 }
 
+/* Footer styles */
 footer {
     text-align: center;
     margin-top: 20px;
     color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
 }
 
+/* Offers modal styles */
 .offers-modal {
     background-color: #F5F5DC;
     padding: 15px;
-    border-radius: 5px;
+    border-radius: 8px;
     position: fixed;
     top: 20%;
     left: 50%;
@@ -146,13 +186,272 @@ footer {
     z-index: 10;
     display: none;
     color: #333;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .offers-modal h2 {
     margin-top: 0;
+    text-align: center;
     color: #000;
 }
 
+/* Orders section visibility */
 #myOrders {
-    display: none; /* Hidden by default */
+    display: none;
+    max-width: 800px;
+    margin: auto;
 }
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .restaurant {
+        width: 45%;
+    }
+
+    .menu li {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .restaurant {
+        width: 100%;
+    }
+
+    .menu li {
+        width: 100%;
+    }
+
+    .addToOrderBtn {
+        width: 100%;
+        margin: 5px 0;
+    }
+    }/* General body and layout styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('background.jpg'); /* Replace with your image filename */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #333;
+}
+
+/* Header and top bar styles */
+header {
+    background-color: rgba(248, 180, 0, 0.8);
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#searchBar {
+    padding: 10px;
+    width: 250px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.offers, .cart-summary {
+    margin-right: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Main content area styles */
+main {
+    padding: 20px;
+}
+
+/* Restaurants section */
+.restaurants {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.restaurant {
+    background-color: #F5F5DC;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+    cursor: pointer;
+    width: 200px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.restaurant img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.restaurant:hover {
+    background-color: rgba(212, 212, 212, 0.8);
+    transform: scale(1.05);
+}
+
+/* Menu section styles */
+.menu {
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F5DC;
+    padding: 20px;
+    border-radius: 8px;
+    color: #333;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    margin: auto;
+}
+
+.menu h2 {
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.menu li, #orderList li {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    width: calc(33% - 20px); /* Adjust width for three items per row */
+}
+
+.menu img, #orderList img {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.rating {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.star {
+    color: gold;
+    cursor: pointer;
+}
+
+/* Add to Order button styling */
+.addToOrderBtn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.addToOrderBtn:hover {
+    background-color: #218838;
+}
+
+/* Orders section styling */
+.my-orders {
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.my-orders h2, .my-orders h3 {
+    margin-top: 20px;
+    color: pink;
+}
+
+.my-orders ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+}
+
+/* Offers modal styles */
+.offers-modal {
+    background-color: #F5F5DC;
+    padding: 15px;
+    border-radius: 8px;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    z-index: 10;
+    display: none;
+    color: #333;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.offers-modal h2 {
+    margin-top: 0;
+    text-align: center;
+    color: #000;
+}
+
+/* Orders section visibility */
+#myOrders {
+    display: none;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .restaurant {
+        width: 45%;
+    }
+
+    .menu li {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .restaurant {
+        width: 100%;
+    }
+
+    .menu li {
+        width: 100%;
+    }
+
+    .addToOrderBtn {
+        width: 100%;
+        margin: 5px 0;
+    }
+    }
