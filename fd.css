@@ -1,1 +1,226 @@
+/* General body and layout styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('background.jpg'); /* Replace with your image filename */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #333;
+}
 
+/* Header and top bar styles */
+header {
+    background-color: rgba(248, 180, 0, 0.8);
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#searchBar {
+    padding: 10px;
+    width: 250px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+}
+
+.offers, .cart-summary {
+    margin-right: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Main content area styles */
+main {
+    padding: 20px;
+}
+
+/* Restaurants section */
+.restaurants {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Space out items evenly */
+    margin-bottom: 20px;
+}
+
+.restaurant {
+    background-color: #F5F5DC;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    width: 200px; /* Fixed width for restaurant cards */
+}
+
+.restaurant img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.restaurant:hover {
+    background-color: rgba(212, 212, 212, 0.8);
+}
+
+/* Menu section styles */
+.menu {
+    display: flex;
+    flex-direction: column; /* Stack menu items vertically */
+    background-color: #F5F5DC;
+    padding: 15px;
+    border-radius: 5px;
+    color: #333;
+}
+
+.menu h2 {
+    margin: 0 0 10px; /* Margin below the title */
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for menu items */
+    justify-content: space-between; /* Space out menu items */
+}
+
+.menu li, #orderList li {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    width: calc(33% - 20px); /* Adjust width for three items per row */
+}
+
+.menu img, #orderList img {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.rating {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.star {
+    color: gold;
+    cursor: pointer;
+}
+
+/* Add to Order button styling */
+.addToOrderBtn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.addToOrderBtn:hover {
+    background-color: #218838;
+}
+
+/* Orders section styling */
+.my-orders {
+    margin-top: 20px;
+}
+
+.my-orders h2, .my-orders h3 {
+    margin-top: 20px;
+    color: pink;
+}
+
+.my-orders ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+}
+
+/* Offers modal styles */
+.offers-modal {
+    background-color: #F5F5DC;
+    padding: 15px;
+    border-radius: 5px;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    z-index: 10;
+    display: none;
+    color: #333;
+}
+
+.offers-modal h2 {
+    margin-top: 0;
+    color: #000;
+}
+
+
+/* Orders section visibility */
+#myOrders {
+    display: none; /* Hidden by default */
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+}
+
+#payNowButton, #closeCheckoutModal {
+    margin: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#closeCheckoutModal {
+    background-color: #f44336;
+}
+
+#payNowButton:hover, #closeCheckoutModal:hover {
+    opacity: 0.9;
+}
+
+
+
+
+
+  
