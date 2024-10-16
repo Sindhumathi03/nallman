@@ -1,404 +1,170 @@
-const foodItem= [
-    {
-    id: 1,
-    name: 'Ambur Biryani',
-    category : 'biryani',
-    rating : 4.3,
-    price: 13,
-    img: 'https://b.zmtcdn.com/data/pictures/chains/6/18203026/39733a51923278db60c04cbca093dea7.jpg?output-format=webp&fit=around|771.75:416.25&crop=771.75:416.25;*,*',
-    quantity: 1
-},
-{
-    id: 2,
-    name: 'Hyderabadi Biryani',
-    category : 'biryani',
-    rating : 4.3,
-    price: 15,
-    img: 'images/biryani/Chicken-Biryani-hyd.jpg',
-    quantity: 1
-},
-{
-    id: 3,
-    name: 'Egg Biryani',
-    category : 'biryani',
-    rating : 4.3,
-    price: 18,
-    img: 'images/biryani/egg-biryani.jpeg',
-    quantity: 1
-},
-{
-    id: 4,
-    name: 'Goan Fish Biryani',
-    category : 'biryani',
-    rating : 4.3,
-    price: 15,
-    img: 'images/biryani/goan-fish-biryani.jpg',
-    quantity: 1
-},
-{
-    id: 5,
-    name: 'Mutton Biryani',
-    category : 'biryani',
-    rating : 4.3,
-    price: 10,
-    img: 'images/biryani/hyd-Mutton-Biryani.jpg',
-    quantity: 1
-},
-{
-    id: 6,
-    name: 'Kamrupi Biryani',
-    category : 'biryani',
-    rating : 4.3,
-    price: 12,
-    img: 'images/biryani/kamrupi-biryani.jpg',
-    quantity: 1
-},
-{
-    id: 7,
-    name: 'Kashmiri Biryani',
-    category : 'biryani',
-    rating : 4.3,
-    price: 13,
-    img: 'images/biryani/kashmiri.pulao.jpg',
-    quantity: 1
-},
-{
-    id: 8,
-    name: 'Memoni Biryani',
-    category : 'biryani',
-    rating : 4.3,
-    price: 20,
-    img: 'images/biryani/memonibiryani.png',
-    quantity: 1
-},
-{
-    id: 9,
-    name: 'Mughlai Biryani',
-    category : 'biryani',
-    rating : 4.3,
-    price: 15,
-    img: 'images/biryani/mughlai-biryani.jpg',
-    quantity: 1
-},
-{
-    id: 10,
-    name: 'Chicken Roast',
-    category : 'chicken',
-    rating : 4.3,
-    price: 11,
-    img: 'images/chicken/Chicken_roast.jpg',
-    quantity: 1
-},
-{
-    id: 11,
-    name: 'Chicken Curry',
-    category : 'chicken',
-    rating : 4.3,
-    price: 10,
-    img: 'images/chicken/Chicken-Curry.jpg',
-    quantity: 1
-},
-{
-    id: 12,
-    name: 'Chicken Do Pyaza',
-    category : 'chicken',
-    rating : 4.3,
-    price: 14,
-    img: 'images/chicken/Chicken-do-Pyaza.jpg',
-    quantity: 1
-},
-{
-    id: 13,
-    name: 'Chicken Masala',
-    category : 'chicken',
-    rating : 4.3,
-    price: 12,
-    img: 'images/chicken/Chicken-Masala.jpeg',
-    quantity: 1
-},
-{
-    id: 14,
-    name: 'Handi Chicken',
-    category : 'chicken',
-    rating : 4.3,
-    price: 17,
-    img: 'images/chicken/Handi-chicken.jpg',
-    quantity: 1
-},
-{
-    id: 15,
-    name: 'Murgh Musallam',
-    category : 'chicken',
-    rating : 4.3,
-    price: 20,
-    img: 'images/chicken/Murgh-Musallam.jpg',
-    quantity: 1
-},
-{
-    id: 16,
-    name: 'Matar Paneer',
-    category : 'paneer',
-    rating : 4.3,
-    price: 15,
-    img: 'images/paneer/Matar-Paneer.jpg',
-    quantity: 1
 
-},
-{
-    id: 17,
-    name: 'Palak Paneer',
-    category : 'paneer',
-    rating : 4.3,
-    price: 10,
-    img: 'images/paneer/palak-paneer.jpg',
-    quantity: 1
-},
-{
-    id: 18,
-    name: 'Paneer Butter Masala',
-    category : 'paneer',
-    rating : 4.3,
-    price: 15,
-    img: 'images/paneer/paneer-butter-masala.jpg',
-    quantity: 1
+const menuData = {
+};
 
-},
-{
-    id: 19,
-    name: 'Paneer Do Pyaza',
-    category : 'paneer',
-    rating : 4.3,
-    price: 12,
-    img: 'images/paneer/Paneer-Do-Pyaza.jpg',
-    quantity: 1
+let totalPrice = 0;
 
-},
-{
-    id: 20,
-    name: 'Hyderabadi Paneer',
-    category : 'paneer',
-    rating : 4.3,
-    price: 8,
-    img: 'images/paneer/Paneer-Hyderabadi.jpg',
-    quantity: 1
-},
-{
-    id: 21,
-    name: 'Paneer Lababdar',
-    category : 'paneer',
-    rating : 4.3,
-    price: 7,
-    img: 'images/paneer/paneer-lababdar.jpg',
-    quantity: 1
-},
-{
-    id: 22,
-    name: 'Shahi Paneer',
-    age: '32',
-    category : 'paneer',
-    rating : 4.3,
-    price: 5,
-    img: 'images/paneer/shahi-paneer.jpg',
-    quantity: 1
-},
-{
-    id: 23,
-    name: 'Navratan Korma',
-    category : 'vegetable',
-    rating : 4.3,
-    price: 8,
-    img: 'images/vegetable/navratan-korma_-vegetable.png',
-    quantity: 1
-},
-{
-    id: 24,
-    name: 'Veg Jalfrezi',
-    category : 'vegetable',
-    rating : 4.3,
-    price: 7,
-    img: 'images/vegetable/VEG-JALFREZI.jpg',
-    quantity: 1
-},
-{
-    id: 25,
-    name: 'Veg Biryani',
-    category : 'vegetable',
-    rating : 4.3,
-    price: 5,
-    img: 'images/vegetable/vegetable-biryani.jpg',
-    quantity: 1
-},
-{
-    id: 26,
-    name: 'Veg Curry',
-    category : 'vegetable',
-    rating : 4.3,
-    price: 7,
-    img: 'images/vegetable/vegetable-curry.jpeg',
-    quantity: 1
-},
-{
-    id: 27,
-    name: 'Veg Kolhapur',
-    category : 'vegetable',
-    rating : 4.3,
-    price: 10,
-    img: 'images/vegetable/vegetable-kolhapuri.jpg',
-    quantity: 1
-},
-{
-    id: 28,
-    name: 'Veg Masala',
-    category : 'vegetable',
-    rating : 4.3,
-    price: 4,
-    img: 'images/vegetable/vegetable-masala.jpg',
-    quantity: 1
-},
-{
-    id: 29,
-    name: 'Veg Pakora',
-    category : 'vegetable',
-    rating : 4.3,
-    price: 4,
-    img: 'images/vegetable/vegetable-pakora.jpg',
-    quantity: 1
-},
-{
-    id: 30,
-    name: 'Momos',
-    category : 'chinese',
-    rating : 4.3,
-    price: 8,
-    img: 'images/chinese/cabbage-momos-.jpg',
-    quantity: 1
-},
-{
-    id: 31,
-    name: 'Chicken Manchurian',
-    category : 'chinese',
-    rating : 4.3,
-    price: 7,
-    img: 'images/chinese/ChickenManchurian.jpg',
-    quantity: 1
-},
-{
-    id: 32,
-    name: 'Chili Chicken',
-    category : 'chinese',
-    rating : 4.3,
-    price: 5,
-    img: 'images/chinese/Chili-Chicken.jpg',
-    quantity: 1
-},
-{
-    id: 33,
-    name: 'Chowmein',
-    category : 'chinese',
-    rating : 4.3,
-    price: 16,
-    img: 'images/chinese/chowmin.jpg',
-    quantity: 1
-},
-{
-    id: 34,
-    name: 'Spring Roll',
-    category : 'chinese',
-    rating : 4.3,
-    price: 14,
-    img: 'images/chinese/spring-rolls.jpg',
-    quantity: 1
-},
-{
-    id: 35,
-    name: 'Szechuan Chicken',
-    category : 'chinese',
-    rating : 4.3,
-    price: 10,
-    img: 'images/chinese/szechuan-chicken.jpg',
-    quantity: 1
-},
-{
-    id: 36,
-    name: 'Fried Rice',
-    category : 'chinese',
-    rating : 4.3,
-    price: 8,
-    img: 'images/chinese/veg-fried-rice.jpg',
-    quantity: 1
-},
-{
-    id: 37,
-    name: 'Butter Masala Dosa',
-    category : 'south indian',
-    rating : 4.3,
-    price: 18,
-    img: 'images/south indian/Butter-Masala-Dosa.png',
-    quantity: 1
-},
-{
-    id: 38,
-    name: 'Idli',
-    category : 'south indian',
-    rating : 4.3,
-    price: 20,
-    img: 'images/south indian/idli-with-rice-flour.jpg',
-    quantity: 1
-},
-{
-    id: 39,
-    name: 'Masala Dosa',
-    category : 'south indian',
-    rating : 4.3,
-    price: 12,
-    img: 'images/south indian/masala-dosa.jpg',
-    quantity: 1
-},
-{
-    id: 40,
-    name: 'Mysore Bonda',
-    category : 'south indian',
-    rating : 4.3,
-    price: 10,
-    img: 'images/south indian/mysore-bonda.jpg',
-    quantity: 1
-},
-{
-    id: 41,
-    name: 'Onion Uttapam',
-    category : 'south indian',
-    rating : 4.3,
-    price: 15,
-    img: 'images/south indian/onion-uttapam.jpg',
-    quantity: 1
-},
-{
-    id: 42,
-    name: 'Plain Dosa',
-    category : 'south indian',
-    rating : 4.3,
-    price: 40,
-    img: 'images/south indian/plain-dosa.jpeg',
-    quantity: 1
-},
-{
-    id: 43,
-    name: 'Rava Uttapam',
-    category : 'south indian',
-    rating : 4.3,
-    price: 25,
-    img: 'images/south indian/Rava-Uttapam.jpg',
-    quantity: 1
-},
-{
-    id: 44,
-    name: 'Sambhar Vada',
-    category : 'south indian',
-    rating : 4.3,
-    price: 34,
-    img: 'images/south indian/sambhar-vada.jpg',
-    quantity: 1
-},
-]
+// Initialize the restaurant list on page load
+document.addEventListener('DOMContentLoaded', showRestaurants);
 
-export {foodItem};
+function showRestaurants() {
+  const restaurantSection = document.getElementById('restaurants');
+  restaurantSection.innerHTML = '';
+  Object.keys(menuData).forEach((restaurant) => {
+    const div = document.createElement('div');
+    div.classList.add('restaurant');
+    div.onclick = () => showMenu(restaurant);
+    div.innerHTML = `
+      <img src="${menuData[restaurant].image}" alt="${restaurant}">
+      <h3>${restaurant}</h3>
+      <p>${restaurant} Cuisine</p>
+    `;
+    restaurantSection.appendChild(div);
+  });
+}
+
+function showMenu(restaurant) {
+  const menu = document.getElementById('menu');
+  const menuTitle = document.getElementById('menuTitle');
+  const menuItems = document.getElementById('menuItems');
+  menuTitle.innerText = restaurant;
+  menuItems.innerHTML = '';
+  menuData[restaurant].items.forEach((item, index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto; margin-right: 10px;">
+      ${item.name} - $${item.price} (${item.offer})
+      <span class="rating" data-index="${index}">${getStars(item.rating)}</span>
+      <hr>
+      <input type="number" id="quantity_${index}" value="1" min="1" style="width: 40px; margin-left: 10px;"/>
+      <hr>
+      <button class="addToOrderBtn" data-index="${index}">Add to Order</button>
+    `;
+    li.querySelector('.addToOrderBtn').onclick = (e) => {
+      e.stopPropagation();
+      const quantity = parseInt(document.getElementById(`quantity_${index}`).value);
+      addToOrders(item, quantity);
+    };
+    li.querySelector('.rating').onclick = (e) => {
+      e.stopPropagation();
+      rateFood(e, item);
+    };
+    menuItems.appendChild(li);
+  });
+  document.getElementById('restaurants').style.display = 'none';
+  menu.style.display = 'block';
+}
+
+function getStars(rating) {
+  let stars = '';
+  for (let i = 1; i <= 5; i++) {
+    const starColor = i <= rating ? 'yellow' : 'silver';
+    stars += `<span class="star" style="color: ${starColor}; cursor: pointer;" onclick="rateFood(event, ${i})">&#9733;</span>`;
+  }
+  return stars;
+}
+
+function rateFood(event, star) {
+  const itemIndex = event.target.closest('li').querySelector('.rating').dataset.index;
+  const restaurantName = document.getElementById('menuTitle').innerText;
+  const item = menuData[restaurantName].items[itemIndex];
+  item.rating = star;
+  const starsContainer = event.target.closest('li').querySelector('.rating');
+  starsContainer.innerHTML = getStars(item.rating);
+}
+
+function addToOrders(item, quantity) {
+  const orderList = document.getElementById('orderList');
+  const li = document.createElement('li');
+  li.innerHTML = `
+    <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto; margin-right: 10px;">
+    ${item.name} - $${item.price} x ${quantity} = $${item.price * quantity}
+  `;
+  orderList.appendChild(li);
+  totalPrice += item.price * quantity;
+  updateTotalPrice();
+  alert(`"${item.name}" ordered successfully!`);
+}
+
+function updateTotalPrice() {
+  document.getElementById('totalPrice').innerText = `$${totalPrice}`;
+  document.getElementById('totalPriceHeader').innerText = `Total: $${totalPrice}`;
+}
+
+function toggleOrders() {
+  const myOrdersSection = document.getElementById('myOrders');
+  if (myOrdersSection.style.display === 'block') {
+    myOrdersSection.style.display = 'none';
+  } else {
+    myOrdersSection.style.display = 'block';
+    document.getElementById('restaurants').style.display = 'none';
+    document.getElementById('menu').style.display = 'none';
+  }
+}
+
+function hideMenu() {
+  const menu = document.getElementById('menu');
+  menu.style.display = 'none';
+  document.getElementById('restaurants').style.display = 'block';
+}
+
+function hideOrders() {
+  const myOrdersSection = document.getElementById('myOrders');
+  myOrdersSection.style.display = 'none';
+  document.getElementById('restaurants').style.display = 'block';
+}
+
+function searchItems() {
+  const query = document.getElementById('searchBar').value.toLowerCase();
+  const menuItems = document.querySelectorAll('#menuItems li');
+  menuItems.forEach((item) => {
+    const itemName = item.innerText.toLowerCase();
+    item.style.display = itemName.includes(query) ? 'block' : 'none
+```Here's the rest of the JavaScript code:
+
+```
+function checkoutOrder() {
+  const myOrdersSection = document.getElementById('myOrders');
+  const checkoutSection = document.getElementById('checkoutSection');
+  checkoutSection.style.display = 'block';
+  myOrdersSection.style.display = 'none';
+  document.getElementById('totalAmount').innerText = `Total Amount: $${totalPrice}`;
+}
+
+function payNow() {
+  alert('Payment successful!');
+  document.getElementById('orderList').innerHTML = '';
+  document.getElementById('totalPrice').innerText = `$0`;
+  totalPrice = 0;
+  document.getElementById('checkoutSection').style.display = 'none';
+  document.getElementById('myOrders').style.display = 'block';
+}
+
+document.getElementById('checkoutBtn').onclick = checkoutOrder;
+document.getElementById('payNowBtn').onclick = payNow;
+
+function showOffers() {
+  const offersModal = document.getElementById('offersModal');
+  const offerItems = document.getElementById('offerItems');
+  offerItems.innerHTML = '';
+  Object.keys(menuData).forEach((restaurant) => {
+    menuData[restaurant].items.forEach((item) => {
+      if (item.offer) {
+        const li = document.createElement('li');
+        li.innerText = `${item.name} at ${restaurant}: ${item.offer}`;
+        offerItems.appendChild(li);
+      }
+    });
+  });
+  offersModal.style.display = 'block';
+}
+
+function hideOffers() {
+  const offersModal = document.getElementById('offersModal');
+  offersModal.style.display = 'none';
+}
+
+document.getElementById('offersBtn').onclick = showOffers;
+document.getElementById('closeOffersBtn').onclick = hideOffers;
+
+
