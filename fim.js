@@ -131,47 +131,40 @@ function updateTotalPrice() {
     document.getElementById('totalPrice').innerText = `$${totalPrice}`;
     document.getElementById('totalPriceHeader').innerText = `$${totalPrice}`;
 }
- function checkout() {
+  function checkout() {
             const checkoutModal = document.getElementById('checkoutModal');
             const checkoutTotal = document.getElementById('checkoutTotal');
 
-            // Show the total amount in the modal
             checkoutTotal.innerText = `$${totalPrice}`;
-
-            // Show the modal
             checkoutModal.style.display = 'block';
 
-            // Attach the pay button logic
             document.getElementById('payNowButton').onclick = function() {
                 payNow();
             };
 
-            // Close the checkout modal
             document.getElementById('closeCheckoutModal').onclick = function() {
                 closeCheckout();
             };
         }
 
-        // Simulate the payment process
+        // Simulate payment
         function payNow() {
             alert("Payment Successful!");
-            clearOrders(); // Reset the cart after payment
-            closeCheckout(); // Close the checkout modal
+            clearOrders();
+            closeCheckout();
         }
 
         // Close the checkout modal
         function closeCheckout() {
-            const checkoutModal = document.getElementById('checkoutModal');
-            checkoutModal.style.display = 'none';
+            document.getElementById('checkoutModal').style.display = 'none';
         }
 
-        // Function to clear orders
+        // Clear orders
         function clearOrders() {
             totalPrice = 0;
             document.getElementById('orderList').innerHTML = '';
             updateTotalPrice();
         }
-
 
 function toggleOrders() {
     const myOrdersSection = document.getElementById('myOrders');
