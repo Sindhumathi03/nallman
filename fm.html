@@ -48,6 +48,18 @@
             <button onclick="hideOffers()">Close Offers</button>
         </section>
     </main>
+    
+    <div id="checkoutModal" class="checkout-modal">
+        <div class="checkout-box">
+            <h3>Checkout</h3>
+            <p>Total Amount: $<span id="checkoutAmount">0</span></p>
+            <input type="text" id="username" placeholder="Enter username" required>
+            <input type="password" id="password" placeholder="Enter password" required>
+            <input type="text" id="address" placeholder="Enter delivery address" required>
+            <button onclick="processPayment()">Pay</button>
+            <button onclick="closeCheckoutModal()">Cancel</button>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2024 Food Delivery App</p>
