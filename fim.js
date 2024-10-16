@@ -36,24 +36,24 @@ const menuData = {
  let totalPrice = 0;
         let cart = [];
 
-        function showRestaurants() {
-            const restaurantSection = document.getElementById('restaurants');
-            restaurantSection.innerHTML = '';
+       function showRestaurants() {
+    const restaurantSection = document.getElementById('restaurants');
+    restaurantSection.innerHTML = '';
 
-            Object.keys(menuData).forEach(restaurant => {
-                const div = document.createElement('div');
-                div.classList.add('restaurant');
-                div.onclick = () => showMenu(restaurant);
+    Object.keys(menuData).forEach(restaurant => {
+        const div = document.createElement('div');
+        div.classList.add('restaurant');
+        div.onclick = () => showMenu(restaurant);
 
-                div.innerHTML = `
-                    <img src="${menuData[restaurant].image}" alt="${restaurant}">
-                    <h3>${restaurant}</h3>
-                    <p>${restaurant} Cuisine</p>
-                `;
+        div.innerHTML = `
+            <img src="${menuData[restaurant].image}" alt="${restaurant}">
+            <h3>${restaurant}</h3>
+            <p>${restaurant} Cuisine</p>
+        `;
 
-                restaurantSection.appendChild(div);
-            });
-        }
+        restaurantSection.appendChild(div);
+    });
+}
 
 function showMenu(restaurant) {
             const menu = document.getElementById('menu');
