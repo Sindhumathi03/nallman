@@ -56,33 +56,42 @@ const menuData = {
 }
 
 function showMenu(restaurant) {
-            const menu = document.getElementById('menu');
-            const menuTitle = document.getElementById('menuTitle');
-            const menuItems = document.getElementById('menuItems');
+    const menu = document.getElementById('menu');
+    const menuTitle = document.getElementById('menuTitle');
+    const menuItems = document.getElementById('menuItems');
 
-            menuTitle.innerText = restaurant;
-            menuItems.innerHTML = '';
+    menuTitle.innerText = restaurant;
+    menuItems.innerHTML = ''; // Clear previous items
 
-            menuData[restaurant].items.forEach((item, index) => {
-                const li = document.createElement('li');
-                li.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto; margin-right: 10px;">
-                    ${item.name} - $${item.price} (${item.offer})
-                    <input type="number" id="quantity_${index}" value="1" min="1" style="width: 40px; margin-left: 10px;" />
-                    <button class="addToOrderBtn" data-index="${index}">Add to Order</button>
-                `;
+    menuData[restaurant].items.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto; margin-right: 10px;">
+            ${item.name} - $${item.price} (${item.offer}) 
+            <span class="rating" data-index="${index}">${getStars(item.rating)}</span><hr>
+            <input type="number" id="quantity_${index}" value="1" min="1" style="width: 40px; margin-left: 10px;" /><hr>
+            <button class="addToOrderBtn" data-index="${index}">Add to Order</button>
+        `;
 
-                li.querySelector('.addToOrderBtn').onclick = () => {
-                    const quantity = parseInt(document.getElementById(`quantity_${index}`).value);
-                    addToOrders(item, quantity);
-                };
+        // Set the click event on the "Add to Order" button
+        li.querySelector('.addToOrderBtn').onclick = (e) => {
+            e.stopPropagation(); // Prevent menu from closing
+            const quantity = parseInt(document.getElementById(`quantity_${index}`).value);
+            addToOrders(item, quantity);
+        };
 
-                menuItems.appendChild(li);
-            });
+        // Set the click event for the rating stars
+        li.querySelector('.rating').onclick = (e) => {
+            e.stopPropagation(); // Prevent menu from closing
+            rateFood(e, item);
+        };
 
-            document.getElementById('restaurants').style.display = 'none';
-            menu.style.display = 'block';
-        }
+        menuItems.appendChild(li);
+    });
+
+    document.getElementById('restaurants').style.display = 'none'; // Hide restaurants
+    menu.style.display = 'block'; // Show the menu
+}
 function getStars(rating) {
     let stars = '';
     for (let i = 1; i <= 5; i++) {
