@@ -176,6 +176,35 @@ footer {
     margin-top: 0;
     color: #000;
 }
+.checkout-modal {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .checkout-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .checkout-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .checkout-box button {
+            padding: 10px;
+            margin-top: 10px;
+        }
 
 /* Orders section visibility */
 #myOrders {
