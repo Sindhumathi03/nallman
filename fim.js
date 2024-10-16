@@ -264,6 +264,21 @@ function hideCheckout() {
     const checkoutModal = document.querySelector('div[style*="position: fixed"]');
     document.body.removeChild(checkoutModal);
 }
+function toggleCheckoutButton() {
+    const orderList = document.getElementById('orderList');
+    const checkoutButton = document.getElementById('checkoutButton');
+
+    if (orderList.children.length > 0) {
+        checkoutButton.style.display = 'block';
+    } else {
+        checkoutButton.style.display = 'none';
+    }
+}
 
 // Initialize the restaurant list on page load
-document.addEventListener('DOMContentLoaded', showRestaurants);
+document.addEventListener('DOMContentLoaded', () => {
+    showRestaurants(); 
+    toggleCheckoutButton(); 
+}); 
+
+
