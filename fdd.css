@@ -182,6 +182,107 @@ footer {
 #myOrders {
     display: none; /* Hidden by default */
 }
+#checkoutModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 400px;
+}
+
+#checkoutModal h3 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#checkoutModal label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+#checkoutModal input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#checkoutModal button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#checkoutModal button:hover {
+    background-color: #218838;
+}
+
+#checkoutModal #backToOrder {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+#checkoutModal #backToOrder:hover {
+    background-color: #e0e0e0;
+}
+
+/* Payment options modal */
+#paymentOptions {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    width: 400px;
+}
+
+#paymentOptions h3 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#paymentOptions button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#paymentOptions button:hover {
+    background-color: #0056b3;
+}
+
+/* Hide modals */
+.modal {
+    display: none;
+}
+
+/* Scrollable overflow (for longer menus) */
+#menuItems {
+    max-height: 400px;
+    overflow-y: auto;
+}
 
 
 
