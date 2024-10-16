@@ -1,211 +1,140 @@
-const menuData = {
-    'Pizza Place': {
-        image: 'https://img.freepik.com/free-psd/italian-restaurant-square-flyer-template_23-2148670801.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid',
-        items: [
-            { name: 'Margherita Pizza', price: 8, offer: '20% off', image: 'https://media.istockphoto.com/id/1168754685/photo/pizza-margarita-with-cheese-top-view-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=psLRwd-hX9R-S_iYU-sihB4Jx2aUlUr26fkVrxGDfNg=', rating: 0 },
-            { name: 'Pepperoni Pizza', price: 10, offer: 'Buy 1 Get 1 Free', image: 'https://img.freepik.com/premium-photo/colorful-homemade-pizza-with-black-ham-cherry-tomatoes_1126714-13363.jpg?size=626&ext=jpg', rating: 0 },
-            { name: 'Veggie Pizza', price: 9, offer: '10% off', image: 'https://img.freepik.com/premium-photo/colorful-homemade-pizza-with-black-ham-cherry-tomatoes_1126714-13105.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid', rating: 0 }
+const restaurants = [
+    {
+        id: 1,
+        name: 'Italian Bistro',
+        menu: [
+            { id: 1, name: 'Pizza', price: 10.99, img: 'pizza.jpg' },
+            { id: 2, name: 'Pasta', price: 12.99, img: 'pasta.jpeg' },
         ]
     },
-    'Burger Joint': {
-        image: 'https://media.istockphoto.com/id/1485677116/photo/waiter-hands-hold-a-plate-with-a-very-big-cheeseburger-in-pub.webp?a=1&b=1&s=612x612&w=0&k=20&c=tMi4IqxQ2t4LwwWyFca0bHLVqp6UQuUMeLxMf9G7EJc=',
-        items: [
-            { name: 'Cheeseburger', price: 5, offer: 'Free fries with burger', image: 'https://img.freepik.com/free-photo/big-sandwich-hamburger-burger-with-beef-red-onion-tomato-fried-bacon_2829-5398.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid', rating: 0 },
-            { name: 'Veggie Burger', price: 6, offer: '20% off', image: 'https://img.freepik.com/premium-photo/green-vegan-burger-without-meat-with-vegetables_659326-3791.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid', rating: 0 },
-            { name: 'Double Burger', price: 7, offer: '10% off on 2nd item', image: 'https://img.freepik.com/free-photo/view-delicious-burgers-with-buns-cheese_23-2150887913.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid', rating: 0 }
+    {
+        id: 2,
+        name: 'Burger House',
+        menu: [
+            { id: 3, name: 'Burger', price: 8.99, img: 'burger.jpeg' },
+            { id: 4, name: 'Fries', price: 3.99, img: 'fries.jpeg' },
         ]
     },
-    'Sushi Bar': {
-        image: 'https://img.freepik.com/premium-photo/closeup-hands-expertly-rolling-sushi_167857-73950.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid',
-        items: [
-            { name: 'California Roll', price: 12, offer: 'Free drink with order', image: 'https://via.placeholder.com/100', rating: 0 },
-            { name: 'Spicy Tuna Roll', price: 14, offer: '20% off', image: 'https://via.placeholder.com/100', rating: 0 },
-            { name: 'Veggie Roll', price: 10, offer: '10% off', image: 'https://via.placeholder.com/100', rating: 0 }
+    {
+        id: 3,
+        name: 'Japanese Bites',
+        menu: [
+            { id: 5, name: 'Sushi', price: 14.99, img: 'sushi.jpeg' },
+            { id: 6, name: 'Sashimi', price: 16.99, img: 'sashimi.jpeg' },
         ]
     },
-    'Indian Diner': {
-        image: 'https://img.freepik.com/premium-photo/photography-tasty-indian-indian-tikka_1288657-47362.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid',
-        items: [
-            { name: 'Butter Chicken', price: 11, offer: '15% off', image: 'https://via.placeholder.com/100', rating: 0 },
-            { name: 'Paneer Tikka', price: 9, offer: 'Buy 1 Get 1 Free', image: 'https://via.placeholder.com/100', rating: 0 },
-            { name: 'Biryani', price: 10, offer: '10% off on orders above $20', image: 'https://via.placeholder.com/100', rating: 0 }
-        ]
-    }
+];
+
+let cart = [];
+
+// Display restaurants
+function displayRestaurants() {
+    const restaurantContainer = document.getElementById('restaurant-container');
+    restaurantContainer.innerHTML = '';
+
+    restaurants.forEach(restaurant => {
+        const restaurantItem = document.createElement('div');
+        restaurantItem.className = 'restaurant-item';
+        restaurantItem.innerText = restaurant.name;
+        restaurantItem.onclick = () => displayMenu(restaurant);
+        restaurantContainer.appendChild(restaurantItem);
+    });
+}
+
+// Display menu items for selected restaurant
+function displayMenu(restaurant) {
+    const menuContainer = document.getElementById('menu-container');
+    const menuItems = document.getElementById('menu-items');
+    menuItems.innerHTML = '';
+
+    menuContainer.style.display = 'block';
+    document.getElementById('restaurant-container').style.display = 'none';
+    document.getElementById('back-button').style.display = 'block';
+
+    restaurant.menu.forEach(item => {
+        const menuItem = document.createElement('div');
+        menuItem.className = 'menu-item';
+        menuItem.innerHTML = `
+            <img src="${item.img}" alt="${item.name}">
+            <div>
+                <h3>${item.name}</h3>
+                <p>Price: $${item.price.toFixed(2)}</p>
+                <button onclick="addToCart(${item.id})">Add to Cart</button>
+            </div>
+        `;
+        menuItems.appendChild(menuItem);
+    });
+}
+
+// Add item to cart
+function addToCart(id) {
+    const item = restaurants.flatMap(r => r.menu).find(i => i.id === id);
+    cart.push(item);
+    updateCartInfo();
+}
+
+// Update cart information
+function updateCartInfo() {
+    document.getElementById('cart-count').innerText = cart.length;
+}
+
+// Handle back button
+document.getElementById('back-button').onclick = () => {
+    document.getElementById('menu-container').style.display = 'none';
+    document.getElementById('restaurant-container').style.display = 'block';
+    document.getElementById('back-button').style.display = 'none';
 };
 
- let totalPrice = 0;
-        let cart = [];
+// Handle checkout button
+document.getElementById('checkout-button').onclick = () => {
+    showCheckoutModal();
+};
 
-       function showRestaurants() {
-    const restaurantSection = document.getElementById('restaurants');
-    restaurantSection.innerHTML = '';
+function showCheckoutModal() {
+    const modal = document.getElementById('checkout-modal');
+    const orderSummary = document.getElementById('order-summary');
+    const totalAmount = document.getElementById('total-amount');
 
-    Object.keys(menuData).forEach(restaurant => {
-        const div = document.createElement('div');
-        div.classList.add('restaurant');
-        div.onclick = () => showMenu(restaurant);
+    orderSummary.innerHTML = cart.map(item => `<p>${item.name} - $${item.price.toFixed(2)}</p>`).join('');
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    totalAmount.innerText = `Total Amount: $${total.toFixed(2)}`;
 
-        div.innerHTML = `
-            <img src="${menuData[restaurant].image}" alt="${restaurant}">
-            <h3>${restaurant}</h3>
-            <p>${restaurant} Cuisine</p>
-        `;
-
-        restaurantSection.appendChild(div);
-    });
+    modal.style.display = 'block';
 }
 
-function showMenu(restaurant) {
-    const menu = document.getElementById('menu');
-    const menuTitle = document.getElementById('menuTitle');
-    const menuItems = document.getElementById('menuItems');
+// Close modal
+document.querySelector('.close').onclick = () => {
+    document.getElementById('checkout-modal').style.display = 'none';
+};
 
-    menuTitle.innerText = restaurant;
-    menuItems.innerHTML = ''; // Clear previous items
+// Payment method change
+document.getElementById('payment-method').onchange = function() {
+    document.getElementById('card-details').style.display = this.value === 'card' ? 'block' : 'none';
+};
 
-    menuData[restaurant].items.forEach((item, index) => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            <img src="${item.image}" alt="${item.name}" style="width: 100px; height: auto; margin-right: 10px;">
-            ${item.name} - $${item.price} (${item.offer}) 
-            <span class="rating" data-index="${index}">${getStars(item.rating)}</span><hr>
-            <input type="number" id="quantity_${index}" value="1" min="1" style="width: 40px; margin-left: 10px;" /><hr>
-            <button class="addToOrderBtn" data-index="${index}">Add to Order</button>
-        `;
+// Handle payment
+document.getElementById('pay-button').onclick = () => {
+    const paymentMethod = document.getElementById('payment-method').value;
+    if (paymentMethod === 'card') {
+        const cardNumber = document.getElementById('card-number').value;
+        const expiryDate = document.getElementById('expiry-date').value;
+        const cvv = document.getElementById('cvv').value;
 
-        // Set the click event on the "Add to Order" button
-        li.querySelector('.addToOrderBtn').onclick = (e) => {
-            e.stopPropagation(); // Prevent menu from closing
-            const quantity = parseInt(document.getElementById(`quantity_${index}`).value);
-            addToOrders(item, quantity);
-        };
-
-        // Set the click event for the rating stars
-        li.querySelector('.rating').onclick = (e) => {
-            e.stopPropagation(); // Prevent menu from closing
-            rateFood(e, item);
-        };
-
-        menuItems.appendChild(li);
-    });
-
-    document.getElementById('restaurants').style.display = 'none'; // Hide restaurants
-    menu.style.display = 'block'; // Show the menu
-}
-function getStars(rating) {
-    let stars = '';
-    for (let i = 1; i <= 5; i++) {
-        const starColor = i <= rating ? 'yellow' : 'silver'; // Change color based on rating
-        stars += `<span class="star" style="color: ${starColor}; cursor: pointer;" onclick="rateFood(event, ${i})">&#9733;</span>`;
-    }
-    return stars;
-}
-
-function rateFood(event, star) {
-    const itemIndex = event.target.closest('li').querySelector('.rating').dataset.index; // Get item index
-    const restaurantName = document.getElementById('menuTitle').innerText; // Get current restaurant name
-    const item = menuData[restaurantName].items[itemIndex]; // Get the current item
-
-    item.rating = star; // Set the rating to the clicked star
-    const starsContainer = event.target.closest('li').querySelector('.rating');
-    starsContainer.innerHTML = getStars(item.rating); // Update stars display
-}
-
-function addToOrders(item, quantity) {
-    const orderList = document.getElementById('orderList');
-
-    const li = document.createElement('li');
-    li.innerHTML = `
-        <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto; margin-right: 10px;">
-        ${item.name} - $${item.price} x ${quantity} = $${item.price * quantity}
-    `;
-    orderList.appendChild(li);
-
-    totalPrice += item.price * quantity;
-    updateTotalPrice();
-
-    alert(`"${item.name}" ordered successfully!`);
-}
-
-function updateTotalPrice() {
-    document.getElementById('totalPrice').innerText = `$${totalPrice}`;
-    document.getElementById('totalPriceHeader').innerText = `$${totalPrice}`;
-}
-  
-function toggleOrders() {
-    const myOrdersSection = document.getElementById('myOrders');
-
-    if (myOrdersSection.style.display === 'block') {
-        myOrdersSection.style.display = 'none';
-    } else {
-        myOrdersSection.style.display = 'block';
-        document.getElementById('restaurants').style.display = 'none'; // Hide restaurants
-        document.getElementById('menu').style.display = 'none'; // Hide menu
-    }
-}
-
-function hideMenu() {
-    const menu = document.getElementById('menu');
-    menu.style.display = 'none';
-    document.getElementById('restaurants').style.display = 'block'; // Show restaurants again
-}
-
-function hideOrders() {
-    const myOrdersSection = document.getElementById('myOrders');
-    myOrdersSection.style.display = 'none';
-    document.getElementById('restaurants').style.display = 'block'; // Show restaurants again
-}
-
-function searchItems() {
-    const query = document.getElementById('searchBar').value.toLowerCase();
-    const menuItems = document.querySelectorAll('#menuItems li');
-
-    menuItems.forEach(item => {
-        const itemName = item.innerText.toLowerCase();
-        item.style.display = itemName.includes(query) ? 'block' : 'none'; // Show matching items
-    });
-}
-
-function showOffers() {
-    const offersModal = document.getElementById('offersModal');
-    const offerItems = document.getElementById('offerItems');
-
-    offerItems.innerHTML = '';
-
-    Object.keys(menuData).forEach(restaurant => {
-        menuData[restaurant].items.forEach(item => {
-            if (item.offer) {
-                const li = document.createElement('li');
-                li.innerText = `${item.name} at ${restaurant}: ${item.offer}`;
-                offerItems.appendChild(li);
-            }
-        });
-    });
-
-    offersModal.style.display = 'block';
-}
-
-function hideOffers() {
-    const offersModal = document.getElementById('offersModal');
-    offersModal.style.display = 'none';
-}
-  function checkout() {
-            document.getElementById('checkoutTotalAmount').innerText = totalPrice;
-            document.getElementById('checkoutModal').style.display = 'block';
+        if (cardNumber && expiryDate && cvv) {
+            alert('Payment successful! Thank you for your order.');
+        } else {
+            alert('Please fill out all card details.');
+            return;
         }
+    } else {
+        alert('Payment successful! Thank you for your order.');
+    }
+    cart = [];
+    updateCartInfo();
+    document.getElementById('checkout-modal').style.display = 'none';
+    document.getElementById('menu-container').style.display = 'none';
+    document.getElementById('restaurant-container').style.display = 'block';
+};
 
-        document.getElementById('checkoutBtn').onclick = checkout;
-
-        document.getElementById('payNowBtn').onclick = () => {
-            alert('Payment successful!');
-            cart = [];
-            totalPrice = 0;
-            updateTotalPrice();
-            document.getElementById('checkoutModal').style.display = 'none';
-        };
-
-        document.getElementById('cancelPaymentBtn').onclick = () => {
-            document.getElementById('checkoutModal').style.display = 'none';
-        };
-
-        document.addEventListener('DOMContentLoaded', showRestaurants);
+// Initialize app
+displayRestaurants();
