@@ -120,9 +120,6 @@ function searchItems() {
   menuItems.forEach((item) => {
     const itemName = item.innerText.toLowerCase();
     item.style.display = itemName.includes(query) ? 'block' : 'none
-```Here's the rest of the JavaScript code:
-
-```
 function checkoutOrder() {
   const myOrdersSection = document.getElementById('myOrders');
   const checkoutSection = document.getElementById('checkoutSection');
