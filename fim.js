@@ -72,14 +72,14 @@ function showMenu(restaurant) {
             <button class="addToOrderBtn" data-index="${index}">Add to Order</button>
         `;
 
+        // Assign the click event for the "Add to Order" button
         li.querySelector('.addToOrderBtn').onclick = (e) => {
-            e.stopPropagation();
             const quantity = parseInt(document.getElementById(`quantity_${index}`).value);
             addToOrders(item, quantity);
         };
 
+        // Assign the click event for rating
         li.querySelector('.rating').onclick = (e) => {
-            e.stopPropagation();
             rateFood(e, item);
         };
 
@@ -119,9 +119,10 @@ function addToOrders(item, quantity) {
     `;
     orderList.appendChild(li);
 
+    // Update the total price
     totalPrice += item.price * quantity;
     updateTotalPrice();
-    
+
     // Show success message after adding to order
     alert(`"${item.name}" ordered successfully!`);
 }
@@ -151,6 +152,7 @@ function checkOut() {
 
         alert(orderSummary);
 
+        // Clear the order list and reset total price
         orderList.innerHTML = '';
         totalPrice = 0;
         updateTotalPrice();
