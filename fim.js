@@ -125,17 +125,14 @@ function addToOrders(item, quantity) {
 }
 
 function updateTotalPrice() {
-    const totalPriceElement = document.getElementById('totalPrice');
-    const totalPriceHeader = document.getElementById('totalPriceHeader');
     const checkOutBtn = document.getElementById('checkOutBtn');
-
-    totalPriceElement.innerText = `$${totalPrice.toFixed(2)}`;
-    totalPriceHeader.innerText = `$${totalPrice.toFixed(2)}`;
+    document.getElementById('totalPrice').innerText = `$${totalPrice.toFixed(2)}`;
+    document.getElementById('totalPriceHeader').innerText = `$${totalPrice.toFixed(2)}`;
 
     if (totalPrice > 0) {
-        checkOutBtn.style.display = 'block';
+        checkOutBtn.style.display = 'block';  // Show the "Check Out" button
     } else {
-        checkOutBtn.style.display = 'none';
+        checkOutBtn.style.display = 'none';   // Hide the "Check Out" button when no items are in the order
     }
 }
 
