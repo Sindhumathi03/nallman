@@ -3,7 +3,7 @@ const restaurants = [
         id: 1,
         name: 'Italian Bistro',
         menu: [
-            { id: 1, name: 'Pizza', price: 10.99, img: 'pizza.jpg' },
+            { id: 1, name: 'Pizza', price: 10.99, img: ''https://media.istockphoto.com/id/1168754685/photo/pizza-margarita-with-cheese-top-view-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=psLRwd-hX9R-S_iYU-sihB4Jx2aUlUr26fkVrxGDfNg=', rating: 0 },' },
             { id: 2, name: 'Pasta', price: 12.99, img: 'pasta.jpeg' },
         ]
     },
