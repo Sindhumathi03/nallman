@@ -1,137 +1,314 @@
 body {
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', sans-serif;
-    background: linear-gradient(to right, #f8cdda, #1d2b64);
-    color: #9561e9;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-header {
-    background: #6dcdeb;
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-h1 {
-    margin: 0;
-    font-size: 2.5rem;
-}
-
-#cart-info {
-    display: flex;
-    align-items: center;
-}
-
-#cart-count {
-    margin-left: 10px;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-main {
-    width: 100%;
-    max-width: 800px;
-    padding: 20px;
-}
-
-#restaurant-container, #menu-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.restaurant-item, .menu-item {
-    background: #fcf4f4;
+    background-image: url('background.jpg'); /* Replace with your image filename */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #333;
+}
+
+/* Header and top bar styles */
+header {
+    background-color: rgba(248, 180, 0, 0.8);
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#searchBar {
+    padding: 10px;
+    width: 250px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+}
+
+.offers, .cart-summary {
+    margin-right: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Main content area styles */
+main {
+    padding: 20px;
+}
+
+/* Restaurants section */
+.restaurants {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Space out items evenly */
+    margin-bottom: 20px;
+}
+
+.restaurant {
+    background-color: #F5F5DC;
     padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    width: 200px; /* Fixed width for restaurant cards */
+}
+
+.restaurant img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.restaurant:hover {
+    background-color: rgba(212, 212, 212, 0.8);
+}
+
+/* Rating System */
+.rating {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.star {
+    font-size: 1.5rem;
+    color: gold;
     cursor: pointer;
 }
 
-.restaurant-item:hover, .menu-item:hover {
-    background: #6abcf3;
+.star:hover,
+.star.selected {
+    color: #FFD700;
 }
 
-.menu-item {
+/* Menu section styles */
+.menu {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-around;
+    background-color: #F5F5DC;
+    padding: 15px;
+    border-radius: 5px;
+    color: #333;
+}
+
+.menu h2 {
+    margin: 0 0 10px; /* Margin below the title */
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.menu li, #orderList li {
     display: flex;
     align-items: center;
+    margin: 10px;
+    width: calc(33% - 20px); /* Adjust width for three items per row */
 }
 
-.menu-item img {
-    width: 80px;
-    height: 80px;
-    border-radius: 5px;
-    margin-right: 15px;
+.menu img, #orderList img {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
 }
 
-.menu-item h3 {
-    margin: 0;
-    font-size: 1.5rem;
-    flex-grow: 1;
-}
-
-button {
-    background: #e7747d;
-    color: #fff;
+.addToOrderBtn {
+    background-color: #28a745;
+    color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
     border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
+    font-size: 0.9em;
 }
 
-button:hover {
-    background: #e84118;
+.addToOrderBtn:hover {
+    background-color: #218838;
 }
 
-.modal {
-    display: none;
+/* Orders section styling */
+.my-orders {
+    margin-top: 20px;
+}
+
+.my-orders h2, .my-orders h3 {
+    margin-top: 20px;
+    color: pink;
+}
+
+.my-orders ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+}
+
+/* Offers modal styles */
+.offers-modal {
+    background-color: #F5F5DC;
+    padding: 15px;
+    border-radius: 5px;
     position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7);
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    z-index: 10;
+    display: none;
+    color: #333;
 }
 
-.modal-content {
-    background-color: #fff;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 300px;
-    border-radius: 8px;
+.offers-modal h2 {
+    margin-top: 0;
+    color: #000;
 }
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+/* Orders section visibility */
+#myOrders {
+    display: none; /* Hidden by default */
 }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+/* Media Queries for Mobile Devices */
+@media only screen and (max-width: 768px) {
+    /* General styles */
+    body {
+        background-size: cover;
+        background-position: center;
+    }
+
+    header {
+        padding: 10px;
+        font-size: 1.2rem;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #searchBar {
+        width: 100%; /* Full width on mobile */
+        margin-bottom: 10px;
+        font-size: 1rem;
+    }
+
+    .offers, .cart-summary {
+        margin-right: 0;
+        margin-bottom: 10px;
+        font-size: 1rem;
+    }
+
+    /* Restaurants section */
+    .restaurants {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .restaurant {
+        width: 100%; /* Full width for restaurant cards */
+        margin: 10px 0;
+    }
+
+    .restaurant img {
+        width: 100px; /* Smaller images on mobile */
+    }
+
+    /* Menu section */
+    .menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu li {
+        width: 100%; /* Full width for menu items */
+        margin: 10px 0;
+    }
+
+    .menu img {
+        width: 80px; /* Smaller images on mobile */
+    }
+
+    .addToOrderBtn {
+        width: 100%; /* Full width buttons on mobile */
+        margin: 10px 0;
+    }
+
+    /* Orders section */
+    .my-orders ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #orderList li {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    #orderList img {
+        width: 80px; /* Smaller images on mobile */
+    }
+
+    /* Offers modal */
+    .offers-modal {
+        width: 90%; /* Reduce modal width on mobile */
+        padding: 10px;
+        left: 5%;
+        transform: translate(0, 0);
+    }
 }
 
-#total-amount {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: rgb(93, 51, 161);
-}
-#checkout-button{
-    padding: 10px;
-    background-color: #4775f3;
+/* Media Queries for smaller mobile screens (e.g., phones) */
+@media only screen and (max-width: 480px) {
+    header {
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #searchBar {
+        font-size: 0.9rem;
+        width: 100%;
+    }
+
+    .offers, .cart-summary {
+        font-size: 0.9rem;
+    }
+
+    .restaurant img, .menu img, #orderList img {
+        width: 70px;
+    }
+
+    .addToOrderBtn {
+        font-size: 0.9rem;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
     }
