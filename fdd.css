@@ -78,7 +78,8 @@ main {
 /* Menu section styles */
 .menu {
     display: flex;
-    flex-direction: column; /* Stack menu items vertically */
+    flex-direction: row ; /* Stack menu items vertically */
+    flex-wrap: wrap; 
     background-color: #F5F5DC;
     padding: 15px;
     border-radius: 5px;
