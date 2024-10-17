@@ -198,6 +198,6 @@ function hideOffers() {
 
 document.getElementById('offersBtn').onclick = showOffers;
 document.getElementById('closeOffersBtn').onclick = hideOffers;
-document.addEventListener('DOMContentLoaded', showRestaurants);
+
 
 
