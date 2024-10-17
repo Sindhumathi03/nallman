@@ -1,48 +1,137 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Pay Now with Multiple Options</title>
+    <style>
+        .pay-now-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .pay-now-btn:hover {
+            background-color: #218838;
+        }
+        .payment-options {
+            display: none;
+            margin-top: 20px;
+        }
+        .payment-option {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .payment-option:hover {
+            background-color: #e1e1e1;
+        }
+        .credit-card-form {
+            display: none;
+            margin-top: 20px;
+        }
+        .form-group {
+            margin: 10px 0;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <header class="header-background">
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="header-content">
-            <img src="https://i.imgur.com/I0LmAjC.png" alt="Profile Photo of Jane">
-            <h1>Hi, my name is Jane</h1>
-            <p>Web Developer | Designer | Tech Enthusiast</p>
+
+    <!-- Pay Now Button -->
+    <button class="pay-now-btn" onclick="showPaymentOptions()">Pay Now</button>
+
+    <!-- Payment Options -->
+    <div id="paymentOptions" class="payment-options">
+        <div class="payment-option" onclick="payWithPayPal()">Pay with PayPal</div>
+        <div class="payment-option" onclick="showCreditCardForm()">Pay with Credit Card</div>
+        <div class="payment-option" onclick="payWithStripe()">Pay with Stripe</div>
+    </div>
+
+    <!-- Credit Card Form (hidden by default) -->
+    <div id="creditCardForm" class="credit-card-form">
+        <h2>Enter Credit Card Details</h2>
+        <div class="form-group">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" id="cardNumber" placeholder="Enter credit card number">
         </div>
-    </header>
-    <main>
-        <section id="about">
-            <h2>~ About Me ~</h2>
-            <img src="https://i.imgur.com/Xo57zMO.jpg" alt="Jane's Profile" class="profile-photo">
-            <p>Hello there! I'm a Front-end Developer and aspiring App Developer. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum! :)</p>
-            </section>
-        <section id="portfolio">
-            <h2>~ My Work ~</h2>
-            <div class="project" id="project1">Project 1</div>
-            <div class="project" id="project2">Project 2</div>
-            <div class="project" id="project3">Project 3</div>
-            <div class="project" id="project4">Project 4</div>        
-        </section>
-        <section id="contact">
-            <h2>~ Keep in Touch ~</h2>
-            <button class="btn btn-default td-btn outline white">Send me a message!</button>
-        </section>
-    </main>
-    <footer>
-        <p>Copyright (c) 2023 Jane Doe -- All Rights Reserved</p>
-    </footer>
+        <div class="form-group">
+            <label for="expiryDate">Expiry Date</label>
+            <input type="text" id="expiryDate" placeholder="MM/YY">
+        </div>
+        <div class="form-group">
+            <label for="amount">Enter Amount</label>
+            <input type="number" id="amount" placeholder="Enter amount">
+        </div>
+        <button class="submit-btn" onclick="submitPayment()">Submit Payment</button>
+    </div>
+
+    <script>
+        // Function to show payment options when "Pay Now" button is clicked
+        function showPaymentOptions() {
+            document.getElementById('paymentOptions').style.display = 'block';
+        }
+
+        // Function to handle PayPal payment
+        function payWithPayPal() {
+            alert("Redirecting to PayPal...");
+            // Add PayPal payment logic here
+        }
+
+        // Function to show the credit card form when "Pay with Credit Card" is clicked
+        function showCreditCardForm() {
+            document.getElementById('creditCardForm').style.display = 'block';
+            document.getElementById('paymentOptions').style.display = 'none'; // Hide the payment options when Credit Card is selected
+        }
+
+        // Function to handle Stripe payment
+        function payWithStripe() {
+            alert("Redirecting to Stripe...");
+            // Add Stripe payment logic here
+        }
+
+        // Function to handle payment submission for Credit Card
+        function submitPayment() {
+            const cardNumber = document.getElementById('cardNumber').value;
+            const expiryDate = document.getElementById('expiryDate').value;
+            const amount = document.getElementById('amount').value;
+
+            if (cardNumber && expiryDate && amount) {
+                alert('Payment submitted! Card Number: ' + cardNumber + ', Expiry Date: ' + expiryDate + ', Amount: $' + amount);
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+    </script>
+
 </body>
-</html>
- 
+                                                                                 </html>
