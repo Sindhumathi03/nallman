@@ -12,7 +12,7 @@ const restaurants = [
         name: 'Burger House',
         menu: [
             { id: 3, name: 'Burger', price: 8.99, img: 'https://img.freepik.com/free-photo/big-sandwich-hamburger-burger-with-beef-red-onion-tomato-fried-bacon_2829-5398.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid'},
-            { id: 4, name: 'Fries', price: 3.99, img: 'fries.jpeg' },
+            { id: 4, name: 'Fries', price: 3.99, img: 'https://img.freepik.com/premium-photo/green-vegan-burger-without-meat-with-vegetables_659326-3791.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid' },
         ]
     },
     {
