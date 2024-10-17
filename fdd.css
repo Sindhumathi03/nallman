@@ -80,6 +80,7 @@ main {
     display: flex;
     flex-direction: column  ; /* Stack menu items vertically */
     flex-wrap: wrap; 
+    text-align: center; 
     justify-content: space-around;
     background-color: #F5F5DC;
     padding: 15px;
