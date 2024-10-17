@@ -78,8 +78,9 @@ main {
 /* Menu section styles */
 .menu {
     display: flex;
-    flex-direction: row ; /* Stack menu items vertically */
+    flex-direction: column  ; /* Stack menu items vertically */
     flex-wrap: wrap; 
+    justify-content: space-around;
     background-color: #F5F5DC;
     padding: 15px;
     border-radius: 5px;
@@ -95,7 +96,8 @@ main {
     padding: 0;
     display: flex;
     flex-wrap: wrap; /* Allow wrapping for menu items */
-    justify-content: space-between; /* Space out menu items */
+    justify-content: space-around; 
+    align-item: center; /* Space out menu items */
 }
 
 .menu li, #orderList li {
