@@ -115,7 +115,7 @@ main {
 }
 
 .rating {
-    margin-left: 10px;
+    margin-bottom: 10px;
     cursor: pointer;
 }
 
@@ -130,7 +130,7 @@ main {
     color: white;
     border: none;
     padding: 5px 10px;
-    margin-left: 10px;
+    margin-buttom: 10px;
     cursor: pointer;
     border-radius: 5px;
     font-size: 0.9em;
