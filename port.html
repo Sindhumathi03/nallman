@@ -1,11 +1,90 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Delivery - Payment Options</title>
     <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        /* Pay Now Button Styling */
         .pay-now-btn {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: white;
+            padding: 12px 25px;
+            font-size: 20px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .pay-now-btn:hover {
+            background: linear-gradient(to right, #feb47b, #ff7e5f);
+        }
+
+        /* Payment Options Styling */
+        .payment-options {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .payment-option {
+            margin: 10px 0;
+            padding: 15px;
+            background-color: #ff7e5f;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
+        .payment-option:hover {
+            background-color: #feb47b;
+        }
+
+        /* Form Styling */
+        .form-group {
+            margin: 10px 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Credit Card Form and Delivery Details Styling */
+        .credit-card-form, .delivery-details, .delivery-date {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .submit-btn {
             background-color: #28a745;
             color: white;
             padding: 10px 20px;
@@ -13,45 +92,17 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
         }
-        .pay-now-btn:hover {
+
+        .submit-btn:hover {
             background-color: #218838;
         }
-        .payment-options {
-            display: none;
-            margin-top: 20px;
-        }
-        .payment-option {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #f1f1f1;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-        }
-        .payment-option:hover {
-            background-color: #e1e1e1;
-        }
-        .credit-card-form, .delivery-details {
-            display: none;
-            margin-top: 20px;
-        }
-        .form-group {
-            margin: 10px 0;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 8px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .submit-btn {
-            background-color: #007bff;
+
+        /* Back to Restaurants Button Styling */
+        .back-btn {
+            background-color: #ff4500;
             color: white;
             padding: 10px 20px;
             font-size: 18px;
@@ -59,16 +110,27 @@
             border-radius: 5px;
             cursor: pointer;
             margin-top: 10px;
+            width: 100%;
+            text-align: center;
         }
-        .submit-btn:hover {
-            background-color: #0056b3;
+
+        .back-btn:hover {
+            background-color: #e03e00;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .pay-now-btn, .submit-btn, .back-btn {
+                font-size: 16px;
+                padding: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
     <!-- Pay Now Button -->
-    <button class="pay-now-btn" onclick="showPaymentOptions()">Place Order & Pay Now</button>
+    <button class="pay-now-btn" onclick="showDeliveryDetails()">Place Order & Pay Now</button>
 
     <!-- Delivery Details Form -->
     <div id="deliveryDetails" class="delivery-details">
@@ -110,11 +172,31 @@
         <button class="submit-btn" onclick="submitPayment()">Submit Payment</button>
     </div>
 
+    <!-- Delivery Date Confirmation (Hidden initially) -->
+    <div id="deliveryDate" class="delivery-date">
+        <h2>Your Order has been placed!</h2>
+        <p>Your delivery is scheduled for: <strong id="deliveryDateText"></strong></p>
+        <button class="back-btn" onclick="backToRestaurants()">Back to Restaurants</button>
+    </div>
+
     <script>
-        // Function to show payment options when "Pay Now" button is clicked
+        // Function to show delivery details form
+        function showDeliveryDetails() {
+            document.getElementById('deliveryDetails').style.display = 'block';
+            document.querySelector('.pay-now-btn').style.display = 'none';
+        }
+
+        // Function to show payment options when delivery details are filled
         function showPaymentOptions() {
-            document.getElementById('paymentOptions').style.display = 'block';
-            document.getElementById('deliveryDetails').style.display = 'none';
+            const deliveryAddress = document.getElementById('deliveryAddress').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+
+            if (deliveryAddress && phoneNumber) {
+                document.getElementById('paymentOptions').style.display = 'block';
+                document.getElementById('deliveryDetails').style.display = 'none';
+            } else {
+                alert('Please fill in the delivery details.');
+            }
         }
 
         // Function to handle PayPal payment
@@ -123,10 +205,10 @@
             // Add PayPal payment logic here
         }
 
-        // Function to show the credit card form when "Pay with Credit Card" is clicked
+        // Function to show the credit card form
         function showCreditCardForm() {
             document.getElementById('creditCardForm').style.display = 'block';
-            document.getElementById('paymentOptions').style.display = 'none'; // Hide the payment options when Credit Card is selected
+            document.getElementById('paymentOptions').style.display = 'none';
         }
 
         // Function to handle Stripe payment
@@ -143,11 +225,26 @@
 
             if (cardNumber && expiryDate && amount) {
                 alert('Payment submitted! Card Number: ' + cardNumber + ', Expiry Date: ' + expiryDate + ', Amount: $' + amount);
+
+                // Set delivery date to 3 days from today
+                const deliveryDate = new Date();
+                deliveryDate.setDate(deliveryDate.getDate() + 3);
+                const deliveryDateText = deliveryDate.toDateString();
+                document.getElementById('deliveryDateText').innerText = deliveryDateText;
+
+                // Show delivery date confirmation and back to restaurants button
+                document.getElementById('deliveryDate').style.display = 'block';
+                document.getElementById('creditCardForm').style.display = 'none';
             } else {
-                alert('Please fill in all fields.');
+                alert('Please fill in all payment fields.');
             }
+        }
+
+        // Function to go back to the restaurant list
+        function backToRestaurants() {
+            window.location.href = "restaurants.html"; // Replace with the actual URL of your restaurants page
         }
     </script>
 
 </body>
-        </html>
+            </html>
