@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pay Now with Multiple Options</title>
+    <title>Food Delivery - Payment Options</title>
     <style>
-       .pay-now-btn {
+        .pay-now-btn {
             background-color: #28a745;
             color: white;
             padding: 10px 20px;
@@ -32,7 +32,7 @@
         .payment-option:hover {
             background-color: #e1e1e1;
         }
-        .credit-card-form {
+        .credit-card-form, .delivery-details {
             display: none;
             margin-top: 20px;
         }
@@ -43,7 +43,7 @@
             display: block;
             margin-bottom: 5px;
         }
-        .form-group input {
+        .form-group input, .form-group select {
             width: 100%;
             padding: 8px;
             font-size: 16px;
@@ -68,10 +68,25 @@
 <body>
 
     <!-- Pay Now Button -->
-    
-<button class="pay-now-btn" onclick="showPaymentOptions()">Pay Now</button>
+    <button class="pay-now-btn" onclick="showPaymentOptions()">Place Order & Pay Now</button>
+
+    <!-- Delivery Details Form -->
+    <div id="deliveryDetails" class="delivery-details">
+        <h2>Delivery Details</h2>
+        <div class="form-group">
+            <label for="deliveryAddress">Delivery Address</label>
+            <input type="text" id="deliveryAddress" placeholder="Enter delivery address">
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" id="phoneNumber" placeholder="Enter phone number">
+        </div>
+        <button class="submit-btn" onclick="showPaymentOptions()">Proceed to Payment</button>
+    </div>
+
     <!-- Payment Options -->
     <div id="paymentOptions" class="payment-options">
+        <h2>Select Payment Method</h2>
         <div class="payment-option" onclick="payWithPayPal()">Pay with PayPal</div>
         <div class="payment-option" onclick="showCreditCardForm()">Pay with Credit Card</div>
         <div class="payment-option" onclick="payWithStripe()">Pay with Stripe</div>
@@ -99,6 +114,7 @@
         // Function to show payment options when "Pay Now" button is clicked
         function showPaymentOptions() {
             document.getElementById('paymentOptions').style.display = 'block';
+            document.getElementById('deliveryDetails').style.display = 'none';
         }
 
         // Function to handle PayPal payment
@@ -134,4 +150,4 @@
     </script>
 
 </body>
-                                                                                 </html>
+        </html>
