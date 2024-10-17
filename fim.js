@@ -5,7 +5,7 @@ const restaurants = [
         menu: [
             { id: 1, name: 'Pizza', price: 10.99, img: 'https://media.istockphoto.com/id/1168754685/photo/pizza-margarita-with-cheese-top-view-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=psLRwd-hX9R-S_iYU-sihB4Jx2aUlUr26fkVrxGDfNg='},
             { id: 2, name: 'Pasta', price: 12.99, img: 'https://img.freepik.com/premium-photo/colorful-homemade-pizza-with-black-ham-cherry-tomatoes_1126714-13363.jpg?size=626&ext=jpg'}, 
-            { id: 2, name: 'Pasta', price: 12.99, img:
+            { id: 2, name: 'Pasta', price: 12.99, img:'https://img.freepik.com/premium-photo/colorful-homemade-pizza-with-black-ham-cherry-tomatoes_1126714-13105.jpg?size=626&ext=jpg&ga=GA1.1.2146971310.1728371548&semt=ais_hybrid'},
         ]
     },
     {
