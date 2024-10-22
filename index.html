@@ -2,18 +2,41 @@
 <head>
 <title>simple</title>
   <style>
-  body{
-    text-align: center;
-    margin: 20px 150px 20px 150px;
-    padding: 20px 150px 20px 150px;
-    border: 10px solid green;
-    font-size: 1.5rem;
-    background-colour:
-}
-    #sn{
-      font-size: 1.5rem;
-      text-align: left;
-    }
+ body {
+            text-align: center;
+            margin: 20px;
+            padding: 20px;
+            border: 10px solid green;
+            font-size: 1.5rem;
+            background-color: #f0f8ff; /* Light background color */
+            color: #333; /* Dark text color for contrast */
+        }
+        h1 {
+            color: #4caf50; /* Green for the header */
+        }
+        #sn {
+            font-size: 1.5rem;
+            text-align: left;
+            list-style-type: none; /* Remove default list styles */
+            padding: 0;
+        }
+        #sn li {
+            background-color: #ffeaa7; /* Light yellow background for list items */
+            margin: 10px 0; /* Space between items */
+            padding: 10px;
+            border-radius: 8px; /* Rounded corners */
+            transition: background-color 0.3s; /* Smooth transition for hover effect */
+        }
+        #sn li:hover {
+            background-color: #fdcb6e; /* Darker yellow on hover */
+        }
+        a {
+            text-decoration: none; /* Remove underline from links */
+            color: #0984e3; /* Blue color for links */
+        }
+        a:hover {
+            text-decoration: underline; /* Underline links on hover */
+        }
   </style>
 </head>
 <body>
