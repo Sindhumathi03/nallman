@@ -72,5 +72,24 @@
             background-color: #0056b3;
         }
     </style>
+
+    <script>
+        // Check if the login page is loaded
+        if (document.getElementById('loginBtn')) {
+            document.getElementById('loginBtn').addEventListener('click', () => {
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                // For demonstration, we don't validate password, but you can implement your own validation
+                if (username && password) {
+                    localStorage.setItem('currentUser', username);
+                    alert('Login successful!');
+                    window.location.href = 'sell.html'; // Redirect to main page
+                } else {
+                    alert('Please enter both username and password.');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
