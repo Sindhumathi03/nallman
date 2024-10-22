@@ -3,68 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buy & Sell Web Products</title>
+    <title>Reuse Hub</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Buy & Sell Web Products</h1>
-    </header>
 
-    <main>
-        <!-- Login Page -->
-        <div id="login">
-            <h2>Login</h2>
-            <form id="loginForm" onsubmit="return login(event)">
-                <input type="email" id="loginEmail" placeholder="Email" required>
-                <input type="password" id="loginPassword" placeholder="Password" required>
-                <button type="submit">Login</button>
-            </form>
-        </div>
+<header>
+    <h1>Reuse Hub</h1>
+    <nav>
+        <button id="productsBtn">Products</button>
+        <button id="postAdBtn">Post an Ad</button>
+        <button id="cartBtn">Cart</button>
+        <button id="logoutBtn">Logout</button>
+    </nav>
+</header>
 
-        <!-- Home Page -->
-        <div id="home" class="hidden">
-            <h2>Welcome to the Home Page!</h2>
-            <div class="top-buttons">
-                <button onclick="showSection('productListing')">Post Product</button>
-                <button onclick="showSection('searchProducts')">Search Products</button>
-                <button onclick="showSection('location')">Location</button>
-            </div>
+<main>
+    <div id="itemForm" class="hidden">
+        <h2>Post an Ad</h2>
+        <input type="text" id="itemName" placeholder="Item Name" required>
+        <input type="number" id="itemPrice" placeholder="Item Price" required>
+        <textarea id="itemDescription" placeholder="Item Description"></textarea>
+        <input type="file" id="itemImage" accept="image/*">
+        <button id="submitItemBtn">Submit</button>
+        <button id="cancelBtn">Cancel</button>
+    </div>
 
-            <div id="productListing" class="hidden section">
-                <h3>Post Product</h3>
-                <form id="postProductForm" onsubmit="return postProduct(event)">
-                    <input type="text" id="productTitle" placeholder="Product Title" required>
-                    <textarea id="productDescription" placeholder="Product Description" required></textarea>
-                    <input type="number" id="productPrice" placeholder="Price" required>
-                    <select id="category">
-                        <option value="electronics">Electronics</option>
-                        <option value="furniture">Furniture</option>
-                        <option value="vehicles">Vehicles</option>
-                        <option value="fashion">Fashion</option>
-                    </select>
-                    <input type="file" id="productImage" accept="image/*" required>
-                    <button type="submit">Post Product</button>
-                </form>
-            </div>
+    <div id="itemList"></div>
 
-            <div id="searchProducts" class="hidden section">
-                <h3>Search Products</h3>
-                <input type="text" id="searchKeyword" placeholder="Enter keywords">
-                <button onclick="searchProducts()">Search</button>
-            </div>
+    <div id="cart" class="hidden">
+        <h2>Your Cart</h2>
+        <div id="cartItems"></div>
+        <button id="checkoutBtn" class="hidden">Checkout</button>
+    </div>
+</main>
 
-            <div id="location" class="hidden section">
-                <h3>Location</h3>
-                <p>Here you can find products available in your area.</p>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Buy & Sell Web Products. All rights reserved.</p>
-    </footer>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
