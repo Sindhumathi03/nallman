@@ -58,7 +58,7 @@ if (document.getElementById('logoutBtn')) {
 
 // Navigation buttons
 document.getElementById('productsBtn').addEventListener('click', () => {
-    displayPredefinedItems();
+    displayItems();
     document.getElementById('cart').classList.add('hidden');
 });
 
@@ -88,9 +88,15 @@ if (document.getElementById('submitItemBtn')) {
                 owner: currentUser,
                 image: itemImageInput.files[0] ? URL.createObjectURL(itemImageInput.files[0]) : null,
             };
+
+            // Add the new item to both items array and localStorage
             items.push(item);
             localStorage.setItem('items', JSON.stringify(items)); // Save items to localStorage
+            
+            // Now display all items including the new one
             displayItems();
+            
+            // Reset the form
             document.getElementById('itemForm').reset();
             document.getElementById('itemForm').classList.add('hidden');
         } else {
@@ -103,31 +109,12 @@ if (document.getElementById('submitItemBtn')) {
     });
 }
 
-function displayPredefinedItems() {
-    const itemList = document.getElementById('itemList');
-    itemList.innerHTML = '';
-    predefinedItems.forEach((item, index) => {
-        const itemDiv = document.createElement('div');
-        itemDiv.classList.add('item');
-        itemDiv.innerHTML = `
-            <h2>${item.name}</h2>
-            <p><strong>Price:</strong> $${item.price}</p>
-            <p><strong>Description:</strong> ${item.description}</p>
-            <p><strong>Owner:</strong> ${item.owner}</p>
-            <img src="${item.image}" alt="${item.name}" class="item-image">
-            <button class="add-to-cart-btn" data-index="${index}">Add to Cart</button>
-        `;
-        itemList.appendChild(itemDiv);
-    });
-    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-        button.addEventListener('click', addToCart);
-    });
-}
-
 function displayItems() {
     const itemList = document.getElementById('itemList');
     itemList.innerHTML = '';
-    items.forEach((item, index) => {
+    const allItems = [...predefinedItems, ...items]; // Combine predefined items with user-added items
+
+    allItems.forEach((item, index) => {
         const itemDiv = document.createElement('div');
         itemDiv.classList.add('item');
         itemDiv.innerHTML = `
@@ -141,6 +128,7 @@ function displayItems() {
         `;
         itemList.appendChild(itemDiv);
     });
+    
     document.querySelectorAll('.add-to-cart-btn').forEach(button => {
         button.addEventListener('click', addToCart);
     });
@@ -151,15 +139,20 @@ function displayItems() {
 
 function addToCart(e) {
     const index = e.target.getAttribute('data-index');
-    cart.push(predefinedItems[index]);
-    alert(`${predefinedItems[index].name} added to cart.`);
+    const itemToAdd = items[index] || predefinedItems[index]; // Get item from items or predefined items
+    cart.push(itemToAdd);
+    alert(`${itemToAdd.name} added to cart.`);
 }
 
 function removeItem(e) {
     const index = e.target.getAttribute('data-index');
-    items.splice(index, 1);
-    localStorage.setItem('items', JSON.stringify(items)); // Update localStorage
-    displayItems();
+    if (index < predefinedItems.length) {
+        alert("You cannot remove predefined items.");
+    } else {
+        items.splice(index - predefinedItems.length, 1); // Adjust index for user-added items
+        localStorage.setItem('items', JSON.stringify(items)); // Update localStorage
+        displayItems();
+    }
 }
 
 function displayCart() {
