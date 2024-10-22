@@ -9,14 +9,11 @@
 <body>
     <header>
         <h1>Buy & Sell Web Products</h1>
-        <nav>
-            <button onclick="showSection('login')">Login</button>
-            <button onclick="showSection('home')">Home</button>
-        </nav>
     </header>
 
     <main>
-        <div id="login" class="hidden">
+        <!-- Login Page -->
+        <div id="login">
             <h2>Login</h2>
             <form id="loginForm" onsubmit="return login(event)">
                 <input type="email" id="loginEmail" placeholder="Email" required>
@@ -25,65 +22,42 @@
             </form>
         </div>
 
+        <!-- Home Page -->
         <div id="home" class="hidden">
             <h2>Welcome to the Home Page!</h2>
-            <button onclick="showSection('productListing')">Post Product</button>
-            <button onclick="showSection('searchProducts')">Search Products</button>
-            <button onclick="showSection('messageSeller')">Message Seller</button>
-            <button onclick="showSection('leaveReview')">Leave a Review</button>
-            <button onclick="showSection('paymentMethod')">Payment Method</button>
-        </div>
-
-        <div id="productListing" class="hidden">
-            <h2>Post Product</h2>
-            <form id="productForm" onsubmit="return postProduct(event)">
-                <input type="text" id="productTitle" placeholder="Product Title" required>
-                <textarea id="productDescription" placeholder="Product Description" required></textarea>
-                <input type="number" id="productPrice" placeholder="Price" required>
-                <select id="category">
-                    <option value="electronics">Electronics</option>
-                    <option value="furniture">Furniture</option>
-                    <option value="vehicles">Vehicles</option>
-                    <option value="fashion">Fashion</option>
-                </select>
-                <button type="submit">Post Product</button>
-            </form>
-        </div>
-
-        <div id="searchProducts" class="hidden">
-            <h2>Search Products</h2>
-            <input type="text" id="searchKeyword" placeholder="Enter keywords">
-            <button onclick="searchProducts()">Search</button>
-        </div>
-
-        <div id="messageSeller" class="hidden">
-            <h2>Message Seller</h2>
-            <textarea id="messageInput" placeholder="Type your message..."></textarea>
-            <button onclick="sendMessage()">Send</button>
-        </div>
-
-        <div id="leaveReview" class="hidden">
-            <h2>Leave a Review</h2>
-            <div class="star-rating">
-                <input type="radio" name="rating" id="5-stars" value="5"><label for="5-stars">★</label>
-                <input type="radio" name="rating" id="4-stars" value="4"><label for="4-stars">★</label>
-                <input type="radio" name="rating" id="3-stars" value="3"><label for="3-stars">★</label>
-                <input type="radio" name="rating" id="2-stars" value="2"><label for="2-stars">★</label>
-                <input type="radio" name="rating" id="1-stars" value="1"><label for="1-stars">★</label>
+            <div class="top-buttons">
+                <button onclick="showSection('productListing')">Post Product</button>
+                <button onclick="showSection('searchProducts')">Search Products</button>
+                <button onclick="showSection('location')">Location</button>
             </div>
-            <textarea id="reviewText" placeholder="Write your review..."></textarea>
-            <button onclick="submitReview()">Submit Review</button>
-        </div>
 
-        <div id="paymentMethod" class="hidden">
-            <h2>Choose Payment Method</h2>
-            <label>
-                <input type="radio" name="paymentMethod" value="paypal" checked> Pay with PayPal
-            </label><br>
-            <label>
-                <input type="radio" name="paymentMethod" value="delivery"> Pay on Delivery
-            </label><br>
-            <button onclick="processPayment()">Proceed to Payment</button>
+            <div id="productListing" class="hidden section">
+                <h3>Post Product</h3>
+                <form id="postProductForm" onsubmit="return postProduct(event)">
+                    <input type="text" id="productTitle" placeholder="Product Title" required>
+                    <textarea id="productDescription" placeholder="Product Description" required></textarea>
+                    <input type="number" id="productPrice" placeholder="Price" required>
+                    <select id="category">
+                        <option value="electronics">Electronics</option>
+                        <option value="furniture">Furniture</option>
+                        <option value="vehicles">Vehicles</option>
+                        <option value="fashion">Fashion</option>
+                    </select>
+                    <input type="file" id="productImage" accept="image/*" required>
+                    <button type="submit">Post Product</button>
+                </form>
+            </div>
+
+            <div id="searchProducts" class="hidden section">
+                <h3>Search Products</h3>
+                <input type="text" id="searchKeyword" placeholder="Enter keywords">
+                <button onclick="searchProducts()">Search</button>
+            </div>
+
+            <div id="location" class="hidden section">
+                <h3>Location</h3>
+                <p>Here you can find products available in your area.</p>
+            </div>
         </div>
     </main>
 
