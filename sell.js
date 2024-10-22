@@ -2,6 +2,37 @@ const items = JSON.parse(localStorage.getItem('items')) || [];
 const cart = [];
 let currentUser = localStorage.getItem('currentUser');
 
+// Initialize sample items if localStorage is empty
+if (!localStorage.getItem('items')) {
+    const sampleItems = [
+        {
+            name: "Laptop",
+            price: 999.99,
+            description: "A high-performance laptop for all your needs.",
+            location: "New York",
+            owner: "admin",
+            images: [
+                "path/to/laptop1.jpg",
+                "path/to/laptop2.jpg"
+            ],
+            reviews: []
+        },
+        {
+            name: "Smartphone",
+            price: 499.99,
+            description: "Latest model smartphone with amazing features.",
+            location: "San Francisco",
+            owner: "admin",
+            images: [
+                "path/to/smartphone1.jpg",
+                "path/to/smartphone2.jpg"
+            ],
+            reviews: []
+        }
+    ];
+    localStorage.setItem('items', JSON.stringify(sampleItems));
+}
+
 // Check if the login page is loaded
 if (document.getElementById('loginBtn')) {
     document.getElementById('loginBtn').addEventListener('click', () => {
@@ -54,15 +85,19 @@ if (document.getElementById('submitItemBtn')) {
         const itemName = document.getElementById('itemName').value;
         const itemPrice = document.getElementById('itemPrice').value;
         const itemDescription = document.getElementById('itemDescription').value;
-        const itemImageInput = document.getElementById('itemImage');
+        const itemLocation = document.getElementById('itemLocation').value;
+        const itemImageInputs = document.getElementById('itemImages').files; // Allow multiple images
 
-        if (itemName && itemPrice) {
+        if (itemName && itemPrice && itemLocation) {
+            const images = Array.from(itemImageInputs).map(file => URL.createObjectURL(file));
             const item = {
                 name: itemName,
                 price: itemPrice,
                 description: itemDescription,
+                location: itemLocation,
                 owner: currentUser,
-                image: itemImageInput.files[0] ? URL.createObjectURL(itemImageInput.files[0]) : null,
+                images: images, // Store multiple images
+                reviews: [], // Initialize with an empty reviews array
             };
             items.push(item);
             localStorage.setItem('items', JSON.stringify(items)); // Save items to localStorage
@@ -87,15 +122,32 @@ function displayItems() {
         itemDiv.classList.add('item');
         itemDiv.innerHTML = `
             <h2>${item.name}</h2>
+            <div class="image-gallery">
+                <img src="${item.images[0]}" alt="Product Image" class="main-image" id="mainImage${index}">
+                <div class="thumbnails">
+                    ${item.images.map((img, imgIndex) => `
+                        <img src="${img}" alt="Product Image" class="thumbnail" data-index="${index}" data-img="${img}">
+                    `).join('')}
+                </div>
+            </div>
             <p><strong>Price:</strong> $${item.price}</p>
-            <p><strong>Description:</strong> ${item.description}</p>
-            <p><strong>Owner:</strong> ${item.owner}</p>
-            ${item.image ? `<img src="${item.image}" alt="${item.name}" class="item-image">` : ''}
+            <p><strong>Location:</strong> ${item.location}</p>
+            <p><strong>Reviews:</strong> ${item.reviews.length ? item.reviews.join(', ') : 'No reviews yet'}</p>
             <button class="add-to-cart-btn" data-index="${index}">Add to Cart</button>
             ${item.owner === currentUser ? `<button class="remove-btn" data-index="${index}">Remove</button>` : ''}
         `;
         itemList.appendChild(itemDiv);
+
+        // Add click event to thumbnails
+        const thumbnails = itemDiv.querySelectorAll('.thumbnail');
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', (e) => {
+                const mainImage = document.getElementById(`mainImage${e.target.getAttribute('data-index')}`);
+                mainImage.src = e.target.getAttribute('data-img'); // Change the main image
+            });
+        });
     });
+    
     document.querySelectorAll('.add-to-cart-btn').forEach(button => {
         button.addEventListener('click', addToCart);
     });
@@ -155,6 +207,3 @@ document.getElementById('checkoutBtn').addEventListener('click', () => {
 });
 
 // Display items on initial load
-if (document.getElementById('itemList')) {
-    displayItems();
-}
