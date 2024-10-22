@@ -1,37 +1,30 @@
+const predefinedItems = [
+    {
+        name: 'Vintage Lamp',
+        price: 30,
+        description: 'A beautiful vintage lamp.',
+        owner: 'Admin',
+        image: 'path/to/lamp.jpg' // Replace with the actual path
+    },
+    {
+        name: 'Wooden Chair',
+        price: 50,
+        description: 'A sturdy wooden chair.',
+        owner: 'Admin',
+        image: 'path/to/chair.jpg' // Replace with the actual path
+    },
+    {
+        name: 'Coffee Table',
+        price: 100,
+        description: 'A stylish coffee table.',
+        owner: 'Admin',
+        image: 'path/to/table.jpg' // Replace with the actual path
+    }
+];
+
 const items = JSON.parse(localStorage.getItem('items')) || [];
 const cart = [];
 let currentUser = localStorage.getItem('currentUser');
-
-// Initialize sample items if localStorage is empty
-if (!localStorage.getItem('items')) {
-    const sampleItems = [
-        {
-            name: "Laptop",
-            price: 999.99,
-            description: "A high-performance laptop for all your needs.",
-            location: "New York",
-            owner: "admin",
-            images: [
-                "path/to/laptop1.jpg",
-                "path/to/laptop2.jpg"
-            ],
-            reviews: []
-        },
-        {
-            name: "Smartphone",
-            price: 499.99,
-            description: "Latest model smartphone with amazing features.",
-            location: "San Francisco",
-            owner: "admin",
-            images: [
-                "path/to/smartphone1.jpg",
-                "path/to/smartphone2.jpg"
-            ],
-            reviews: []
-        }
-    ];
-    localStorage.setItem('items', JSON.stringify(sampleItems));
-}
 
 // Check if the login page is loaded
 if (document.getElementById('loginBtn')) {
@@ -65,7 +58,7 @@ if (document.getElementById('logoutBtn')) {
 
 // Navigation buttons
 document.getElementById('productsBtn').addEventListener('click', () => {
-    displayItems();
+    displayPredefinedItems();
     document.getElementById('cart').classList.add('hidden');
 });
 
@@ -85,19 +78,15 @@ if (document.getElementById('submitItemBtn')) {
         const itemName = document.getElementById('itemName').value;
         const itemPrice = document.getElementById('itemPrice').value;
         const itemDescription = document.getElementById('itemDescription').value;
-        const itemLocation = document.getElementById('itemLocation').value;
-        const itemImageInputs = document.getElementById('itemImages').files; // Allow multiple images
+        const itemImageInput = document.getElementById('itemImage');
 
-        if (itemName && itemPrice && itemLocation) {
-            const images = Array.from(itemImageInputs).map(file => URL.createObjectURL(file));
+        if (itemName && itemPrice) {
             const item = {
                 name: itemName,
                 price: itemPrice,
                 description: itemDescription,
-                location: itemLocation,
                 owner: currentUser,
-                images: images, // Store multiple images
-                reviews: [], // Initialize with an empty reviews array
+                image: itemImageInput.files[0] ? URL.createObjectURL(itemImageInput.files[0]) : null,
             };
             items.push(item);
             localStorage.setItem('items', JSON.stringify(items)); // Save items to localStorage
@@ -114,6 +103,27 @@ if (document.getElementById('submitItemBtn')) {
     });
 }
 
+function displayPredefinedItems() {
+    const itemList = document.getElementById('itemList');
+    itemList.innerHTML = '';
+    predefinedItems.forEach((item, index) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('item');
+        itemDiv.innerHTML = `
+            <h2>${item.name}</h2>
+            <p><strong>Price:</strong> $${item.price}</p>
+            <p><strong>Description:</strong> ${item.description}</p>
+            <p><strong>Owner:</strong> ${item.owner}</p>
+            <img src="${item.image}" alt="${item.name}" class="item-image">
+            <button class="add-to-cart-btn" data-index="${index}">Add to Cart</button>
+        `;
+        itemList.appendChild(itemDiv);
+    });
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+        button.addEventListener('click', addToCart);
+    });
+}
+
 function displayItems() {
     const itemList = document.getElementById('itemList');
     itemList.innerHTML = '';
@@ -122,32 +132,15 @@ function displayItems() {
         itemDiv.classList.add('item');
         itemDiv.innerHTML = `
             <h2>${item.name}</h2>
-            <div class="image-gallery">
-                <img src="${item.images[0]}" alt="Product Image" class="main-image" id="mainImage${index}">
-                <div class="thumbnails">
-                    ${item.images.map((img, imgIndex) => `
-                        <img src="${img}" alt="Product Image" class="thumbnail" data-index="${index}" data-img="${img}">
-                    `).join('')}
-                </div>
-            </div>
             <p><strong>Price:</strong> $${item.price}</p>
-            <p><strong>Location:</strong> ${item.location}</p>
-            <p><strong>Reviews:</strong> ${item.reviews.length ? item.reviews.join(', ') : 'No reviews yet'}</p>
+            <p><strong>Description:</strong> ${item.description}</p>
+            <p><strong>Owner:</strong> ${item.owner}</p>
+            ${item.image ? `<img src="${item.image}" alt="${item.name}" class="item-image">` : ''}
             <button class="add-to-cart-btn" data-index="${index}">Add to Cart</button>
             ${item.owner === currentUser ? `<button class="remove-btn" data-index="${index}">Remove</button>` : ''}
         `;
         itemList.appendChild(itemDiv);
-
-        // Add click event to thumbnails
-        const thumbnails = itemDiv.querySelectorAll('.thumbnail');
-        thumbnails.forEach(thumbnail => {
-            thumbnail.addEventListener('click', (e) => {
-                const mainImage = document.getElementById(`mainImage${e.target.getAttribute('data-index')}`);
-                mainImage.src = e.target.getAttribute('data-img'); // Change the main image
-            });
-        });
     });
-    
     document.querySelectorAll('.add-to-cart-btn').forEach(button => {
         button.addEventListener('click', addToCart);
     });
@@ -158,8 +151,8 @@ function displayItems() {
 
 function addToCart(e) {
     const index = e.target.getAttribute('data-index');
-    cart.push(items[index]);
-    alert(`${items[index].name} added to cart.`);
+    cart.push(predefinedItems[index]);
+    alert(`${predefinedItems[index].name} added to cart.`);
 }
 
 function removeItem(e) {
