@@ -11,7 +11,7 @@ if (document.getElementById('loginBtn')) {
         if (username && password) {
             localStorage.setItem('currentUser', username);
             alert('Login successful!');
-            window.location.href = 'login.html'; // Redirect to main page
+            window.location.href = 'sell.html'; // Redirect to main page
         } else {
             alert('Please enter both username and password.');
         }
@@ -22,7 +22,7 @@ if (document.getElementById('loginBtn')) {
 if (document.getElementById('logoutBtn')) {
     if (!currentUser) {
         alert('You need to log in first!');
-        window.location.href = 'login.html'; // Redirect to login if not logged in
+        window.location.href = 'sell.html'; // Redirect to login if not logged in
     }
 
     document.getElementById('logoutBtn').addEventListener('click', () => {
