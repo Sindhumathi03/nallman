@@ -207,3 +207,6 @@ document.getElementById('checkoutBtn').addEventListener('click', () => {
 });
 
 // Display items on initial load
+if (document.getElementById('itemList')) {
+    displayItems();
+}
