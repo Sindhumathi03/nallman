@@ -4,40 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy & Sell Web Products</title>
-    <link rel="stylesheet" href="sell.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <h1>Buy & Sell Web Products</h1>
+        <nav>
+            <button onclick="showSection('login')">Login</button>
+            <button onclick="showSection('home')">Home</button>
+        </nav>
     </header>
 
     <main>
-        <!-- User Authentication -->
-        <section id="user-auth">
-            <h2>Register</h2>
-            <form id="registerForm">
-                <input type="text" id="name" placeholder="Name" required>
-                <input type="email" id="email" placeholder="Email" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <button type="submit">Register</button>
-            </form>
-
+        <div id="login" class="hidden">
             <h2>Login</h2>
-            <form id="loginForm">
+            <form id="loginForm" onsubmit="return login(event)">
                 <input type="email" id="loginEmail" placeholder="Email" required>
                 <input type="password" id="loginPassword" placeholder="Password" required>
                 <button type="submit">Login</button>
             </form>
+        </div>
 
-            <h2>Or Login with</h2>
-            <button onclick="socialLogin('google')">Login with Google</button>
-            <button onclick="socialLogin('facebook')">Login with Facebook</button>
-        </section>
+        <div id="home" class="hidden">
+            <h2>Welcome to the Home Page!</h2>
+            <button onclick="showSection('productListing')">Post Product</button>
+            <button onclick="showSection('searchProducts')">Search Products</button>
+            <button onclick="showSection('messageSeller')">Message Seller</button>
+            <button onclick="showSection('leaveReview')">Leave a Review</button>
+            <button onclick="showSection('paymentMethod')">Payment Method</button>
+        </div>
 
-        <!-- Product Listing -->
-        <section id="product-listing">
+        <div id="productListing" class="hidden">
             <h2>Post Product</h2>
-            <form id="productForm">
+            <form id="productForm" onsubmit="return postProduct(event)">
                 <input type="text" id="productTitle" placeholder="Product Title" required>
                 <textarea id="productDescription" placeholder="Product Description" required></textarea>
                 <input type="number" id="productPrice" placeholder="Price" required>
@@ -47,57 +46,36 @@
                     <option value="vehicles">Vehicles</option>
                     <option value="fashion">Fashion</option>
                 </select>
-                <input type="file" id="images" multiple>
                 <button type="submit">Post Product</button>
             </form>
-        </section>
+        </div>
 
-        <!-- Search Products -->
-        <section id="search-products">
+        <div id="searchProducts" class="hidden">
             <h2>Search Products</h2>
             <input type="text" id="searchKeyword" placeholder="Enter keywords">
-            <select id="searchCategory">
-                <option value="">All</option>
-                <option value="electronics">Electronics</option>
-                <option value="furniture">Furniture</option>
-                <option value="vehicles">Vehicles</option>
-                <option value="fashion">Fashion</option>
-            </select>
-            <input type="number" id="minPrice" placeholder="Min Price">
-            <input type="number" id="maxPrice" placeholder="Max Price">
             <button onclick="searchProducts()">Search</button>
-            <div id="searchResults"></div>
-        </section>
+        </div>
 
-        <!-- Messaging System -->
-        <section id="message-seller">
+        <div id="messageSeller" class="hidden">
             <h2>Message Seller</h2>
-            <input type="text" id="messageInput" placeholder="Type your message...">
+            <textarea id="messageInput" placeholder="Type your message..."></textarea>
             <button onclick="sendMessage()">Send</button>
-        </section>
+        </div>
 
-        <!-- Reviews & Ratings -->
-        <section id="reviews">
+        <div id="leaveReview" class="hidden">
             <h2>Leave a Review</h2>
             <div class="star-rating">
-                <input type="radio" name="rating" id="5-stars" value="5">
-                <label for="5-stars">★</label>
-                <input type="radio" name="rating" id="4-stars" value="4">
-                <label for="4-stars">★</label>
-                <input type="radio" name="rating" id="3-stars" value="3">
-                <label for="3-stars">★</label>
-                <input type="radio" name="rating" id="2-stars" value="2">
-                <label for="2-stars">★</label>
-                <input type="radio" name="rating" id="1-stars" value="1">
-                <label for="1-stars">★</label>
+                <input type="radio" name="rating" id="5-stars" value="5"><label for="5-stars">★</label>
+                <input type="radio" name="rating" id="4-stars" value="4"><label for="4-stars">★</label>
+                <input type="radio" name="rating" id="3-stars" value="3"><label for="3-stars">★</label>
+                <input type="radio" name="rating" id="2-stars" value="2"><label for="2-stars">★</label>
+                <input type="radio" name="rating" id="1-stars" value="1"><label for="1-stars">★</label>
             </div>
             <textarea id="reviewText" placeholder="Write your review..."></textarea>
             <button onclick="submitReview()">Submit Review</button>
-            <div id="reviewsList"></div>
-        </section>
+        </div>
 
-        <!-- Payment Integration -->
-        <section id="payment">
+        <div id="paymentMethod" class="hidden">
             <h2>Choose Payment Method</h2>
             <label>
                 <input type="radio" name="paymentMethod" value="paypal" checked> Pay with PayPal
@@ -106,15 +84,13 @@
                 <input type="radio" name="paymentMethod" value="delivery"> Pay on Delivery
             </label><br>
             <button onclick="processPayment()">Proceed to Payment</button>
-        </section>
-
-        <div id="paypal-button-container"></div>
+        </div>
     </main>
 
     <footer>
         <p>&copy; 2024 Buy & Sell Web Products. All rights reserved.</p>
     </footer>
 
-    <script src="sell.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
