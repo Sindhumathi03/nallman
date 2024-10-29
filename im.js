@@ -9,7 +9,8 @@ let currentUserName = '';
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('apply-leave-button').addEventListener('click', handleEmployeeSubmit);
     document.getElementById('leave-form').addEventListener('submit', applyLeave);
-    document.getElementById('confirm-apply-button').addEventListener('click', showConfirmationPage);
+    document.getElementById('confirm-leave-button').addEventListener('click', showConfirmationPage);
+    document.getElementById('edit-leave-button').addEventListener('click', showApplyLeaveSection); // Edit button functionality
 });
 
 function handleEmployeeSubmit() {
@@ -33,6 +34,7 @@ function showLeaveSection() {
 function showApplyLeaveSection() {
     document.getElementById('leave-section').style.display = 'none';
     document.getElementById('apply-leave-section').style.display = 'block';
+    document.getElementById('summary-section').style.display = 'none'; // Hide summary when editing
 }
 
 function updateLeaveBalance() {
