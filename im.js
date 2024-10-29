@@ -93,9 +93,9 @@ function showConfirmationPage() {
     document.getElementById('confirmation-section').style.display = 'block';
 
     const confirmationDetails = `
-        <strong>Your leave request has been confirmed!</strong><br>
-        <strong>Remaining Casual Leave:</strong> ${users[currentUserId].casual} days<br>
-        <strong>Remaining Medical Leave:</strong> ${users[currentUserId].medical} days<br>
+        <strong>✅ Your leave request has been confirmed!</strong><br>
+        <strong>Remaining Casual Leave:</strong> ${users[currentUserId].casual} days 🏖️<br>
+        <strong>Remaining Medical Leave:</strong> ${users[currentUserId].medical} days 🤒<br>
     `;
     
     document.getElementById('confirmation-details').innerHTML = confirmationDetails;
