@@ -16,12 +16,14 @@ body {
 h1 {
     text-align: center;
     color: #4A90E2;
+    margin-bottom: 20px; /* Increased bottom margin for spacing */
 }
 
 h2 {
     color: #333;
     border-bottom: 2px solid #4A90E2;
     padding-bottom: 5px;
+    margin-top: 20px; /* Added margin for spacing */
 }
 
 label {
@@ -57,6 +59,7 @@ button {
     cursor: pointer;
     transition: background-color 0.3s;
     width: 100%;
+    margin-top: 10px; /* Added margin for spacing between buttons */
 }
 
 button:hover {
@@ -72,31 +75,45 @@ button:hover {
     margin-top: 15px;
 }
 
-strong {
-    color: #333;
-}
 #confirmation-section {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content horizontally */
-    justify-content: center; /* Center content vertically */
-    background-color: #d4edda; /* Light green background for confirmation */
-    border: 1px solid #c3e6cb; /* Border to match background */
-    color: #155724; /* Dark green text color */
+    align-items: center;
+    justify-content: center;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
     padding: 15px;
     border-radius: 5px;
-    margin: 20px auto; /* Center the section in the middle of the page */
-    max-width: 400px; /* Limit width for better appearance */
-    text-align: center; /* Center the text */
+    margin: 20px auto;
+    max-width: 400px;
+    text-align: center;
 }
 
+#confirmation-details {
+    text-align: center;
+}
 
-#confirmation-section strong {
-    font-size: 1.2em; /* Larger font for important text */
+strong {
+    font-size: 1.2em;
+    margin-bottom: 10px;
 }
 
 #confirmation-section p {
-    margin: 5px 0; /* Add some spacing between paragraphs */
+    margin: 5px 0;
 }
 
-
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.5em; /* Adjust title size for smaller screens */
+    }
+    
+    button {
+        padding: 8px; /* Smaller button padding */
+    }
+}
