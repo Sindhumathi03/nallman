@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="im.css">
+    <title>Leave Management System</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="main-title">Leave Management System</h1>
+        
+        <div id="employee-section">
+            <h2>Employee Details</h2>
+            <label for="employee-id">Employee ID:</label>
+            <input type="text" id="employee-id" required>
+            <label for="employee-name">Employee Name:</label>
+            <input type="text" id="employee-name" required>
+            <button id="apply-leave-button">Apply for Leave</button>
+        </div>
+
+        <div id="leave-section" style="display: none;">
+            <h2>Leave Balance</h2>
+            <div id="leave-balance"></div>
+        </div>
+
+        <div id="apply-leave-section" style="display: none;">
+            <h2>Apply for Leave</h2>
+            <form id="leave-form">
+                <label for="leave-type">Leave Type:</label>
+                <select id="leave-type" required>
+                    <option value="Casual Leave">Casual Leave</option>
+                    <option value="Medical Leave">Medical Leave</option>
+                </select>
+                <label for="start-date">Start Date:</label>
+                <input type="date" id="start-date" required>
+                <label for="end-date">End Date:</label>
+                <input type="date" id="end-date" required>
+                <label for="reason">Reason:</label>
+                <textarea id="reason" required></textarea>
+                <button type="submit">Submit Leave Request</button>
+            </form>
+        </div>
+
+        <div id="summary-section" style="display: none;">
+            <h2>Leave Application Summary</h2>
+            <div id="summary-details"></div>
+            <button id="confirm-apply-button">Apply</button>
+        </div>
+
+        <div id="confirmation-section" style="display: none;">
+            <div id="confirmation-details"></div>
+        </div>
+    </div>
+
+    <script src="im.js"></script>
+</body>
+</html>
