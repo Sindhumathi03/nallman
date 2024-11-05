@@ -35,22 +35,22 @@ if (!currentUser && window.location.pathname !== '/login.html') {
 }
 
 // Event listeners for buttons in the header
-document.getElementById('productsBtn').addEventListener('click', () => {
+document.getElementById('productsBtn')?.addEventListener('click', () => {
     displayItems();
     document.getElementById('cart').classList.add('hidden');
     document.getElementById('itemForm').classList.add('hidden'); // Hide post ad form
 });
 
-document.getElementById('postAdBtn').addEventListener('click', () => {
+document.getElementById('postAdBtn')?.addEventListener('click', () => {
     document.getElementById('itemForm').classList.toggle('hidden');
 });
 
-document.getElementById('cartBtn').addEventListener('click', () => {
+document.getElementById('cartBtn')?.addEventListener('click', () => {
     displayCart();
     document.getElementById('itemList').innerHTML = ''; // Clear products list when viewing cart
 });
 
-document.getElementById('logoutBtn').addEventListener('click', () => {
+document.getElementById('logoutBtn')?.addEventListener('click', () => {
     localStorage.removeItem('currentUser');
     alert('Logged out successfully!');
     window.location.href = '/login.html'; // Redirect to login page
@@ -87,7 +87,7 @@ document.getElementById('submitItemBtn')?.addEventListener('click', (e) => {
 });
 
 // Cancel button on post ad form
-document.getElementById('cancelBtn').addEventListener('click', () => {
+document.getElementById('cancelBtn')?.addEventListener('click', () => {
     document.getElementById('itemForm').classList.add('hidden');
 });
 
@@ -161,13 +161,13 @@ function displayCart() {
     document.getElementById('checkoutBtn').classList.remove('hidden');
     document.getElementById('cart').classList.remove('hidden');
 
-    // Add event listeners for removing items from the cart
+    // Add event listeners for removing items from cart
     document.querySelectorAll('.remove-cart-btn').forEach(button => {
         button.addEventListener('click', removeFromCart);
     });
 }
 
-// Remove an item from the cart
+// Remove item from cart
 function removeFromCart(e) {
     const index = e.target.getAttribute('data-index');
     cart.splice(index, 1);
@@ -175,22 +175,22 @@ function removeFromCart(e) {
     displayCart();
 }
 
-// Checkout functionality
+// Checkout button functionality
 document.getElementById('checkoutBtn').addEventListener('click', () => {
     const paymentModal = document.getElementById('paymentModal');
     paymentModal.classList.remove('hidden');
 });
 
-// Handle payment method selection
+// Handle payment method selection (show form for selected method)
 document.querySelectorAll('.payment-option').forEach(button => {
     button.addEventListener('click', showPaymentForm);
 });
 
-// Show payment form based on the selected method
+// Show payment form based on the selected payment method
 function showPaymentForm(e) {
     const paymentMethod = e.target.getAttribute('data-payment');
     const paymentForm = document.getElementById('paymentForm');
-    paymentForm.innerHTML = ''; // Clear previous form
+    paymentForm.innerHTML = ''; // Clear previous form content
 
     if (paymentMethod === 'creditCard') {
         paymentForm.innerHTML = `
@@ -204,7 +204,7 @@ function showPaymentForm(e) {
     }
 }
 
-// Confirm the payment and display the order summary
+// Confirm payment and display order summary
 function confirmPayment() {
     const creditCardNumber = document.getElementById('creditCardNumber').value;
     const creditCardExp = document.getElementById('creditCardExp').value;
@@ -212,40 +212,33 @@ function confirmPayment() {
     const creditCardAmount = document.getElementById('creditCardAmount').value;
 
     if (!creditCardNumber || !creditCardExp || !creditCardCVV) {
-        alert('Please fill in all the fields.');
+        alert('Please fill in all fields.');
         return;
     }
 
-    // Simulate a successful payment
     alert(`Payment of $${creditCardAmount} via Credit Card successful!`);
-
-    // Display the order summary
     displayOrderSummary();
-
-    // Clear the cart
     cart.length = 0;
     localStorage.setItem('cart', JSON.stringify(cart));
 
-    // Close the modal
     document.getElementById('paymentModal').classList.add('hidden');
 }
 
-// Display the order summary
+// Display order summary after payment
 function displayOrderSummary() {
     const orderSummary = document.getElementById('orderSummary');
     const deliveryDate = calculateDeliveryDate();
 
     let orderDetailsHTML = `<h2>Order Summary</h2>`;
-    orderDetailsHTML += `<p><strong>Products:</strong></p>`;
     cart.forEach(item => {
         orderDetailsHTML += `<p>${item.name} - $${item.price}</p>`;
     });
-
     orderDetailsHTML += `<p><strong>Delivery Date:</strong> ${deliveryDate}</p>`;
+
     orderSummary.innerHTML = orderDetailsHTML;
 }
 
-// Calculate the total amount for the cart
+// Calculate total amount of items in the cart
 function calculateTotalAmount() {
     return cart.reduce((sum, item) => sum + item.price, 0);
 }
@@ -253,6 +246,7 @@ function calculateTotalAmount() {
 // Calculate estimated delivery date (5 days from today)
 function calculateDeliveryDate() {
     const currentDate = new Date();
-    currentDate.setDate(currentDate.getDate() + 5); // Add 5 days for delivery
+    currentDate.setDate(currentDate.getDate() + 5);
     return `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
 }
+
