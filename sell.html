@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reuse Hub</title>
-    <link rel="stylesheet" href="sell.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
 </head>
 <body>
 
+<!-- Header Section -->
 <header>
     <h1>Reuse Hub</h1>
     <nav>
@@ -18,8 +19,9 @@
     </nav>
 </header>
 
+<!-- Main Section -->
 <main>
-    <!-- Form to post a new ad -->
+    <!-- Post Ad Form -->
     <div id="itemForm" class="hidden">
         <h2>Post an Ad</h2>
         <input type="text" id="itemName" placeholder="Item Name" required>
@@ -30,29 +32,25 @@
         <button id="cancelBtn">Cancel</button>
     </div>
 
-    <!-- Display list of products -->
+    <!-- Product List -->
     <div id="itemList"></div>
 
-    <!-- Cart view -->
+    <!-- Cart Section -->
     <div id="cart" class="hidden">
         <h2>Your Cart</h2>
         <div id="cartItems"></div>
         <button id="checkoutBtn" class="hidden">Checkout</button>
     </div>
 
-    <!-- Payment Modal -->
-    <div id="paymentModal" class="hidden">
-        <h2>Select Payment Method</h2>
-        <button class="payment-option" data-payment="creditCard">Credit Card</button>
-        <button class="payment-option" data-payment="paypal">PayPal</button>
-        <button class="payment-option" data-payment="bankTransfer">Bank Transfer</button>
-        <div id="paymentForm"></div>
+    <!-- Checkout Payment Form (Only visible on checkout) -->
+    <div id="paymentForm" class="hidden">
+        <h2>Payment Details</h2>
+        <label for="creditCardNumber">Credit Card Number:</label>
+        <input type="text" id="creditCardNumber" placeholder="Enter card number">
+        <button id="payBtn">Pay</button>
     </div>
-
-    <!-- Order Summary -->
-    <div id="orderSummary"></div>
 </main>
 
-<script src="sell.js"></script>
+<script src="sell.js"></script> <!-- Link to the external JS file -->
 </body>
 </html>
