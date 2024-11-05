@@ -36,25 +36,18 @@
         <div id="cartItems"></div>
         <button id="checkoutBtn" class="hidden">Checkout</button>
     </div>
+
     <!-- Payment Modal -->
-<div id="paymentModal" class="hidden">
-    <div class="modal-content">
-        <h3>Select a Payment Method</h3>
-        <div class="payment-options">
-            <button class="payment-option" data-payment="creditCard">Credit Card</button>
-            <button class="payment-option" data-payment="paypal">PayPal</button>
-            <button class="payment-option" data-payment="bankTransfer">Bank Transfer</button>
-        </div>
+    <div id="paymentModal" class="hidden">
+        <h2>Select Payment Method</h2>
+        <button class="payment-option" data-payment="creditCard">Credit Card</button>
+        <button class="payment-option" data-payment="paypal">PayPal</button>
+        <button class="payment-option" data-payment="bankTransfer">Bank Transfer</button>
         <div id="paymentForm"></div>
-        <button id="cancelPaymentBtn" class="cancel-btn">Cancel</button>
     </div>
-</div>
-    <!-- Order Summary Section -->
-<div id="orderSummary" class="hidden">
-    <!-- This will be dynamically populated with order details -->
-</div>
 
-
+    <!-- Order Summary -->
+    <div id="orderSummary"></div>
 </main>
 
 <script src="sell.js"></script>
