@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reuse Hub</title>
-    <link rel="stylesheet" href="sell.css"> <!-- Link to external CSS -->
+    <link rel="stylesheet" href="sell.css">
 </head>
 <body>
 
@@ -42,15 +42,42 @@
         <button id="checkoutBtn" class="hidden">Checkout</button>
     </div>
 
-    <!-- Checkout Payment Form (Only visible on checkout) -->
-    <div id="paymentForm" class="hidden">
-        <h2>Payment Details</h2>
+    <!-- Checkout Payment Options -->
+    <div id="paymentOptions" class="hidden">
+        <h2>Choose Payment Method</h2>
+        <button id="creditCardOption">Credit Card</button>
+        <button id="paypalOption">PayPal</button>
+        <button id="bankTransferOption">Bank Transfer</button>
+    </div>
+
+    <!-- Credit Card Payment Form -->
+    <div id="creditCardForm" class="hidden">
+        <h2>Credit Card Payment</h2>
         <label for="creditCardNumber">Credit Card Number:</label>
         <input type="text" id="creditCardNumber" placeholder="Enter card number">
+        <label for="cardExpiry">Expiry Date:</label>
+        <input type="text" id="cardExpiry" placeholder="MM/YY">
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" placeholder="CVV">
         <button id="payBtn">Pay</button>
+    </div>
+
+    <!-- PayPal Payment Form (Simple) -->
+    <div id="paypalForm" class="hidden">
+        <h2>PayPal Payment</h2>
+        <label for="paypalEmail">PayPal Email:</label>
+        <input type="email" id="paypalEmail" placeholder="Enter PayPal Email">
+        <button id="paypalPayBtn">Pay with PayPal</button>
+    </div>
+
+    <!-- Payment Confirmation -->
+    <div id="paymentConfirmation" class="hidden">
+        <h2>Payment Confirmation</h2>
+        <p id="productName"></p>
+        <p id="deliveryDate"></p>
     </div>
 </main>
 
-<script src="sell.js"></script> <!-- Link to the external JS file -->
+<script src="sell.js"></script>
 </body>
 </html>
