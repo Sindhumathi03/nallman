@@ -109,7 +109,52 @@ button:hover {
     margin: 5px;
 }
 
-/* Form styles */
+/* Payment Options */
+#paymentOptions {
+    margin: 20px;
+}
+
+#paymentOptions button {
+    background: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+#paymentOptions button:hover {
+    background-color: #45a049;
+}
+
+/* Payment Forms */
+#creditCardForm input, #paypalForm input {
+    padding: 8px;
+    margin: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#payBtn, #paypalPayBtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#payBtn:hover, #paypalPayBtn:hover {
+    background-color: #45a049;
+}
+
+/* Hidden class */
+.hidden {
+    display: none;
+}
+
+/* Form styles for posting an ad */
 #itemForm {
     background: white;
     border-radius: 5px;
@@ -142,23 +187,34 @@ button:hover {
     background: #45a049; /* Darker green on hover */
 }
 
-/* Add to Cart button */
-.add-to-cart-btn {
-    background: #4CAF50; /* Green */
+/* Cancel button */
+#cancelBtn {
+    background: #e74c3c; /* Red */
     color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 10px 15px;
     margin-top: 10px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s;
 }
 
-.add-to-cart-btn:hover {
-    background: #45a049; /* Darker green on hover */
+#cancelBtn:hover {
+    background: #c0392b; /* Darker red on hover */
 }
 
-/* Remove from Cart button */
+/* Cart section styles */
+#cart {
+    background: #fff3cd;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+#cartItems {
+    margin-bottom: 20px;
+}
+
 .remove-from-cart-btn {
     background: #e74c3c; /* Red for remove */
     color: white;
@@ -174,78 +230,7 @@ button:hover {
     background: #c0392b; /* Darker red on hover */
 }
 
-/* Hidden class */
-.hidden {
-    display: none;
-}
-
-/* Payment Modal styles */
-#paymentModal {
-    background: rgba(0, 0, 0, 0.5); /* Transparent black background */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    justify-content: center;
-    align-items: center;
-}
-
-#paymentModal > div {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    width: 300px;
-}
-
-.payment-option {
-    background: #3498db; /* Blue */
-    color: white;
-    padding: 10px;
-    margin: 5px 0;
-    width: 100%;
-    cursor: pointer;
-    text-align: center;
-    border-radius: 5px;
-}
-
-.payment-option:hover {
-    background: #2980b9;
-}
-
-#paymentForm input {
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#confirmPaymentBtn {
-    background: #4CAF50; /* Green */
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    border: none;
-    width: 100%;
-    cursor: pointer;
-}
-
-#confirmPaymentBtn:hover {
-    background: #45a049;
-}
-
-/* Order Summary Styles */
-#orderSummary {
-    background: #fff3cd;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 5px;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive styles */
+/* Responsive design */
 @media (max-width: 600px) {
     #itemList {
         flex-direction: column;
@@ -255,8 +240,17 @@ button:hover {
     .item {
         width: 90%;
     }
+}
 
-    .cart-item {
-        width: 90%;
-    }
+#paymentConfirmation {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#paymentConfirmation p {
+    font-size: 1.2em;
+    margin: 10px 0;
 }
