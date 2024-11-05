@@ -1,54 +1,32 @@
-// Predefined items (initial products)
 const predefinedItems = [
     {
         name: 'Vintage Lamp',
         price: 30,
         description: 'A beautiful vintage lamp.',
         owner: 'Admin',
-        image: 'path/to/lamp.jpg' // Replace with actual image path
+        image: 'path/to/lamp.jpg' // Replace with the actual path
     },
     {
         name: 'Wooden Chair',
         price: 50,
         description: 'A sturdy wooden chair.',
         owner: 'Admin',
-        image: 'path/to/chair.jpg' // Replace with actual image path
+        image: 'path/to/chair.jpg' // Replace with the actual path
     },
     {
         name: 'Coffee Table',
         price: 100,
         description: 'A stylish coffee table.',
         owner: 'Admin',
-        image: 'path/to/table.jpg' // Replace with actual image path
+        image: 'path/to/table.jpg' // Replace with the actual path
     }
 ];
 
-// Items added by the user
 const items = JSON.parse(localStorage.getItem('items')) || [];
-
-// Cart array to hold added items
 const cart = [];
-
-// Current logged-in user
 let currentUser = localStorage.getItem('currentUser');
 
-// Check if the login page is loaded
-if (document.getElementById('loginBtn')) {
-    document.getElementById('loginBtn').addEventListener('click', () => {
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-
-        if (username && password) {
-            localStorage.setItem('currentUser', username);
-            alert('Login successful!');
-            window.location.href = 'sell.html'; // Redirect to main page
-        } else {
-            alert('Please enter both username and password.');
-        }
-    });
-}
-
-// Check if the main page is loaded
+// Main page logic
 if (document.getElementById('logoutBtn')) {
     if (!currentUser) {
         alert('You need to log in first!');
@@ -63,161 +41,126 @@ if (document.getElementById('logoutBtn')) {
 }
 
 // Navigation buttons
-document.getElementById('productsBtn').addEventListener('click', () => {
-    displayItems();
-    document.getElementById('cart').classList.add('hidden');
-});
+document.getElementById('productsBtn').addEventListener('click', displayItems);
+document.getElementById('postAdBtn').addEventListener('click', showPostAdForm);
+document.getElementById('cartBtn').addEventListener('click', showCart);
+document.getElementById('checkoutBtn').addEventListener('click', showPaymentOptions);
 
-document.getElementById('postAdBtn').addEventListener('click', () => {
-    document.getElementById('itemForm').classList.toggle('hidden');
-});
-
-document.getElementById('cartBtn').addEventListener('click', () => {
-    displayCart();
-    document.getElementById('itemList').classList.add('hidden');
-});
-
-// Adding item functionality
-if (document.getElementById('submitItemBtn')) {
-    document.getElementById('submitItemBtn').addEventListener('click', (e) => {
-        e.preventDefault();
-        const itemName = document.getElementById('itemName').value;
-        const itemPrice = document.getElementById('itemPrice').value;
-        const itemDescription = document.getElementById('itemDescription').value;
-        const itemImageInput = document.getElementById('itemImage');
-
-        if (itemName && itemPrice) {
-            const item = {
-                name: itemName,
-                price: itemPrice,
-                description: itemDescription,
-                owner: currentUser,
-                image: itemImageInput.files[0] ? URL.createObjectURL(itemImageInput.files[0]) : null,
-            };
-
-            // Add the new item to both items array and localStorage
-            items.push(item);
-            localStorage.setItem('items', JSON.stringify(items)); // Save items to localStorage
-            
-            // Now display all items including the new one
-            displayItems();
-            
-            // Reset the form
-            document.getElementById('itemForm').reset();
-            document.getElementById('itemForm').classList.add('hidden');
-        } else {
-            alert('Please fill in all fields.');
-        }
-    });
-
-    document.getElementById('cancelBtn').addEventListener('click', () => {
-        document.getElementById('itemForm').classList.add('hidden');
-    });
-}
-
-// Function to display items (predefined + user-added)
+// Display items
 function displayItems() {
     const itemList = document.getElementById('itemList');
     itemList.innerHTML = '';
-    const allItems = [...predefinedItems, ...items]; // Combine predefined items with user-added items
-
-    allItems.forEach((item, index) => {
-        const itemDiv = document.createElement('div');
-        itemDiv.classList.add('item');
-        itemDiv.innerHTML = `
-            <h2>${item.name}</h2>
-            <p><strong>Price:</strong> $${item.price}</p>
-            <p><strong>Description:</strong> ${item.description}</p>
-            <p><strong>Owner:</strong> ${item.owner}</p>
-            ${item.image ? `<img src="${item.image}" alt="${item.name}" class="item-image">` : ''}
-            <button class="add-to-cart-btn" data-index="${index}">Add to Cart</button>
-            ${item.owner === currentUser ? `<button class="remove-btn" data-index="${index}">Remove</button>` : ''}
-        `;
-        itemList.appendChild(itemDiv);
-    });
-    
-    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-        button.addEventListener('click', addToCart);
-    });
-    document.querySelectorAll('.remove-btn').forEach(button => {
-        button.addEventListener('click', removeItem);
-    });
-}
-
-// Add an item to the cart
-function addToCart(e) {
-    const index = e.target.getAttribute('data-index');
-    const itemToAdd = items[index] || predefinedItems[index]; // Get item from items or predefined items
-    cart.push(itemToAdd);
-    alert(`${itemToAdd.name} added to cart.`);
-}
-
-// Remove an item from the user's list (not predefined items)
-function removeItem(e) {
-    const index = e.target.getAttribute('data-index');
-    if (index < predefinedItems.length) {
-        alert("You cannot remove predefined items.");
-    } else {
-        items.splice(index - predefinedItems.length, 1); // Adjust index for user-added items
-        localStorage.setItem('items', JSON.stringify(items)); // Update localStorage
-        displayItems();
-    }
-}
-
-// Display the cart
-function displayCart() {
-    const cartItems = document.getElementById('cartItems');
-    cartItems.innerHTML = '';
-    cart.forEach((item, index) => {
-        const cartItemDiv = document.createElement('div');
-        cartItemDiv.classList.add('cart-item');
-        cartItemDiv.innerHTML = `
+    const allItems = [...predefinedItems, ...items];
+    allItems.forEach(item => {
+        const div = document.createElement('div');
+        div.classList.add('item');
+        div.innerHTML = `
+            <img class="item-image" src="${item.image}" alt="${item.name}">
             <h3>${item.name}</h3>
-            <p><strong>Price:</strong> $${item.price}</p>
-            <button class="remove-from-cart-btn" data-index="${index}">Remove from Cart</button>
+            <p>${item.description}</p>
+            <p>Price: $${item.price}</p>
+            <button class="add-to-cart-btn" onclick="addToCart(${JSON.stringify(item)})">Add to Cart</button>
         `;
-        cartItems.appendChild(cartItemDiv);
-    });
-    document.getElementById('checkoutBtn').classList.remove('hidden');
-    document.getElementById('cart').classList.remove('hidden');
-
-    document.querySelectorAll('.remove-from-cart-btn').forEach(button => {
-        button.addEventListener('click', removeFromCart);
+        itemList.appendChild(div);
     });
 }
 
-// Remove an item from the cart
-function removeFromCart(e) {
-    const index = e.target.getAttribute('data-index');
-    cart.splice(index, 1);
-    displayCart();
+// Show post ad form
+function showPostAdForm() {
+    document.getElementById('itemForm').classList.remove('hidden');
 }
 
-// Checkout functionality
-document.getElementById('checkoutBtn').addEventListener('click', () => {
-    const paymentMethod = prompt('Please enter your payment method (e.g., Credit Card, PayPal):');
-    if (paymentMethod) {
-        alert(`Checkout successful! Payment method: ${paymentMethod}`);
-        cart.length = 0; // Clear the cart after checkout
-        displayCart(); // Refresh the cart view
+// Add item to cart
+function addToCart(item) {
+    cart.push(item);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${item.name} added to cart`);
+    updateCartButton();
+}
+
+// Show cart
+function showCart() {
+    const cartSection = document.getElementById('cart');
+    cartSection.classList.remove('hidden');
+    const cartItemsDiv = document.getElementById('cartItems');
+    cartItemsDiv.innerHTML = '';
+    cart.forEach(item => {
+        const div = document.createElement('div');
+        div.classList.add('cart-item');
+        div.innerHTML = `
+            <h4>${item.name}</h4>
+            <p>Price: $${item.price}</p>
+            <button class="remove-from-cart-btn" onclick="removeFromCart(${JSON.stringify(item)})">Remove from Cart</button>
+        `;
+        cartItemsDiv.appendChild(div);
+    });
+
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    checkoutBtn.classList.remove('hidden');
+}
+
+// Remove item from cart
+function removeFromCart(item) {
+    const index = cart.indexOf(item);
+    if (index > -1) {
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        showCart();
     }
-});
+}
 
-// Credit card payment functionality (simplified)
-function handleCreditCardPayment() {
-    const creditCardNumber = prompt('Enter your credit card number:');
-    const amount = cart.reduce((total, item) => total + item.price, 0);
+// Update cart button
+function updateCartButton() {
+    const cartBtn = document.getElementById('cartBtn');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cartBtn.textContent = `Cart (${cart.length})`;
+}
 
-    if (creditCardNumber && amount) {
-        alert(`Payment of $${amount} processed with credit card: ${creditCardNumber}`);
-        cart.length = 0; // Clear cart after payment
-        displayCart(); // Refresh the cart view
+// Show payment options
+function showPaymentOptions() {
+    document.getElementById('paymentOptions').classList.remove('hidden');
+    document.getElementById('checkoutBtn').classList.add('hidden');
+}
+
+// Handle payment method selection
+document.getElementById('creditCardOption').addEventListener('click', showCreditCardForm);
+document.getElementById('paypalOption').addEventListener('click', showPaypalForm);
+document.getElementById('bankTransferOption').addEventListener('click', showBankTransferForm);
+
+function showCreditCardForm() {
+    document.getElementById('paymentOptions').classList.add('hidden');
+    document.getElementById('creditCardForm').classList.remove('hidden');
+}
+
+function showPaypalForm() {
+    document.getElementById('paymentOptions').classList.add('hidden');
+    document.getElementById('paypalForm').classList.remove('hidden');
+}
+
+function showBankTransferForm() {
+    alert("Bank Transfer option coming soon!");
+}
+
+// Handle credit card payment
+document.getElementById('payBtn').addEventListener('click', processPayment);
+
+function processPayment() {
+    const cardNumber = document.getElementById('creditCardNumber').value;
+    const expiryDate = document.getElementById('cardExpiry').value;
+    const cvv = document.getElementById('cvv').value;
+
+    if (cardNumber && expiryDate && cvv) {
+        document.getElementById('creditCardForm').classList.add('hidden');
+        document.getElementById('paymentConfirmation').classList.remove('hidden');
+
+        // Display the product name and delivery date
+        const productNames = cart.map(item => item.name).join(", ");
+        const deliveryDate = new Date();
+        deliveryDate.setDate(deliveryDate.getDate() + 7); // Deliver in 7 days
+
+        document.getElementById('productName').textContent = `Product(s): ${productNames}`;
+        document.getElementById('deliveryDate').textContent = `Delivery Date: ${deliveryDate.toDateString()}`;
     } else {
-        alert('Payment failed. Please try again.');
+        alert("Please fill in all payment details.");
     }
-}
-
-// Display items on initial load
-if (document.getElementById('itemList')) {
-    displayItems();
 }
