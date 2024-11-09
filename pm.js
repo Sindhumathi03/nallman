@@ -1,5 +1,6 @@
 // script.js
 document.addEventListener("DOMContentLoaded", () => {
+
     // Function to update the task status display
     function updateTaskStatus(taskId) {
         const selector = document.getElementById(taskId + '-status-selector');
@@ -54,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const taskName = taskNameInput.value.trim();
         const taskStatus = taskStatusInput.value;
 
+        // Check if task name is not empty
         if (taskName) {
             // Add the new task to the list with the selected status
             addNewTask(taskName, taskStatus);
