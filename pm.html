@@ -9,34 +9,22 @@
 <body>
     <div class="container">
         <h1>Project Management Dashboard</h1>
-        <div class="task-list">
-            <div class="task">
-                <h2>Task 1</h2>
-                <p class="status">Status: <span id="task1-status">Pending</span></p>
-                <select id="task1-status-selector" class="status-selector">
-                    <option value="Pending">Pending</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Completed">Completed</option>
-                </select>
-            </div>
-            <div class="task">
-                <h2>Task 2</h2>
-                <p class="status">Status: <span id="task2-status">Pending</span></p>
-                <select id="task2-status-selector" class="status-selector">
-                    <option value="Pending">Pending</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Completed">Completed</option>
-                </select>
-            </div>
-            <div class="task">
-                <h2>Task 3</h2>
-                <p class="status">Status: <span id="task3-status">Pending</span></p>
-                <select id="task3-status-selector" class="status-selector">
-                    <option value="Pending">Pending</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Completed">Completed</option>
-                </select>
-            </div>
+
+        <!-- Form to Add a New Task -->
+        <div class="add-task-form">
+            <h3>Add New Task</h3>
+            <input type="text" id="new-task-name" placeholder="Enter task name" />
+            <select id="new-task-status" class="status-selector">
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <button id="add-task-btn">Add Task</button>
+        </div>
+
+        <!-- Task List -->
+        <div class="task-list" id="task-list">
+            <!-- Existing tasks will appear here -->
         </div>
     </div>
 
