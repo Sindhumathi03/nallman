@@ -25,6 +25,34 @@ h1 {
     margin-bottom: 20px;
 }
 
+.add-task-form {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.add-task-form input,
+.add-task-form select {
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.add-task-form button {
+    padding: 10px 20px;
+    background-color: #5b9bd5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-task-form button:hover {
+    background-color: #4a8ab8;
+}
+
 .task-list {
     display: flex;
     flex-direction: column;
