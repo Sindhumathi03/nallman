@@ -17,7 +17,7 @@
             max-width: 1200px;
             margin: 20px;
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
 
@@ -36,65 +36,6 @@
 
         .pie-chart, .bar-chart {
             height: 200px;
-        }
-
-        .task-form {
-            margin-bottom: 20px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .task-form input, .task-form select, .task-form button {
-            padding: 10px;
-            margin: 10px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-        }
-
-        .task-form button {
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-        }
-
-        .task-form button:hover {
-            background-color: #45a049;
-        }
-
-        .task-list {
-            margin-top: 20px;
-        }
-
-        .task-list ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .task-list li {
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .task-list .completed {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .task-list .in-progress {
-            background-color: #FFC107;
-            color: white;
-        }
-
-        .task-list .pending {
-            background-color: #FF5722;
-            color: white;
         }
 
         .table-container {
@@ -116,34 +57,51 @@
         th {
             background-color: #f4f4f4;
         }
+
+        /* Form Styling */
+        .form-container {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .form-container input,
+        .form-container select,
+        .form-container button {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
     <h1>Project Management Dashboard</h1>
 
-    <!-- Form to Add Task -->
-    <div class="task-form">
-        <h3>Enter Task Details</h3>
-        <input type="text" id="task-name" placeholder="Task Name" required />
-        <select id="task-status" required>
-            <option value="">Select Status</option>
-            <option value="Completed">Completed</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Pending">Pending</option>
-        </select>
-        <button id="add-task-btn">Add Task</button>
-    </div>
-
-    <!-- Task List Section -->
-    <div class="task-list">
-        <h2>Task List</h2>
-        <ul id="task-list">
-            <!-- Task names and statuses will be dynamically added here -->
-        </ul>
+    <!-- Form to Add Employee Task Data -->
+    <div class="form-container">
+        <h3>Enter Employee Task Data</h3>
+        <input type="text" id="employee-name" placeholder="Employee Name" required />
+        <input type="number" id="tasks-completed" placeholder="Tasks Completed" required />
+        <input type="number" id="tasks-in-progress" placeholder="Work In Progress" required />
+        <input type="number" id="tasks-started" placeholder="Tasks Started" required />
+        <button id="add-employee-btn">Add Employee</button>
     </div>
 
     <div class="dashboard">
-        <!-- Example Cards -->
         <div class="card">
             <h2>Tasks Completed in Last 7 Days</h2>
             <p>23</p>
@@ -156,12 +114,12 @@
             <h2>Milestones Covered in Last 7 Days</h2>
             <p>4</p>
         </div>
-
+        
         <div class="card pie-chart">
             <h2>Project Tasks By Status</h2>
             <canvas id="statusChart"></canvas>
         </div>
-
+        
         <div class="card bar-chart">
             <h2>Project Tasks Created vs Completed</h2>
             <canvas id="tasksChart"></canvas>
@@ -239,14 +197,6 @@
             ]
         };
 
-        const employeeData = [
-            { name: 'Alice', completed: 50, progress: 9, started: 7 },
-            { name: 'Emily', completed: 102, progress: 15, started: 10 },
-            { name: 'Dave', completed: 80, progress: 12, started: 5 },
-            { name: 'Tom', completed: 92, progress: 10, started: 8 },
-            { name: 'Jared', completed: 85, progress: 9, started: 4 }
-        ];
-
         // Render Charts
         new Chart(document.getElementById('statusChart'), {
             type: 'doughnut',
@@ -265,60 +215,54 @@
             options: { responsive: true, plugins: { legend: { position: 'top' } } }
         });
 
-        // Populate Employee Table
-        const employeeTable = document.getElementById('employeeTable');
-        employeeData.forEach(employee => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${employee.name}</td>
-                <td>${employee.completed}</td>
-                <td>${employee.progress}</td>
-                <td>${employee.started}</td>
-            `;
-            employeeTable.appendChild(row);
-        });
+        // Initialize employee data array
+        const employeeData = [];
 
-        // Task Management Logic
-        const tasks = [];
-
-        function updateTaskList() {
-            const taskList = document.getElementById('task-list');
-            taskList.innerHTML = '';  // Clear the task list
-
-            tasks.forEach(task => {
-                const li = document.createElement('li');
-                li.classList.add(task.status.toLowerCase().replace(' ', '-'));
-                li.innerHTML = `
-                    <span>${task.name}</span>
-                    <span>${task.status}</span>
+        // Function to update the employee performance table
+        function updateEmployeeTable() {
+            const employeeTable = document.getElementById('employeeTable');
+            employeeTable.innerHTML = ''; // Clear existing table rows
+            employeeData.forEach(employee => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${employee.name}</td>
+                    <td>${employee.completed}</td>
+                    <td>${employee.progress}</td>
+                    <td>${employee.started}</td>
                 `;
-                taskList.appendChild(li);
+                employeeTable.appendChild(row);
             });
         }
 
-        // Add Task Button Event Listener
-        document.getElementById('add-task-btn').addEventListener('click', () => {
-            const taskName = document.getElementById('task-name').value.trim();
-            const taskStatus = document.getElementById('task-status').value;
+        // Event listener for adding new employee task data
+        document.getElementById('add-employee-btn').addEventListener('click', () => {
+            const employeeName = document.getElementById('employee-name').value.trim();
+            const tasksCompleted = parseInt(document.getElementById('tasks-completed').value, 10);
+            const tasksInProgress = parseInt(document.getElementById('tasks-in-progress').value, 10);
+            const tasksStarted = parseInt(document.getElementById('tasks-started').value, 10);
 
-            if (taskName && taskStatus) {
-                tasks.push({
-                    name: taskName,
-                    status: taskStatus
+            // Basic validation
+            if (employeeName && !isNaN(tasksCompleted) && !isNaN(tasksInProgress) && !isNaN(tasksStarted)) {
+                // Add the new employee data to the array
+                employeeData.push({
+                    name: employeeName,
+                    completed: tasksCompleted,
+                    progress: tasksInProgress,
+                    started: tasksStarted
                 });
 
-                // Update Task List Display
-                updateTaskList();
+                // Update the table with the new data
+                updateEmployeeTable();
 
-                // Clear input fields
-                document.getElementById('task-name').value = '';
-                document.getElementById('task-status').value = '';
+                // Clear the input fields
+                document.getElementById('employee-name').value = '';
+                document.getElementById('tasks-completed').value = '';
+                document.getElementById('tasks-in-progress').value = '';
+                document.getElementById('tasks-started').value = '';
             } else {
-                alert('Please fill in all fields.');
+                alert('Please fill all fields correctly.');
             }
         });
     </script>
 </body>
 </html>
-
-              
