@@ -1,0 +1,70 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.task {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.task h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.status {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.status span {
+    font-weight: bold;
+}
+
+.status-selector {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.status-selector:focus {
+    outline: none;
+    border-color: #5b9bd5;
+}
+
+option {
+    padding: 10px;
+}
