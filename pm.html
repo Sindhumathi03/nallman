@@ -94,11 +94,12 @@
     <!-- Form to Add Employee Task Data -->
     <div class="form-container">
         <h3>Enter Employee Task Data</h3>
+        <input type="text" id="task-name" placeholder="Task Name" required />
         <input type="text" id="employee-name" placeholder="Employee Name" required />
         <input type="number" id="tasks-completed" placeholder="Tasks Completed" required />
         <input type="number" id="tasks-in-progress" placeholder="Work In Progress" required />
         <input type="number" id="tasks-started" placeholder="Tasks Started" required />
-        <button id="add-employee-btn">Add Employee</button>
+        <button id="add-task-btn">Add Task</button>
     </div>
 
     <div class="dashboard">
@@ -135,6 +136,7 @@
             <table>
                 <thead>
                     <tr>
+                        <th>Task Name</th>
                         <th>Employee</th>
                         <th>Tasks Completed</th>
                         <th>Work in Progress</th>
@@ -215,52 +217,56 @@
             options: { responsive: true, plugins: { legend: { position: 'top' } } }
         });
 
-        // Initialize employee data array
-        const employeeData = [];
+        // Initialize employee task data array
+        const taskData = [];
 
-        // Function to update the employee performance table
-        function updateEmployeeTable() {
+        // Function to update the task performance table
+        function updateTaskTable() {
             const employeeTable = document.getElementById('employeeTable');
             employeeTable.innerHTML = ''; // Clear existing table rows
-            employeeData.forEach(employee => {
+            taskData.forEach(task => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${employee.name}</td>
-                    <td>${employee.completed}</td>
-                    <td>${employee.progress}</td>
-                    <td>${employee.started}</td>
+                    <td>${task.taskName}</td>
+                    <td>${task.employeeName}</td>
+                    <td>${task.tasksCompleted}</td>
+                    <td>${task.tasksInProgress}</td>
+                    <td>${task.tasksStarted}</td>
                 `;
                 employeeTable.appendChild(row);
             });
         }
 
-        // Event listener for adding new employee task data
-        document.getElementById('add-employee-btn').addEventListener('click', () => {
+        // Event listener for adding new task data
+        document.getElementById('add-task-btn').addEventListener('click', () => {
+            const taskName = document.getElementById('task-name').value.trim();
             const employeeName = document.getElementById('employee-name').value.trim();
             const tasksCompleted = parseInt(document.getElementById('tasks-completed').value, 10);
             const tasksInProgress = parseInt(document.getElementById('tasks-in-progress').value, 10);
             const tasksStarted = parseInt(document.getElementById('tasks-started').value, 10);
 
             // Basic validation
-            if (employeeName && !isNaN(tasksCompleted) && !isNaN(tasksInProgress) && !isNaN(tasksStarted)) {
-                // Add the new employee data to the array
-                employeeData.push({
-                    name: employeeName,
-                    completed: tasksCompleted,
-                    progress: tasksInProgress,
-                    started: tasksStarted
+            if (taskName && employeeName && !isNaN(tasksCompleted) && !isNaN(tasksInProgress) && !isNaN(tasksStarted)) {
+                // Add the new task data to the array
+                taskData.push({
+                    taskName,
+                    employeeName,
+                    tasksCompleted,
+                    tasksInProgress,
+                    tasksStarted
                 });
 
-                // Update the table with the new data
-                updateEmployeeTable();
+                // Update the table with the new task data
+                updateTaskTable();
 
-                // Clear the input fields
+                // Clear the form inputs
+                document.getElementById('task-name').value = '';
                 document.getElementById('employee-name').value = '';
                 document.getElementById('tasks-completed').value = '';
                 document.getElementById('tasks-in-progress').value = '';
                 document.getElementById('tasks-started').value = '';
             } else {
-                alert('Please fill all fields correctly.');
+                alert('Please fill in all fields correctly.');
             }
         });
     </script>
