@@ -1,36 +1,27 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #e9ecef;
-    padding: 20px;
-}
-
+    padding: 20px;}
 .container {
     max-width: 600px;
     margin: auto;
     background: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);}
 h1 {
     text-align: center;
     color: #4A90E2;
-    margin-bottom: 20px; /* Increased bottom margin for spacing */
-}
-
+    margin-bottom: 20px; /* Increased bottom margin for spacing */}
 h2 {
     color: #333;
     border-bottom: 2px solid #4A90E2;
     padding-bottom: 5px;
     margin-top: 20px; /* Added margin for spacing */
 }
-
 label {
     display: block;
-    margin: 10px 0 5px;
-}
-
+    margin: 10px 0 5px;}
 input[type="text"],
 input[type="date"],
 textarea,
@@ -42,14 +33,11 @@ select {
     border-radius: 5px;
     transition: border-color 0.3s;
 }
-
 input[type="text"]:focus,
 input[type="date"]:focus,
 textarea:focus,
 select:focus {
-    border-color: #007BFF;
-}
-
+    border-color: #007BFF;}
 button {
     background-color: #4A90E2;
     color: white;
@@ -59,22 +47,17 @@ button {
     cursor: pointer;
     transition: background-color 0.3s;
     width: 100%;
-    margin-top: 10px; /* Added margin for spacing between buttons */
-}
-
+    margin-top: 10px; }
 button:hover {
     background-color: #007BFF;
 }
-
 #summary-section,
 #confirmation-section {
     background-color: #f7f9fc;
     padding: 15px;
     border-radius: 5px;
     border: 1px solid #ddd;
-    margin-top: 15px;
-}
-
+    margin-top: 15px;}
 #confirmation-section {
     display: flex;
     flex-direction: column;
@@ -87,33 +70,19 @@ button:hover {
     border-radius: 5px;
     margin: 20px auto;
     max-width: 400px;
-    text-align: center;
-}
-
+    text-align: center;}
 #confirmation-details {
-    text-align: center;
-}
-
+    text-align: center;}
 strong {
     font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
+    margin-bottom: 10px;}
 #confirmation-section p {
-    margin: 5px 0;
-}
-
-/* Responsive adjustments */
+    margin: 5px 0;}
 @media (max-width: 768px) {
     .container {
-        padding: 15px;
-    }
-    
+        padding: 15px; } 
     h1 {
         font-size: 1.5em; /* Adjust title size for smaller screens */
     }
-    
     button {
-        padding: 8px; /* Smaller button padding */
-    }
-}
+        padding: 8px; /* Smaller button padding */}}
