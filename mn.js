@@ -1,11 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const postContent = document.getElementById('postContent');
-    const postButton = document.getElementById('postButton');
-    const postsContainer = document.getElementById('postsContainer');
-    const loginContainer = document.getElementById('loginContainer');
+    const postContent = document.getElementById('postContent');const postButton = document.getElementById('postButton');
+    const postsContainer = document.getElementById('postsContainer');const loginContainer = document.getElementById('loginContainer');
     const mainContainer = document.getElementById('mainContainer');
-    const loginButton = document.getElementById('loginButton');
-    const usernameInput = document.getElementById('username');
+    const loginButton = document.getElementById('loginButton');const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password');
     const loginError = document.getElementById('loginError');
     if (localStorage.getItem('username')) {
@@ -61,10 +58,8 @@ function loadComments(commentListElement, comments) {
             loadPosts();  }
     });
     function addEventListeners() {
-        addLikeButtonListeners();
-        addUnlikeButtonListeners();
-        addDeleteButtonListeners();
-        addCommentButtonListeners();}
+        addLikeButtonListeners();addUnlikeButtonListeners();
+        addDeleteButtonListeners();addCommentButtonListeners();}
     function addLikeButtonListeners() {
         const likeButtons = document.querySelectorAll('.likeButton');
         likeButtons.forEach(button => {
