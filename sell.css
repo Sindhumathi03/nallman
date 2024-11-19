@@ -1,4 +1,3 @@
-/* General styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,8 +5,6 @@ body {
     background-color: #f4f4f4;
     color: #333;
 }
-
-/* Header styles */
 header {
     background: #4CAF50; /* Main header color */
     color: white;
@@ -15,17 +12,13 @@ header {
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
 h1 {
     font-size: 2.5em;
     margin: 0;
 }
-
-/* Navigation styles */
 nav {
     margin-top: 10px;
 }
-
 button {
     padding: 10px 15px;
     margin: 5px;
@@ -34,40 +27,31 @@ button {
     font-size: 1em;
     transition: background 0.3s, color 0.3s;
 }
-
-/* Button colors */
 #productsBtn {
     background: #008CBA; /* Blue */
     color: white;
 }
-
 #postAdBtn {
     background: #f39c12; /* Orange */
     color: white;
 }
-
 #cartBtn {
     background: #3498db; /* Lighter blue */
     color: white;
 }
-
 #logoutBtn {
     background: #e74c3c; /* Red */
     color: white;
 }
-
 button:hover {
     filter: brightness(0.9);
 }
-
-/* Item display styles */
 #itemList {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 20px;
 }
-
 .item {
     background: white;
     border: 1px solid #ccc;
@@ -81,26 +65,21 @@ button:hover {
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
 }
-
 .item:hover {
     transform: scale(1.05);
 }
-
 .item-image {
     max-width: 100%;
     height: auto;
     margin-bottom: 10px;
     border-radius: 5px;
 }
-
-/* Cart styles */
 #cart {
     background: #fff3cd;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
-
 .cart-item {
     background: #fff3cd;
     border: 1px solid #ffeeba;
@@ -108,8 +87,6 @@ button:hover {
     padding: 10px;
     margin: 5px;
 }
-
-/* Form styles */
 #itemForm {
     background: white;
     border-radius: 5px;
@@ -117,7 +94,6 @@ button:hover {
     margin: 20px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
-
 #itemForm input, #itemForm textarea {
     width: calc(100% - 22px);
     padding: 10px;
@@ -125,8 +101,6 @@ button:hover {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
-/* Submit button */
 #submitItemBtn {
     background: #4CAF50; /* Green */
     color: white;
@@ -137,12 +111,9 @@ button:hover {
     cursor: pointer;
     transition: background 0.3s;
 }
-
 #submitItemBtn:hover {
     background: #45a049; /* Darker green on hover */
 }
-
-/* Add to Cart button */
 .add-to-cart-btn {
     background: #4CAF50; /* Green */
     color: white;
@@ -153,12 +124,9 @@ button:hover {
     cursor: pointer;
     transition: background 0.3s;
 }
-
 .add-to-cart-btn:hover {
     background: #45a049; /* Darker green on hover */
 }
-
-/* Remove from Cart button */
 .remove-from-cart-btn {
     background: #e74c3c; /* Red for remove */
     color: white;
@@ -169,17 +137,12 @@ button:hover {
     cursor: pointer;
     transition: background 0.3s;
 }
-
 .remove-from-cart-btn:hover {
     background: #c0392b; /* Darker red on hover */
 }
-
-/* Hidden class */
 .hidden {
     display: none;
 }
-
-/* Payment Modal styles */
 #paymentModal {
     background: rgba(0, 0, 0, 0.5); /* Transparent black background */
     position: fixed;
@@ -191,14 +154,12 @@ button:hover {
     justify-content: center;
     align-items: center;
 }
-
 #paymentModal > div {
     background: white;
     padding: 20px;
     border-radius: 5px;
     width: 300px;
 }
-
 .payment-option {
     background: #3498db; /* Blue */
     color: white;
@@ -209,11 +170,9 @@ button:hover {
     text-align: center;
     border-radius: 5px;
 }
-
 .payment-option:hover {
     background: #2980b9;
 }
-
 #paymentForm input {
     width: 100%;
     padding: 8px;
@@ -221,7 +180,6 @@ button:hover {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
 #confirmPaymentBtn {
     background: #4CAF50; /* Green */
     color: white;
@@ -231,12 +189,9 @@ button:hover {
     width: 100%;
     cursor: pointer;
 }
-
 #confirmPaymentBtn:hover {
     background: #45a049;
 }
-
-/* Order Summary Styles */
 #orderSummary {
     background: #fff3cd;
     padding: 20px;
@@ -244,8 +199,6 @@ button:hover {
     border-radius: 5px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
-
-/* Responsive styles */
 @media (max-width: 600px) {
     #itemList {
         flex-direction: column;
