@@ -9,17 +9,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const passwordInput = document.getElementById('password');
     const loginError = document.getElementById('loginError');
     if (localStorage.getItem('username')) {
-        showMainContainer();
-    }
+        showMainContainer();}
   loginButton.addEventListener('click', function() {
         const username = usernameInput.value.trim();
         const password = passwordInput.value.trim();
         if (username && password) {
             localStorage.setItem('username', username);
-            showMainContainer();
-        } else {
-            loginError.classList.remove('hidden');
-        }
+            showMainContainer();} else {
+            loginError.classList.remove('hidden');}
     });
     function showMainContainer() {
         loginContainer.classList.add('hidden');
@@ -67,24 +64,21 @@ function loadComments(commentListElement, comments) {
         addLikeButtonListeners();
         addUnlikeButtonListeners();
         addDeleteButtonListeners();
-        addCommentButtonListeners();
-    }
+        addCommentButtonListeners();}
     function addLikeButtonListeners() {
         const likeButtons = document.querySelectorAll('.likeButton');
         likeButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const index = this.dataset.index;
                 likePost(index);});
-        });
-    }
+        });}
     function addUnlikeButtonListeners() {
         const unlikeButtons = document.querySelectorAll('.unlikeButton');
         unlikeButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const index = this.dataset.index;
                 unlikePost(index);});
-        });
-    }
+        }); }
     function likePost(index) {
         const posts = JSON.parse(localStorage.getItem('posts')) || [];
         posts[index].likes = (posts[index].likes || 0) + 1;
@@ -93,18 +87,15 @@ function loadComments(commentListElement, comments) {
     function unlikePost(index) {
         const posts = JSON.parse(localStorage.getItem('posts')) || [];
         if (posts[index].likes > 0) {
-            posts[index].likes--;
-        }
+            posts[index].likes--; }
         localStorage.setItem('posts', JSON.stringify(posts));
-        loadPosts();
-    }
+        loadPosts();}
     function addDeleteButtonListeners() {
         const deleteButtons = document.querySelectorAll('.deleteButton');
         deleteButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const index = this.dataset.index;
-                deletePost(index); }); });
-    }
+                deletePost(index); }); }); }
     function addCommentButtonListeners() {
         const commentButtons = document.querySelectorAll('.commentButton');
         commentButtons.forEach(button => {
@@ -114,19 +105,14 @@ function loadComments(commentListElement, comments) {
                 const comment = commentInput.value.trim();
                 if (comment) {
                     addComment(index, comment);
-                    commentInput.value = ''; }});
-        });
-    }
+                    commentInput.value = ''; }});});}
     function addComment(index, comment) {
         const posts = JSON.parse(localStorage.getItem('posts')) || [];
         posts[index].comments.push(`${localStorage.getItem('username')}: ${comment}`);
         localStorage.setItem('posts', JSON.stringify(posts));
-        loadPosts();
-    }
+        loadPosts(); }
     function deletePost(index) {
         const posts = JSON.parse(localStorage.getItem('posts')) || [];
         posts.splice(index, 1);
         localStorage.setItem('posts', JSON.stringify(posts));
-        loadPosts();
-    }
-});
+        loadPosts(); }});
