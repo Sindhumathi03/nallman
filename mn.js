@@ -8,17 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password');
     const loginError = document.getElementById('loginError');
-
-    // Check if user is logged in
     if (localStorage.getItem('username')) {
         showMainContainer();
     }
-
-    // Handle login button click
-    loginButton.addEventListener('click', function() {
+  loginButton.addEventListener('click', function() {
         const username = usernameInput.value.trim();
         const password = passwordInput.value.trim();
-
         if (username && password) {
             localStorage.setItem('username', username);
             showMainContainer();
@@ -26,14 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
             loginError.classList.remove('hidden');
         }
     });
-
     function showMainContainer() {
         loginContainer.classList.add('hidden');
         mainContainer.classList.remove('hidden');
-        loadPosts();
-    }
-
-    // Load posts from local storage
+        loadPosts(); }
     function loadPosts() {
         const posts = JSON.parse(localStorage.getItem('posts')) || [];
         postsContainer.innerHTML = '';
@@ -53,69 +44,52 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
             postsContainer.appendChild(postElement);
-            loadComments(postElement.querySelector('.commentList'), post.comments || []);
-        });
-        addEventListeners();
-    }
-
-    function loadComments(commentListElement, comments) {
+            loadComments(postElement.querySelector('.commentList'), post.comments || []); });
+        addEventListeners(); }
+function loadComments(commentListElement, comments) {
         commentListElement.innerHTML = '';
         comments.forEach(comment => {
             const commentElement = document.createElement('div');
             commentElement.textContent = comment;
-            commentListElement.appendChild(commentElement);
-        });
-    }
-
+            commentListElement.appendChild(commentElement); }); }
     function savePost(content) {
         const posts = JSON.parse(localStorage.getItem('posts')) || [];
         posts.push({ content, likes: 0, comments: [], username: localStorage.getItem('username') });
-        localStorage.setItem('posts', JSON.stringify(posts));
-    }
-
+        localStorage.setItem('posts', JSON.stringify(posts));}
     postButton.addEventListener('click', function() {
         const content = postContent.value.trim();
         if (content) {
             savePost(content);
             postContent.value = '';
-            loadPosts();
-        }
+            loadPosts();  }
     });
-
     function addEventListeners() {
         addLikeButtonListeners();
         addUnlikeButtonListeners();
         addDeleteButtonListeners();
         addCommentButtonListeners();
     }
-
     function addLikeButtonListeners() {
         const likeButtons = document.querySelectorAll('.likeButton');
         likeButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const index = this.dataset.index;
-                likePost(index);
-            });
+                likePost(index);});
         });
     }
-
     function addUnlikeButtonListeners() {
         const unlikeButtons = document.querySelectorAll('.unlikeButton');
         unlikeButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const index = this.dataset.index;
-                unlikePost(index);
-            });
+                unlikePost(index);});
         });
     }
-
     function likePost(index) {
         const posts = JSON.parse(localStorage.getItem('posts')) || [];
         posts[index].likes = (posts[index].likes || 0) + 1;
         localStorage.setItem('posts', JSON.stringify(posts));
-        loadPosts();
-    }
-
+        loadPosts();}
     function unlikePost(index) {
         const posts = JSON.parse(localStorage.getItem('posts')) || [];
         if (posts[index].likes > 0) {
@@ -124,17 +98,13 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('posts', JSON.stringify(posts));
         loadPosts();
     }
-
     function addDeleteButtonListeners() {
         const deleteButtons = document.querySelectorAll('.deleteButton');
         deleteButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const index = this.dataset.index;
-                deletePost(index);
-            });
-        });
+                deletePost(index); }); });
     }
-
     function addCommentButtonListeners() {
         const commentButtons = document.querySelectorAll('.commentButton');
         commentButtons.forEach(button => {
@@ -144,19 +114,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 const comment = commentInput.value.trim();
                 if (comment) {
                     addComment(index, comment);
-                    commentInput.value = '';
-                }
-            });
+                    commentInput.value = ''; }});
         });
     }
-
     function addComment(index, comment) {
         const posts = JSON.parse(localStorage.getItem('posts')) || [];
         posts[index].comments.push(`${localStorage.getItem('username')}: ${comment}`);
         localStorage.setItem('posts', JSON.stringify(posts));
         loadPosts();
     }
-
     function deletePost(index) {
         const posts = JSON.parse(localStorage.getItem('posts')) || [];
         posts.splice(index, 1);
