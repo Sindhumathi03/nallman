@@ -34,34 +34,27 @@ const menuData = {
 };
 
 let totalPrice = 0;
-
 function showRestaurants() {
     const restaurantSection = document.getElementById('restaurants');
     restaurantSection.innerHTML = '';
-
     Object.keys(menuData).forEach(restaurant => {
         const div = document.createElement('div');
         div.classList.add('restaurant');
         div.onclick = () => showMenu(restaurant);
-
         div.innerHTML = `
             <img src="${menuData[restaurant].image}" alt="${restaurant}">
             <h3>${restaurant}</h3>
             <p>${restaurant} Cuisine</p>
         `;
-
         restaurantSection.appendChild(div);
     });
 }
-
 function showMenu(restaurant) {
     const menu = document.getElementById('menu');
     const menuTitle = document.getElementById('menuTitle');
     const menuItems = document.getElementById('menuItems');
-
     menuTitle.innerText = restaurant;
     menuItems.innerHTML = ''; // Clear previous items
-
     menuData[restaurant].items.forEach((item, index) => {
         const li = document.createElement('li');
         li.innerHTML = `
@@ -71,27 +64,20 @@ function showMenu(restaurant) {
             <input type="number" id="quantity_${index}" value="1" min="1" style="width: 40px; margin-left: 10px;" /><hr>
             <button class="addToOrderBtn" data-index="${index}">Add to Order</button>
         `;
-
-        // Set the click event on the "Add to Order" button
         li.querySelector('.addToOrderBtn').onclick = (e) => {
             e.stopPropagation(); // Prevent menu from closing
             const quantity = parseInt(document.getElementById(`quantity_${index}`).value);
             addToOrders(item, quantity);
         };
-
-        // Set the click event for the rating stars
         li.querySelector('.rating').onclick = (e) => {
             e.stopPropagation(); // Prevent menu from closing
             rateFood(e, item);
         };
-
         menuItems.appendChild(li);
     });
-
     document.getElementById('restaurants').style.display = 'none'; // Hide restaurants
     menu.style.display = 'block'; // Show the menu
 }
-
 function getStars(rating) {
     let stars = '';
     for (let i = 1; i <= 5; i++) {
@@ -100,41 +86,32 @@ function getStars(rating) {
     }
     return stars;
 }
-
 function rateFood(event, star) {
     const itemIndex = event.target.closest('li').querySelector('.rating').dataset.index; // Get item index
     const restaurantName = document.getElementById('menuTitle').innerText; // Get current restaurant name
     const item = menuData[restaurantName].items[itemIndex]; // Get the current item
-
     item.rating = star; // Set the rating to the clicked star
     const starsContainer = event.target.closest('li').querySelector('.rating');
     starsContainer.innerHTML = getStars(item.rating); // Update stars display
 }
-
 function addToOrders(item, quantity) {
     const orderList = document.getElementById('orderList');
-
     const li = document.createElement('li');
     li.innerHTML = `
         <img src="${item.image}" alt="${item.name}" style="width: 50px; height: auto; margin-right: 10px;">
         ${item.name} - $${item.price} x ${quantity} = $${item.price * quantity}
     `;
     orderList.appendChild(li);
-
     totalPrice += item.price * quantity;
     updateTotalPrice();
-
     alert(`"${item.name}" ordered successfully!`);
 }
-
 function updateTotalPrice() {
     document.getElementById('totalPrice').innerText = `$${totalPrice}`;
     document.getElementById('totalPriceHeader').innerText = `$${totalPrice}`;
 }
-
 function toggleOrders() {
     const myOrdersSection = document.getElementById('myOrders');
-
     if (myOrdersSection.style.display === 'block') {
         myOrdersSection.style.display = 'none';
     } else {
@@ -143,35 +120,28 @@ function toggleOrders() {
         document.getElementById('menu').style.display = 'none'; // Hide menu
     }
 }
-
 function hideMenu() {
     const menu = document.getElementById('menu');
     menu.style.display = 'none';
     document.getElementById('restaurants').style.display = 'block'; // Show restaurants again
 }
-
 function hideOrders() {
     const myOrdersSection = document.getElementById('myOrders');
     myOrdersSection.style.display = 'none';
     document.getElementById('restaurants').style.display = 'block'; // Show restaurants again
 }
-
 function searchItems() {
     const query = document.getElementById('searchBar').value.toLowerCase();
     const menuItems = document.querySelectorAll('#menuItems li');
-
     menuItems.forEach(item => {
         const itemName = item.innerText.toLowerCase();
         item.style.display = itemName.includes(query) ? 'block' : 'none'; // Show matching items
     });
 }
-
 function showOffers() {
     const offersModal = document.getElementById('offersModal');
     const offerItems = document.getElementById('offerItems');
-
     offerItems.innerHTML = '';
-
     Object.keys(menuData).forEach(restaurant => {
         menuData[restaurant].items.forEach(item => {
             if (item.offer) {
@@ -181,14 +151,10 @@ function showOffers() {
             }
         });
     });
-
     offersModal.style.display = 'block';
 }
-
 function hideOffers() {
     const offersModal = document.getElementById('offersModal');
     offersModal.style.display = 'none';
 }
-
-// Initialize the restaurant list on page load
 document.addEventListener('DOMContentLoaded', showRestaurants); 
