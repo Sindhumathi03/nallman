@@ -1,69 +1,30 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Microblogging App</title>
-
     <link rel="stylesheet" href="mb.css">
-
 </head>
-
 <body>
-
- 
-
     <div class="container">
-
         <div id="loginContainer">
-
         <h2>Login</h2>
-
         <input type="text" id="username" placeholder="Username" required>
-
         <input type="password" id="password" placeholder="Password" required>
-
         <button id="loginButton">Login</button>
-
         <p id="loginError" class="hidden">Invalid credentials!</p>
-
     </div>
-
-
-
     <div id="mainContainer" class="hidden">
-
         <h1>Microblogging App</h1>
-
         <div class="post-form">
-
             <textarea id="postContent" placeholder="commend?"></textarea>
-
             <button id="postButton">Post</button>
-
         </div>
-
         <div id="postsContainer">
-
-            <!-- Posts will be dynamically inserted here -->
-
         </div>
-
     </div>
-
-    
-
 <div id="postsContainer"></div>
-
-
-
     <script src="mn.js"></script>
-
 </body>
-
 </html>
