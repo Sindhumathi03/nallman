@@ -1,15 +1,12 @@
-/* styles.css */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     padding: 20px;
-}
 
 .container {
     max-width: 800px;
@@ -18,18 +15,15 @@ body {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 h1 {
     text-align: center;
     color: #333;
     margin-bottom: 20px;
 }
-
 .add-task-form {
     margin-bottom: 30px;
     text-align: center;
 }
-
 .add-task-form input,
 .add-task-form select {
     padding: 10px;
@@ -39,7 +33,6 @@ h1 {
     border: 1px solid #ddd;
     font-size: 1rem;
 }
-
 .add-task-form button {
     padding: 10px 20px;
     background-color: #5b9bd5;
@@ -48,16 +41,13 @@ h1 {
     border-radius: 4px;
     cursor: pointer;
 }
-
 .add-task-form button:hover {
     background-color: #4a8ab8;
 }
-
 .task-list {
     display: flex;
     flex-direction: column;
 }
-
 .task {
     background-color: #f9f9f9;
     padding: 20px;
@@ -65,21 +55,17 @@ h1 {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 .task h2 {
     font-size: 1.2rem;
     margin-bottom: 10px;
 }
-
 .status {
     font-size: 1rem;
     margin-bottom: 10px;
 }
-
 .status span {
     font-weight: bold;
 }
-
 .status-selector {
     padding: 5px;
     border-radius: 4px;
@@ -87,12 +73,10 @@ h1 {
     font-size: 1rem;
     width: 100%;
 }
-
 .status-selector:focus {
     outline: none;
     border-color: #5b9bd5;
 }
-
 option {
     padding: 10px;
 }
