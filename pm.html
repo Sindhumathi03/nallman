@@ -12,7 +12,6 @@
             align-items: center;
             flex-direction: column;
         }
-
         .dashboard {
             max-width: 1200px;
             margin: 20px;
@@ -20,7 +19,6 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
-
         .card {
             padding: 20px;
             border: 1px solid #ddd;
@@ -28,37 +26,29 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             text-align: center;
         }
-
         .card h2 {
             font-size: 24px;
             margin: 10px 0;
         }
-
         .pie-chart, .bar-chart {
             height: 200px;
         }
-
         .table-container {
             grid-column: span 3;
         }
-
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
         }
-
         th, td {
             padding: 12px;
             border: 1px solid #ddd;
             text-align: center;
         }
-
         th {
             background-color: #f4f4f4;
         }
-
-        /* Form Styling */
         .form-container {
             margin-bottom: 20px;
             padding: 20px;
@@ -67,7 +57,6 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             text-align: center;
         }
-
         .form-container input,
         .form-container select,
         .form-container button {
@@ -76,13 +65,11 @@
             border-radius: 4px;
             border: 1px solid #ddd;
         }
-
         .form-container button {
             background-color: #4CAF50;
             color: white;
             cursor: pointer;
         }
-
         .form-container button:hover {
             background-color: #45a049;
         }
@@ -90,8 +77,6 @@
 </head>
 <body>
     <h1>Project Management Dashboard</h1>
-
-    <!-- Form to Add Employee Task Data -->
     <div class="form-container">
         <h3>Enter Employee Task Data</h3>
         <input type="text" id="employee-name" placeholder="Employee Name" required />
@@ -100,7 +85,6 @@
         <input type="number" id="tasks-started" placeholder="Tasks Started" required />
         <button id="add-employee-btn">Add Employee</button>
     </div>
-
     <div class="dashboard">
         <div class="card">
             <h2>Tasks Completed in Last 7 Days</h2>
@@ -113,23 +97,19 @@
         <div class="card">
             <h2>Milestones Covered in Last 7 Days</h2>
             <p>4</p>
-        </div>
-        
+        </div> 
         <div class="card pie-chart">
             <h2>Project Tasks By Status</h2>
             <canvas id="statusChart"></canvas>
-        </div>
-        
+        </div> 
         <div class="card bar-chart">
             <h2>Project Tasks Created vs Completed</h2>
             <canvas id="tasksChart"></canvas>
         </div>
-
         <div class="card bar-chart">
             <h2>Monthly Workload</h2>
             <canvas id="workloadChart"></canvas>
         </div>
-
         <div class="table-container card">
             <h2>Employee Performance</h2>
             <table>
@@ -147,7 +127,6 @@
             </table>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // Sample data for charts
@@ -159,7 +138,6 @@
                 backgroundColor: ['#4CAF50', '#FFC107', '#FF5722', '#03A9F4']
             }]
         };
-
         const tasksData = {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             datasets: [
@@ -175,7 +153,6 @@
                 }
             ]
         };
-
         const workloadData = {
             labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             datasets: [
@@ -196,8 +173,6 @@
                 }
             ]
         };
-
-        // Render Charts
         new Chart(document.getElementById('statusChart'), {
             type: 'doughnut',
             data: statusData
@@ -214,11 +189,7 @@
             data: workloadData,
             options: { responsive: true, plugins: { legend: { position: 'top' } } }
         });
-
-        // Initialize employee data array
         const employeeData = [];
-
-        // Function to update the employee performance table
         function updateEmployeeTable() {
             const employeeTable = document.getElementById('employeeTable');
             employeeTable.innerHTML = ''; // Clear existing table rows
@@ -233,28 +204,19 @@
                 employeeTable.appendChild(row);
             });
         }
-
-        // Event listener for adding new employee task data
         document.getElementById('add-employee-btn').addEventListener('click', () => {
             const employeeName = document.getElementById('employee-name').value.trim();
             const tasksCompleted = parseInt(document.getElementById('tasks-completed').value, 10);
             const tasksInProgress = parseInt(document.getElementById('tasks-in-progress').value, 10);
             const tasksStarted = parseInt(document.getElementById('tasks-started').value, 10);
-
-            // Basic validation
             if (employeeName && !isNaN(tasksCompleted) && !isNaN(tasksInProgress) && !isNaN(tasksStarted)) {
-                // Add the new employee data to the array
                 employeeData.push({
                     name: employeeName,
                     completed: tasksCompleted,
                     progress: tasksInProgress,
                     started: tasksStarted
                 });
-
-                // Update the table with the new data
                 updateEmployeeTable();
-
-                // Clear the input fields
                 document.getElementById('employee-name').value = '';
                 document.getElementById('tasks-completed').value = '';
                 document.getElementById('tasks-in-progress').value = '';
