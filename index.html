@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,91 +9,94 @@
         /* General Body Styles */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f7f7f7;
-            color: #333;
             margin: 0;
             padding: 0;
+            background-color: #f3f4f6;
+            color: #333;
         }
 
         /* Header Styles */
         header {
-            background-color: #4caf50;
-            color: #fff;
-            padding: 30px 0;
+            background-color: #2ecc71;
+            color: white;
+            padding: 40px 0;
             text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
+            font-weight: 700;
             margin: 0;
-            font-family: 'Helvetica', sans-serif;
+            letter-spacing: 2px;
         }
 
         /* Main Content Section */
         main {
-            padding: 20px 40px;
+            padding: 40px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
+        main p {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
         /* Project List Styles */
         #sn {
-            font-size: 1.2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
             list-style: none;
             padding: 0;
-            margin-top: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
         }
 
         #sn li {
             background-color: #ffffff;
-            margin: 15px;
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 45%;
-            transition: all 0.3s ease-in-out;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             text-align: center;
-        }
-
-        #sn li a {
-            display: inline-block;
-            margin-top: 10px;
-            color: #4caf50;
-            font-weight: bold;
-            text-decoration: none;
-            padding: 8px 16px;
-            border: 2px solid #4caf50;
-            border-radius: 8px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            color: #333;
+            position: relative;
+            overflow: hidden;
         }
 
         #sn li:hover {
-            transform: scale(1.05);
-            background-color: #f0f8ff;
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
         }
 
-        #sn li:hover a {
-            background-color: #4caf50;
-            color: #fff;
-        }
-
-        /* Links Style */
-        a {
-            color: #0984e3;
+        #sn li a {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            color: #2ecc71;
             text-decoration: none;
+            padding: 8px 20px;
+            border: 2px solid #2ecc71;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        a:hover {
-            text-decoration: underline;
+        #sn li a:hover {
+            background-color: #2ecc71;
+            color: white;
         }
 
         /* Media Queries for Responsiveness */
         @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.8rem;
+            }
+
             #sn li {
-                width: 80%;
+                padding: 15px;
             }
         }
 
@@ -102,52 +106,66 @@
             }
 
             #sn li {
-                width: 100%;
+                padding: 12px;
+                font-size: 1rem;
+            }
+
+            main p {
+                font-size: 1rem;
             }
         }
+
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1>Welcome to My Projects Page</h1>
-</header>
+    <header>
+        <h1>Welcome to My Projects!</h1>
+    </header>
 
-<main>
-    <p style="font-size: 1.2rem; text-align: center;">Here are some of the projects I have been working on. Click on the links below to explore each one!</p>
+    <main>
+        <p>Explore my awesome projects! These are some of the web and app development projects I have worked on. Feel free to check them out!</p>
 
-    <ol id="sn">
-        <li>
-            Develop a portfolio website for yourself
-            <a href="port.html">Explore Portfolio</a>
-        </li>
-        <li>
-            Create a Todo List app
-            <a href="todo.html">Try Todo List</a>
-        </li>
-        <li>
-            Create a simple microblogging application
-            <a href="mb.html">View Microblogging</a>
-        </li>
-        <li>
-            Create a food delivery website application
-            <a href="fm.html">Visit Food Delivery</a>
-        </li>
-        <li>
-            Develop a classifieds web application to buy and sell used products
-            <a href="login.html">View Classifieds</a>
-        </li>
-        <li>
-            Develop a Leave Management system
-            <a href="im.html">Manage Leaves</a>
-        </li>
-        <li>
-            Develop a Leave Management system (Project 2)
-            <a href="pm.html">Explore Leave Management</a>
-        </li>
-    </ol>
-</main>
+        <ol id="sn">
+            <li>
+                <h3>Portfolio Website</h3>
+                <p>A personal portfolio website to showcase my work.</p>
+                <a href="port.html">Explore Portfolio</a>
+            </li>
+            <li>
+                <h3>Todo List App</h3>
+                <p>A simple task manager app to help you stay organized.</p>
+                <a href="todo.html">Try Todo List</a>
+            </li>
+            <li>
+                <h3>Microblogging App</h3>
+                <p>Share your thoughts and follow others in this microblogging platform.</p>
+                <a href="mb.html">View Microblogging</a>
+            </li>
+            <li>
+                <h3>Food Delivery App</h3>
+                <p>An app for ordering food from your favorite restaurants.</p>
+                <a href="fm.html">Visit Food Delivery</a>
+            </li>
+            <li>
+                <h3>Classifieds Web App</h3>
+                <p>Buy and sell used products on this classifieds platform.</p>
+                <a href="login.html">View Classifieds</a>
+            </li>
+            <li>
+                <h3>Leave Management System</h3>
+                <p>A system to manage employee leave requests.</p>
+                <a href="im.html">Manage Leaves</a>
+            </li>
+            <li>
+                <h3>Project Management App</h3>
+                <p>Manage tasks and projects efficiently with this app.</p>
+                <a href="pm.html">Explore Project Management</a>
+            </li>
+        </ol>
+    </main>
 
 </body>
-</html>
 
+</html>
