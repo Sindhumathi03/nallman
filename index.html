@@ -1,152 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Projects</title>
+    <title>Simple A4 Page</title>
     <style>
-        /* General Body Styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f7f7f7;
-            color: #333;
-            margin: 0;
-            padding: 0;
+        /* Set up for A4 page */
+        @page {
+            size: A4;
+            margin: 20mm;
         }
 
-        /* Header Styles */
-        header {
-            background-color: #4caf50;
-            color: #fff;
-            padding: 30px 0;
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff; /* Light background color */
+            color: #333; /* Dark text color for contrast */
             text-align: center;
         }
 
-        header h1 {
-            font-size: 3rem;
-            margin: 0;
-            font-family: 'Helvetica', sans-serif;
-        }
-
-        /* Main Content Section */
-        main {
-            padding: 20px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Project List Styles */
-        #sn {
-            font-size: 1.2rem;
-            list-style: none;
-            padding: 0;
+        h1 {
+            color: #4caf50; /* Green for the header */
+            font-size: 2.5rem;
             margin-top: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        }
+
+        /* Main container for content */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* List styles */
+        #sn {
+            font-size: 1.3rem;
+            text-align: left;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
         }
 
         #sn li {
-            background-color: #ffffff;
-            margin: 15px;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 45%;
-            transition: all 0.3s ease-in-out;
-            text-align: center;
-        }
-
-        #sn li a {
-            display: inline-block;
-            margin-top: 10px;
-            color: #4caf50;
-            font-weight: bold;
-            text-decoration: none;
-            padding: 8px 16px;
-            border: 2px solid #4caf50;
+            background-color: #ffeaa7; /* Light yellow background for list items */
+            margin: 15px 0;
+            padding: 15px;
             border-radius: 8px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         #sn li:hover {
-            transform: scale(1.05);
-            background-color: #f0f8ff;
+            background-color: #fdcb6e; /* Darker yellow on hover */
         }
 
-        #sn li:hover a {
-            background-color: #4caf50;
-            color: #fff;
-        }
-
-        /* Links Style */
-        a {
-            color: #0984e3;
+        #sn li a {
             text-decoration: none;
+            color: #0984e3; /* Blue color for links */
+            font-weight: bold;
         }
 
-        a:hover {
+        #sn li a:hover {
             text-decoration: underline;
         }
 
-        /* Media Queries for Responsiveness */
-        @media (max-width: 768px) {
-            #sn li {
-                width: 80%;
-            }
+        /* Footer styles */
+        footer {
+            margin-top: 40px;
+            font-size: 1rem;
+            color: #777;
+            text-align: center;
         }
 
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 2.5rem;
+        /* Responsive layout for smaller screens */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
             }
 
             #sn li {
-                width: 100%;
+                font-size: 1.2rem;
+                padding: 12px;
+            }
+
+            #sn li a {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1>Welcome to My Projects Page</h1>
-</header>
+    <div class="container">
+        <h1>Welcome to My Projects!</h1>
+        <p>Here are some of the web and app development projects I have worked on. Feel free to explore them.</p>
 
-<main>
-    <p style="font-size: 1.2rem; text-align: center;">Here are some of the projects I have been working on. Click on the links below to explore each one!</p>
+        <ol id="sn">
+            <li>Develop a portfolio website for yourself <a href="port.html">Portfolio</a></li>
+            <li>Create a Todo List <a href="todo.html">Todo List</a></li>
+            <li>Create a simple microblogging application <a href="mb.html">Microblogging</a></li>
+            <li>Create a food delivery website application <a href="fm.html">Food Delivery</a></li>
+            <li>Develop a classifieds web application to buy and sell used products <a href="login.html">Classifieds</a></li>
+            <li>Develop a leave management system <a href="im.html">Leave Management</a></li>
+            <li>Develop a project management application <a href="pm.html">Project Management</a></li>
+        </ol>
+    </div>
 
-    <ol id="sn">
-        <li>
-            Develop a portfolio website for yourself
-            <a href="port.html">Explore Portfolio</a>
-        </li>
-        <li>
-            Create a Todo List app
-            <a href="todo.html">Try Todo List</a>
-        </li>
-        <li>
-            Create a simple microblogging application
-            <a href="mb.html">View Microblogging</a>
-        </li>
-        <li>
-            Create a food delivery website application
-            <a href="fm.html">Visit Food Delivery</a>
-        </li>
-        <li>
-            Develop a classifieds web application to buy and sell used products
-            <a href="login.html">View Classifieds</a>
-        </li>
-        <li>
-            Develop a Leave Management system
-            <a href="im.html">Manage Leaves</a>
-        </li>
-        <li>
-            Develop a Leave Management system (Project 2)
-            <a href="pm.html">Explore Leave Management</a>
-        </li>
-    </ol>
-</main>
+    <footer>
+        <p>&copy; 2024 My Projects. All Rights Reserved.</p>
+    </footer>
 
 </body>
+
 </html>
