@@ -89,7 +89,32 @@
             color: white;
         }
 
-        /* Media Queries for Responsiveness */
+        /* Media Queries for Tablet-Sized Devices */
+        @media (max-width: 1024px) {
+            header h1 {
+                font-size: 3rem; /* Slightly smaller header font size */
+            }
+
+            main p {
+                font-size: 1.2rem;
+            }
+
+            #sn {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Slightly larger grid columns */
+                gap: 20px;
+            }
+
+            #sn li {
+                padding: 18px; /* Reduced padding for tablet screens */
+            }
+
+            #sn li a {
+                font-size: 1rem; /* Adjusted font size for links */
+                padding: 8px 18px;
+            }
+        }
+
+        /* Media Queries for Mobile Devices */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2.8rem;
@@ -97,17 +122,6 @@
 
             #sn li {
                 padding: 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 2.5rem;
-            }
-
-            #sn li {
-                padding: 12px;
-                font-size: 1rem;
             }
 
             main p {
