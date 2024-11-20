@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple A4 Page</title>
+    <title>Simple A4 Page with Border and Corner Images</title>
     <style>
         /* Set up for A4 page */
         @page {
@@ -19,6 +19,15 @@
             background-color: #f0f8ff; /* Light background color */
             color: #333; /* Dark text color for contrast */
             text-align: center;
+            position: relative;
+            overflow: hidden; /* Ensure images don't overflow */
+        }
+
+        /* Border around the whole content */
+        .page-border {
+            border: 10px solid green; /* Green border around the page */
+            position: relative;
+            padding: 40px; /* Space inside the border */
         }
 
         h1 {
@@ -74,6 +83,36 @@
             text-align: center;
         }
 
+        /* Images in the corners */
+        .corner-image {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Position each image */
+        .top-left {
+            top: 20px;
+            left: 20px;
+        }
+
+        .top-right {
+            top: 20px;
+            right: 20px;
+        }
+
+        .bottom-left {
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .bottom-right {
+            bottom: 20px;
+            right: 20px;
+        }
+
         /* Responsive layout for smaller screens */
         @media screen and (max-width: 768px) {
             h1 {
@@ -88,31 +127,45 @@
             #sn li a {
                 font-size: 1rem;
             }
+
+            .corner-image {
+                width: 80px;
+                height: 80px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <h1>Welcome to My Projects!</h1>
-        <p>Here are some of the web and app development projects I have worked on. Feel free to explore them.</p>
+    <div class="page-border">
+        <!-- Corner Images -->
+        <img src="https://via.placeholder.com/100" alt="Top Left Image" class="corner-image top-left">
+        <img src="https://via.placeholder.com/100" alt="Top Right Image" class="corner-image top-right">
+        <img src="https://via.placeholder.com/100" alt="Bottom Left Image" class="corner-image bottom-left">
+        <img src="https://via.placeholder.com/100" alt="Bottom Right Image" class="corner-image bottom-right">
 
-        <ol id="sn">
-            <li>Develop a portfolio website for yourself <a href="port.html">Portfolio</a></li>
-            <li>Create a Todo List <a href="todo.html">Todo List</a></li>
-            <li>Create a simple microblogging application <a href="mb.html">Microblogging</a></li>
-            <li>Create a food delivery website application <a href="fm.html">Food Delivery</a></li>
-            <li>Develop a classifieds web application to buy and sell used products <a href="login.html">Classifieds</a></li>
-            <li>Develop a leave management system <a href="im.html">Leave Management</a></li>
-            <li>Develop a project management application <a href="pm.html">Project Management</a></li>
-        </ol>
+        <div class="container">
+            <h1>Welcome to My Projects!</h1>
+            <p>Here are some of the web and app development projects I have worked on. Feel free to explore them.</p>
+
+            <ol id="sn">
+                <li>Develop a portfolio website for yourself <a href="port.html">Portfolio</a></li>
+                <li>Create a Todo List <a href="todo.html">Todo List</a></li>
+                <li>Create a simple microblogging application <a href="mb.html">Microblogging</a></li>
+                <li>Create a food delivery website application <a href="fm.html">Food Delivery</a></li>
+                <li>Develop a classifieds web application to buy and sell used products <a href="login.html">Classifieds</a></li>
+                <li>Develop a leave management system <a href="im.html">Leave Management</a></li>
+                <li>Develop a project management application <a href="pm.html">Project Management</a></li>
+            </ol>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 My Projects. All Rights Reserved.</p>
+        </footer>
     </div>
-
-    <footer>
-        <p>&copy; 2024 My Projects. All Rights Reserved.</p>
-    </footer>
 
 </body>
 
 </html>
+
