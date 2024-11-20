@@ -1,54 +1,153 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-<title>simple</title>
-  <style>
- body {
-            text-align: center;
-            margin: 20px 80px 20px 80px;
-            padding: 20px 60px 20px 60px;
-            border: 10px solid green;
-            font-size: 1.5rem;
-            background-color: #f0f8ff; /* Light background color */
-            color: #333; /* Dark text color for contrast */
-        }
-        h1 {
-            color: #4caf50; /* Green for the header */
-        }
-        #sn {
-            font-size: 1.5rem;
-            text-align: left;
-            list-style-type: none; /* Remove default list styles */
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
             padding: 0;
         }
+
+        /* Header Styles */
+        header {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-family: 'Helvetica', sans-serif;
+        }
+
+        /* Main Content Section */
+        main {
+            padding: 20px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Project List Styles */
+        #sn {
+            font-size: 1.2rem;
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
         #sn li {
-            background-color: #ffeaa7; /* Light yellow background for list items */
-            margin: 10px 60px 10px 40px; /* Space between items */
-            padding: 10px 30px 10px 30px;
-            border-radius: 8px; /* Rounded corners */
-            transition: background-color 0.3s; /* Smooth transition for hover effect */
+            background-color: #ffffff;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            transition: all 0.3s ease-in-out;
+            text-align: center;
         }
+
+        #sn li a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #4caf50;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
         #sn li:hover {
-            background-color: #fdcb6e; /* Darker yellow on hover */
+            transform: scale(1.05);
+            background-color: #f0f8ff;
         }
+
+        #sn li:hover a {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        /* Links Style */
         a {
-            text-decoration: none; /* Remove underline from links */
-            color: #0984e3; /* Blue color for links */
+            color: #0984e3;
+            text-decoration: none;
         }
+
         a:hover {
-            text-decoration: underline; /* Underline links on hover */
+            text-decoration: underline;
         }
-  </style>
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            #sn li {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            #sn li {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>welcome to my page</h1>
-  <ol id="sn">
-  <li> develop a portfolio website for yourself<a href="port.html">portfolio</a></li>
-  <li> create a todo list <a href="todo.html">todo list</a></li>
-  <li> create a simple microblogging application  <a href="mb.html">microblogging</a></li>
-  <li> create a food delivery website application  <a href="fm.html">food delivery website</a></li>
-    <li> develop a classifieds web application to  <a href="login.html">puy and sell</a>used product</li>
-     <li> develop a classifieds web application to  <a href="im.html">leave management</a>used product</li>
-     <li> develop a classifieds web application to  <a href="pm.html">leave management</a>used product</li>
-  </ol>
+
+<header>
+    <h1>Welcome to My Projects Page</h1>
+</header>
+
+<main>
+    <p style="font-size: 1.2rem; text-align: center;">Here are some of the projects I have been working on. Click on the links below to explore each one!</p>
+
+    <ol id="sn">
+        <li>
+            Develop a portfolio website for yourself
+            <a href="port.html">Explore Portfolio</a>
+        </li>
+        <li>
+            Create a Todo List app
+            <a href="todo.html">Try Todo List</a>
+        </li>
+        <li>
+            Create a simple microblogging application
+            <a href="mb.html">View Microblogging</a>
+        </li>
+        <li>
+            Create a food delivery website application
+            <a href="fm.html">Visit Food Delivery</a>
+        </li>
+        <li>
+            Develop a classifieds web application to buy and sell used products
+            <a href="login.html">View Classifieds</a>
+        </li>
+        <li>
+            Develop a Leave Management system
+            <a href="im.html">Manage Leaves</a>
+        </li>
+        <li>
+            Develop a Leave Management system (Project 2)
+            <a href="pm.html">Explore Leave Management</a>
+        </li>
+    </ol>
+</main>
+
 </body>
 </html>
+
