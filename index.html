@@ -23,11 +23,11 @@
             overflow: hidden; /* Ensure images don't overflow */
         }
 
-        /* Border around the whole content */
+        /* Border around the whole content (Thinner border) */
         .page-border {
-            border: 10px solid green; /* Green border around the page */
+            border: 5px solid #008080; /* Thinner teal border */
             position: relative;
-            padding: 40px; /* Space inside the border */
+            padding: 30px; /* Space inside the border */
         }
 
         h1 {
@@ -86,8 +86,8 @@
         /* Images in the corners */
         .corner-image {
             position: absolute;
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             object-fit: cover;
         }
@@ -129,8 +129,8 @@
             }
 
             .corner-image {
-                width: 80px;
-                height: 80px;
+                width: 70px;
+                height: 70px;
             }
         }
     </style>
@@ -140,10 +140,10 @@
 
     <div class="page-border">
         <!-- Corner Images -->
-        <img src="https://via.placeholder.com/100" alt="Top Left Image" class="corner-image top-left">
-        <img src="https://via.placeholder.com/100" alt="Top Right Image" class="corner-image top-right">
-        <img src="https://via.placeholder.com/100" alt="Bottom Left Image" class="corner-image bottom-left">
-        <img src="https://via.placeholder.com/100" alt="Bottom Right Image" class="corner-image bottom-right">
+        <img src="https://via.placeholder.com/90/FF6347/FFFFFF?text=TL" alt="Top Left Image" class="corner-image top-left">
+        <img src="https://via.placeholder.com/90/4682B4/FFFFFF?text=TR" alt="Top Right Image" class="corner-image top-right">
+        <img src="https://via.placeholder.com/90/32CD32/FFFFFF?text=BL" alt="Bottom Left Image" class="corner-image bottom-left">
+        <img src="https://via.placeholder.com/90/FFD700/FFFFFF?text=BR" alt="Bottom Right Image" class="corner-image bottom-right">
 
         <div class="container">
             <h1>Welcome to My Projects!</h1>
@@ -168,4 +168,3 @@
 </body>
 
 </html>
-
